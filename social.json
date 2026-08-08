@@ -1,0 +1,72 @@
+{
+  "sectionTitle": "Selected Social Work",
+  "sectionSubtitle": "Campaigns, community moments, and platform-native ideas. The case studies explain the strategy; these links show the work in the wild.",
+  "posts": [
+    {
+      "id": "poop-candle",
+      "title": "Poop Candle Review",
+      "permalink": "https://www.instagram.com/p/DFvyUTxC4tV/",
+      "featured": true
+    },
+    {
+      "id": "christmas-promo",
+      "title": "Christmas Promo Shoot",
+      "permalink": "https://www.instagram.com/p/DEQBZEAO2N0/",
+      "featured": true
+    },
+    {
+      "id": "turn-down-watt",
+      "title": "Turn Down for Watt?!",
+      "permalink": "https://www.instagram.com/p/DD-NqB3POnN/",
+      "featured": false
+    },
+    {
+      "id": "christmas-zone",
+      "title": "Christmas Zone",
+      "permalink": "https://www.instagram.com/p/DDxzTfJpGiI/",
+      "featured": false
+    },
+    {
+      "id": "five-reasons",
+      "title": "5 Reasons to Visit",
+      "permalink": "https://www.instagram.com/p/DDhPpkvvuU3/",
+      "featured": false
+    },
+    {
+      "id": "zoo-lights-ad",
+      "title": "Zoo Lights Paid Ad",
+      "permalink": "https://www.instagram.com/p/DDfvmdNM1da/",
+      "featured": false
+    },
+    {
+      "id": "gen-z-slang",
+      "title": "Gen Z Slang Trend Pt. 2",
+      "permalink": "https://www.instagram.com/p/DDSp53EJCm6/",
+      "featured": false
+    },
+    {
+      "id": "community-ugc",
+      "title": "Community UGC",
+      "permalink": "https://www.instagram.com/p/DCkhLKmNvK8/",
+      "featured": false
+    },
+    {
+      "id": "capybara-naming",
+      "title": "Capybara Naming",
+      "permalink": "https://www.instagram.com/p/DEnTfreMCnq/",
+      "featured": false
+    },
+    {
+      "id": "spring-break",
+      "title": "Spring Break Promo",
+      "permalink": "https://www.instagram.com/reel/DGlCWrhpx-x/",
+      "featured": false
+    },
+    {
+      "id": "valentines-day",
+      "title": "Valentine's Day",
+      "permalink": "https://www.instagram.com/reel/DGEuaQcx1tp/",
+      "featured": false
+    }
+  ]
+}

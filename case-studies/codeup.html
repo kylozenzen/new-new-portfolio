@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Codeup Case Study | Ben Campbell</title>
+<meta content="How Ben Campbell helped turn Codeup's content, community, and digital marketing into a stronger growth engine." name="description"/>
+<meta content="Ben Campbell" name="author"/>
+<meta content="article" property="og:type"/>
+<meta content="https://bencampbell.netlify.app/case-studies/codeup.html" property="og:url"/>
+<meta content="Codeup Case Study | Ben Campbell" property="og:title"/>
+<meta content="Building a more connected growth system for student demand, employer engagement, and community trust." property="og:description"/>
+<meta content="https://bencampbell.netlify.app/case-studies/assets/codeup/IMG_1779-2.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://bencampbell.netlify.app/case-studies/codeup.html" name="twitter:url"/>
+<meta content="Codeup Case Study | Ben Campbell" name="twitter:title"/>
+<meta content="Building a more connected growth system for student demand, employer engagement, and community trust." name="twitter:description"/>
+<meta content="https://bencampbell.netlify.app/case-studies/assets/codeup/IMG_1779-2.jpg" name="twitter:image"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: #fff9f9;
+      color: #000;
+      overflow-x: hidden;
+    }
+
+    .hard-shadow {
+      box-shadow: 4px 4px 0px #000;
+      transition: all 0.2s ease-out;
+    }
+    .hard-shadow:hover {
+      box-shadow: 6px 6px 0px #000;
+      transform: translate(-1px, -1px);
+    }
+
+    .hard-shadow-fuchsia { box-shadow: 6px 6px 0px #d946ef; }
+    .hard-shadow-lime { box-shadow: 6px 6px 0px #bef264; }
+    .hard-shadow-cyan { box-shadow: 6px 6px 0px #67e8f9; }
+    .hard-shadow-yellow { box-shadow: 6px 6px 0px #facc15; }
+
+    .btn-push:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000; }
+    .btn-push:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #000; }
+
+    .bg-grid {
+      background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px);
+      background-size: 20px 20px;
+      background-color: #fff9f9;
+      opacity: 0.1;
+    }
+
+    .hazard-stripes {
+      background-color: #000;
+      background-image: repeating-linear-gradient(45deg, #000, #000 10px, #111 10px, #111 20px);
+    }
+
+    .story-image {
+      background: #fff;
+      border: 2px solid #000;
+      overflow: hidden;
+    }
+
+    .story-image img, .story-image video, .story-image iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-caption {
+      border-top: 2px solid #000;
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      background: #fff;
+    }
+
+    .asset-label {
+      font-weight: 900;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .story-image--hero .story-media {
+      height: 400px;
+    }
+
+    .story-image--medium .story-media {
+      height: 320px;
+    }
+
+    .story-image--small .story-media {
+      height: 220px;
+    }
+
+    .story-image--screen .story-media {
+      height: 300px;
+    }
+
+    .story-image--event .story-media {
+      height: 300px;
+    }
+
+    .story-image--hero,
+    .story-image--medium,
+    .story-image--small,
+    .story-image--screen,
+    .story-image--event {
+      align-self: start;
+    }
+
+    @media (max-width: 767px) {
+      body { overflow-x: hidden; }
+      .bg-grid { background-size: 16px 16px; }
+
+      .hard-shadow,
+      .hard-shadow-fuchsia,
+      .hard-shadow-lime,
+      .hard-shadow-cyan,
+      .hard-shadow-yellow {
+        box-shadow: 3px 3px 0px #000;
+      }
+
+      .hard-shadow:hover {
+        box-shadow: 3px 3px 0px #000;
+        transform: none;
+      }
+
+      .btn-push:hover,
+      .btn-push:active {
+        transform: none;
+        box-shadow: 3px 3px 0px #000;
+      }
+
+      .hazard-stripes span {
+        font-size: 0.85rem !important;
+        line-height: 1.3;
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+      }
+
+      header .max-w-7xl {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+      }
+
+      header .flex.items-center.justify-between {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.75rem !important;
+      }
+
+      header .flex.items-center.gap-3 {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+      }
+
+      header .flex.items-center.gap-3 > * {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+
+      .md\:text-7xl { font-size: 2.95rem !important; line-height: 0.94 !important; }
+      .md\:text-2xl { font-size: 1.2rem !important; }
+      .md\:grid-cols-\[1\.4fr_\.9fr\] { grid-template-columns: 1fr !important; }
+      .md\:grid-cols-\[1fr_1fr\] { grid-template-columns: 1fr !important; }
+      .md\:grid-cols-\[1fr_\.95fr\] { grid-template-columns: 1fr !important; }
+      .md\:grid-cols-\[1\.1fr_\.9fr\] { grid-template-columns: 1fr !important; }
+      .md\:gap-12, .md\:gap-14 { gap: 1.25rem !important; }
+      .md\:py-20 { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
+      .md\:px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+
+      aside.bg-white.border-4.border-black { margin-top: 0.5rem; }
+      aside .grid.grid-cols-2 { gap: 0.65rem !important; }
+      aside .grid.grid-cols-2 > div { padding: 0.75rem 0.5rem !important; }
+      aside .text-2xl, aside .md\:text-3xl { font-size: 1.4rem !important; line-height: 1 !important; }
+
+      .md\:text-5xl { font-size: 2.2rem !important; line-height: 0.96 !important; }
+      .md\:text-6xl { font-size: 2.45rem !important; line-height: 0.95 !important; }
+      .text-lg, .md\:text-xl { font-size: 1rem !important; line-height: 1.6 !important; }
+      .text-2xl, .md\:text-3xl { font-size: 1.4rem !important; line-height: 1.12 !important; }
+      .grid.md\:grid-cols-3 { grid-template-columns: 1fr !important; }
+      .grid.md\:grid-cols-2, .grid.lg\:grid-cols-3 { grid-template-columns: 1fr !important; }
+      .space-y-6 > * + * { margin-top: 1rem !important; }
+
+      .p-6 { padding: 1.1rem !important; }
+      .md\:p-8 { padding: 1.25rem !important; }
+      .p-5 { padding: 1rem !important; }
+
+      .flex.flex-wrap.justify-center.gap-4 {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+
+      .flex.flex-wrap.justify-center.gap-4 > * {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+      }
+
+      #case-study-contact .max-w-2xl { max-width: 100% !important; }
+      #case-study-contact form { padding: 1.25rem !important; }
+      #case-study-contact h2 { font-size: 2.3rem !important; line-height: 0.95 !important; }
+      #case-study-contact .text-lg.md\:text-2xl { font-size: 1rem !important; line-height: 1.5 !important; }
+      #case-study-contact .grid.grid-cols-1.md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+      #case-study-contact button[type="submit"] {
+        font-size: 1rem !important;
+        line-height: 1.2 !important;
+        padding: 1rem !important;
+      }
+
+      footer .flex.flex-col.md\:flex-row {
+        align-items: center !important;
+        text-align: center !important;
+      }
+
+      footer .flex.gap-3 { justify-content: center !important; }
+
+      .story-image--hero .story-media,
+      .story-image--medium .story-media,
+      .story-image--screen .story-media,
+      .story-image--event .story-media {
+        height: 260px !important;
+      }
+
+      .story-image--small .story-media {
+        height: 210px !important;
+      }
+    }
+  
+    .skip-link { position: fixed; left: 1rem; top: 1rem; z-index: 9999; transform: translateY(-180%); background:#000; color:#fff; border:2px solid #fff; padding:.75rem 1rem; font-weight:900; text-transform:uppercase; }
+    .skip-link:focus { transform: translateY(0); }
+    :focus-visible { outline: 4px solid #d946ef; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+</style>
+<link href="https://bencampbell.netlify.app/case-studies/codeup.html" rel="canonical"/></head>
+<body class="selection:bg-fuchsia-500 selection:text-white"><a class="skip-link" href="#main-content">Skip to main content</a>
+<script>
+    window.CODEUP_MEDIA = {
+      hero: {
+        src: "assets/codeup/IMG_1986-2.jpg",
+        alt: "Ben Campbell on his first day at Codeup in front of the branded step-and-repeat",
+        label: "In the Work",
+        caption: "My first day at Codeup — a fitting opener for a project that became part content engine, part community work, and part crash course in marketing technical education well."
+      },
+      billboards: {
+        src: "assets/codeup/IMG_1061-2.jpg",
+        alt: "Dashboard showing Codeup billboard campaigns across multiple Texas markets",
+        label: "Campaign Operations",
+        caption: "Billboard planning across San Antonio, Dallas, Houston, and more — one example of how the work extended beyond owned channels into broader demand generation."
+      },
+      stage: { 
+        src: "assets/codeup/IMG_8691-2.jpg",
+        alt: "Ben Campbell speaking on stage at a Codeup event",
+        label: "Event Support",
+        caption: "Helping market events was one part of the work. Stepping in on stage and supporting them operationally was another."
+      },
+      fiesta: {
+        src: "assets/codeup/IMG_9718-2.jpg",
+        alt: "Codeup team engaging attendees at a Fiesta event in San Antonio",
+        label: "Community Activation",
+        caption: "Bringing the brand into real-world community spaces helped reinforce that Codeup was not just a website or course catalog — it was a visible part of the local tech conversation."
+      },
+      hiring: {
+        src: "assets/codeup/IMG_0276-2.jpg",
+        alt: "Codeup hire top tech talent banner and employer-focused booth setup",
+        label: "Employer Marketing",
+        caption: "Hiring-partner and employer-facing work gave the marketing more range than a standard student-acquisition playbook."
+      },
+      veterans: {
+        src: "assets/codeup/IMG_0651-2.jpg",
+        alt: "Framed American flag presented to Codeup for commitment to veterans and the tech community",
+        label: "Veteran Support",
+        caption: "A meaningful reminder that some of the best work was about helping the brand show up well for communities with specific needs and real stakes."
+      },
+      swag: {
+        src: "assets/codeup/IMG_1122-2.jpg",
+        alt: "Codeup one-year swag featuring duck, sticker, and anniversary badge",
+        label: "Brand Texture",
+        caption: "Smaller brand details helped make the culture feel real, memorable, and a little more human."
+      },
+      bts: {
+        src: "assets/codeup/IMG_1779-2.jpg",
+        alt: "Behind-the-scenes media production setup at Codeup",
+        label: "Behind the Scenes",
+        caption: "Content production was part of the job, not just publishing after the fact."
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('[data-media-key]').forEach(function (figure) {
+        var item = window.CODEUP_MEDIA[figure.dataset.mediaKey];
+        if (!item) return;
+        var img = figure.querySelector('img');
+        if (img) {
+          img.src = item.src;
+          img.alt = item.alt || '';
+        }
+        var label = figure.querySelector('[data-media-label]');
+        if (label) label.textContent = item.label || '';
+        var caption = figure.querySelector('[data-media-caption]');
+        if (caption) caption.textContent = item.caption || '';
+      });
+    });
+  </script>
+<!-- Codeup image order: 1st day, billboard, stage, fiesta, hiring talent, veterans, 1 year swag, BTS -->
+<header class="relative border-b-4 border-black overflow-hidden">
+<div class="absolute inset-0 bg-grid"></div>
+<div class="relative max-w-7xl mx-auto px-4 py-5 md:px-8 flex items-center justify-between gap-4">
+<a class="text-xl md:text-2xl font-black tracking-tighter uppercase border-2 border-black bg-white px-3 py-2 hard-shadow" href="../index.html">BEN CAMPBELL.</a>
+<div class="flex items-center gap-3">
+<a class="px-4 py-2 font-bold uppercase bg-white border-2 border-black hard-shadow btn-push text-sm md:text-base" href="../case-studies.html">All Case Studies</a>
+<a class="px-4 py-2 font-bold uppercase bg-black text-white border-2 border-black hard-shadow btn-push text-sm md:text-base" href="#case-study-contact">Reach Out Below ↓</a>
+</div>
+</div>
+</header>
+<main id="main-content">
+<section class="relative border-b-4 border-black overflow-hidden">
+<div class="absolute inset-0 bg-grid"></div>
+<div class="relative max-w-7xl mx-auto px-4 py-12 md:px-8 md:py-20">
+<div class="inline-block mb-5 bg-lime-300 border-2 border-black px-4 py-2 font-black uppercase text-sm md:text-base hard-shadow">Case Study</div>
+<div class="grid md:grid-cols-[1.4fr_.9fr] gap-8 md:gap-12 items-start">
+<div>
+<p class="text-sm md:text-base font-black uppercase tracking-wide mb-3">Codeup · October 2020 – October 2022</p>
+<h1 class="text-4xl md:text-7xl leading-[0.95] font-black uppercase mb-5">Connecting social, content, events, and community into a stronger enrollment journey</h1>
+<p class="text-lg md:text-2xl font-bold max-w-3xl leading-snug bg-white border-2 border-black p-4 md:p-5 hard-shadow-cyan">
+              As a Digital Marketing Specialist, I helped connect content, community, website strategy, digital events, and campaign execution into a smoother journey from first impression to info session to enrollment.
+            </p>
+<div class="flex flex-wrap gap-3 mt-6">
+<span class="bg-yellow-200 border-2 border-black px-4 py-2 font-black uppercase text-sm">Content + Funnel Strategy</span>
+<span class="bg-fuchsia-200 border-2 border-black px-4 py-2 font-black uppercase text-sm">Community + Events</span>
+<span class="bg-cyan-200 border-2 border-black px-4 py-2 font-black uppercase text-sm">B2C + B2B Marketing</span>
+</div>
+<div class="mt-8 border-t-4 border-black pt-5 max-w-2xl">
+<h3 class="font-black uppercase text-sm md:text-base mb-3">My role and responsibilities</h3>
+<ul class="text-sm md:text-base font-bold space-y-1 list-disc pl-5">
+<li>Social Media, Blog, and Website Content Strategy</li>
+<li>Campaign Planning, Copywriting, and Digital Asset Creation</li>
+<li>Student Community Support in Slack and Digital Event Promotion</li>
+<li>Partner Marketing Across Hiring, Financial, and Media Channels</li>
+</ul>
+</div><p class="mt-5 text-sm md:text-base leading-relaxed bg-white border-2 border-black p-4 hard-shadow"><span class="font-black uppercase">Collaboration + ownership:</span> I owned or supported social, blog, website, event, and community execution as part of a broader marketing and operations team. The outcomes below were shared wins, not solo achievements.</p>
+</div>
+<aside class="bg-white border-4 border-black p-4 md:p-5 hard-shadow-fuchsia"><h2 class="text-xl md:text-2xl font-black uppercase mb-4">At a glance</h2><div class="grid grid-cols-2 gap-3"><div class="bg-fuchsia-200 border-2 border-black p-3 text-center"><div class="text-xl md:text-2xl font-black">+25%</div><div class="text-xs font-black uppercase border-t-2 border-black pt-1 mt-1">Student applications</div></div><div class="bg-lime-200 border-2 border-black p-3 text-center"><div class="text-xl md:text-2xl font-black">+20%</div><div class="text-xs font-black uppercase border-t-2 border-black pt-1 mt-1">Employer partner leads</div></div><div class="bg-cyan-200 border-2 border-black p-3 text-center"><div class="text-xl md:text-2xl font-black">+35%</div><div class="text-xs font-black uppercase border-t-2 border-black pt-1 mt-1">Average audience growth</div></div><div class="bg-yellow-200 border-2 border-black p-3 text-center"><div class="text-xl md:text-2xl font-black">50%+</div><div class="text-xs font-black uppercase border-t-2 border-black pt-1 mt-1">LinkedIn growth</div></div></div><p class="text-xs md:text-sm font-bold leading-relaxed mt-4">These were shared marketing outcomes. My contribution connected social, content, events, website journeys, and community touchpoints.</p></aside>
+</div>
+</div>
+</section>
+<section class="hazard-stripes border-b-4 border-black py-4 overflow-hidden">
+<div class="text-center">
+<span class="text-lg md:text-3xl font-black italic uppercase text-lime-400 tracking-widest bg-black px-2">/// STUDENT ACQUISITION /// COMMUNITY TRUST /// EVENTS /// EMPLOYER MARKETING ///</span>
+</div>
+</section>
+<section class="bg-white border-b-4 border-black px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1fr] lg:grid-cols-[1.1fr_.9fr] gap-8 md:gap-14 items-center">
+<div class="flex flex-col justify-center">
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-6 border-l-8 border-black pl-4">The challenge</h2>
+<div class="space-y-5 text-lg leading-relaxed">
+<p>Codeup needed marketing that could do more than just generate awareness. It had to attract prospective students, support digital events, communicate outcomes clearly, strengthen employer relationships, and help people understand a technical product in a way that felt approachable.</p>
+<p>Because the brand lived in tech education, good marketing required more than surface-level messaging. I had to understand the curriculum, the student journey, and enough of the coding world to translate it into content that felt clear, credible, and relevant.</p>
+<p>The brand also had a real trust story to tell. Codeup became the first accredited coding bootcamp in Texas, which gave the team a stronger credibility point in a crowded category and made clearer, stronger messaging even more important.</p>
+</div>
+</div>
+<div>
+<figure class="story-image story-image--hero hard-shadow-cyan" data-media-key="hero">
+<div class="story-media">
+<!-- CODEUP IMAGE 1: HERO / 1ST DAY -->
+<img alt="Ben Campbell on his first day at Codeup in front of a branded backdrop" decoding="async" fetchpriority="high" height="1600" src="assets/codeup/IMG_1986-2.jpg" width="1200"/>
+</div>
+<figcaption class="story-caption">
+<span class="asset-label" data-media-label="">In the Work</span>
+<span data-media-caption="">My first day at Codeup — a fitting opener for a project that became part content engine, part community work, and part crash course in marketing technical education well.</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="bg-fuchsia-500 text-white border-b-4 border-black px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-8 border-l-8 border-white pl-4">The impact</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+<div class="bg-white text-black border-2 border-black p-5 hard-shadow">
+<p class="text-4xl font-black mb-2">25%</p>
+<p class="font-bold text-lg leading-snug">Increase in student applications through a more connected content and campaign system.</p>
+</div>
+<div class="bg-white text-black border-2 border-black p-5 hard-shadow">
+<p class="text-4xl font-black mb-2">20%</p>
+<p class="font-bold text-lg leading-snug">Increase in employer partner leads through stronger hiring-partner marketing.</p>
+</div>
+<div class="bg-white text-black border-2 border-black p-5 hard-shadow">
+<p class="text-4xl font-black mb-2">35%</p>
+<p class="font-bold text-lg leading-snug">Average audience growth across channels, including more than 50% growth on LinkedIn.</p>
+</div>
+</div>
+<div class="bg-black text-white border-4 border-white p-6 md:p-8 hard-shadow-lime max-w-4xl mt-10">
+<h3 class="text-2xl md:text-3xl font-black uppercase mb-3 text-lime-400">Why this mattered</h3>
+<p class="text-lg md:text-xl leading-relaxed">This role was bigger than publishing content. I helped connect the channels, events, campaigns, and community touchpoints that moved people from curiosity to action, while also supporting the employer side of the business and the broader student experience.</p>
+</div>
+</div>
+</section>
+<section class="bg-cyan-100 border-b-4 border-black px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-8 border-l-8 border-black pl-4">What I helped build</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<article class="bg-white border-2 border-black p-6 hard-shadow">
+<h3 class="text-2xl font-black uppercase mb-3">A more connected funnel</h3>
+<p class="text-lg leading-relaxed">Blogs turned into social content. Social content drove readers back to the website. Website content pushed people toward learning more about the programs, registering for an info session, and moving closer to enrollment.</p>
+</article>
+<article class="bg-white border-2 border-black p-6 hard-shadow">
+<h3 class="text-2xl font-black uppercase mb-3">A stronger website experience</h3>
+<p class="text-lg leading-relaxed">We supported a website refresh designed to feel more modern, improve UI and UX, and create a smoother user flow for prospective students trying to understand the programs and take the next step.</p>
+</article>
+<article class="bg-white border-2 border-black p-6 hard-shadow">
+<h3 class="text-2xl font-black uppercase mb-3">More range in the marketing</h3>
+<p class="text-lg leading-relaxed">The work stretched across B2C and B2B audiences — prospective students, current students, hiring partners, financial partners, digital events, and outside marketing channels like billboards, radio, and movie theater ads.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="bg-white border-b-4 border-black px-4 py-10 md:px-8">
+<div class="max-w-5xl mx-auto grid md:grid-cols-[1.1fr_.9fr] gap-6 items-start">
+<figure class="story-image story-image--screen hard-shadow" data-media-key="billboards">
+<div class="story-media">
+<!-- CODEUP IMAGE 2: BILLBOARD MOCKUPS -->
+<img alt="Dashboard showing Codeup billboard campaigns across Texas markets" decoding="async" height="1600" loading="lazy" src="assets/codeup/IMG_1061-2.jpg" width="1200"/>
+</div>
+<figcaption class="story-caption">
+<span class="asset-label" data-media-label="">Campaign Operations</span>
+<span data-media-caption="">Billboard planning across San Antonio, Dallas, Houston, and more — one example of how the work extended beyond owned channels into broader demand generation.</span>
+</figcaption>
+</figure>
+<div class="bg-black text-white border-4 border-black p-6 md:p-8 hard-shadow-yellow">
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-6 border-l-8 border-lime-400 pl-4">Campaigns that made the story easier to see</h2>
+<div class="space-y-4 text-lg leading-relaxed text-gray-100">
+<p><span class="text-lime-400 font-black">Women’s History Month:</span> women-centered content highlighting leadership, employees, and student success stories.</p>
+<p><span class="text-lime-400 font-black">New Year, New Career:</span> a seasonal campaign built around career-change momentum and fresh-start energy.</p>
+<p><span class="text-lime-400 font-black">From this job to this job:</span> transformation storytelling that made outcomes easier to picture, like barista to software developer.</p>
+<p><span class="text-lime-400 font-black">Veteran-focused campaigns:</span> events and messaging built around a distinct audience with its own path into tech.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white border-b-4 border-black px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-6 border-l-8 border-black pl-4">Events were part of the marketing engine</h2>
+<div class="grid md:grid-cols-[1fr_.95fr] gap-8 md:gap-12 items-start">
+<div class="space-y-5 text-lg leading-relaxed">
+<p>Codeup ran digital events every month, and those events were a meaningful part of how the brand educated prospective students and built trust. My role was not just promoting them. I helped plan and market them, and in some cases stepped in operationally as a host or behind-the-scenes support.</p>
+<p>That same event mindset showed up offline, too. We supported community-facing brand moments like Fiesta activations, hiring-partner events, and recruiting opportunities that made Codeup feel visible, active, and approachable in the real world.</p>
+<p>The result was a better loop between campaign messaging, live experience, and follow-up content.</p>
+</div>
+<figure class="story-image story-image--medium hard-shadow-fuchsia" data-media-key="stage">
+<div class="story-media">
+<!-- CODEUP IMAGE 3: ON STAGE -->
+<img alt="Ben Campbell speaking on stage at a Codeup event" decoding="async" height="1067" loading="lazy" src="assets/codeup/IMG_8691-2.jpg" width="1600"/>
+</div>
+<figcaption class="story-caption">
+<span class="asset-label" data-media-label="">Event Support</span>
+<span data-media-caption="">Helping market events was one part of the work. Stepping in on stage and supporting them operationally was another.</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="bg-lime-300 border-b-4 border-black px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-8 border-l-8 border-black pl-4">Community mattered after the click</h2>
+<div class="grid md:grid-cols-2 gap-6 items-start">
+<div class="bg-white border-2 border-black p-6 hard-shadow">
+<p class="text-lg leading-relaxed mb-4">Part of the work extended into student community. I regularly supported students through Slack by helping with issues, celebrating wins, and highlighting new job placements.</p>
+<p class="text-lg leading-relaxed mb-4">That mattered because it reinforced Codeup as more than a place people applied to. It helped the brand feel more human, more supportive, and more invested in student progress.</p>
+<p class="text-lg leading-relaxed">Community was not separate from marketing. It gave us better stories, reinforced trust, and made the student journey feel real after someone first clicked on a post, email, or blog.</p>
+</div>
+<figure class="story-image story-image--event hard-shadow-lime" data-media-key="fiesta">
+<div class="story-media">
+<!-- CODEUP IMAGE 4: FIESTA EVENT -->
+<img alt="Codeup team speaking with attendees at a community event" decoding="async" height="1200" loading="lazy" src="assets/codeup/IMG_9718-2.jpg" width="1600"/>
+</div>
+<figcaption class="story-caption">
+<span class="asset-label" data-media-label="">Community Activation</span>
+<span data-media-caption="">Bringing the brand into real-world community spaces helped reinforce that Codeup was not just a website or course catalog — it was a visible part of the local tech conversation.</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="bg-black text-white border-b-4 border-white px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_.95fr] gap-8 md:gap-12 items-start">
+<div>
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-6">Marketing to more than one audience</h2>
+<p class="text-lg md:text-xl text-gray-200 leading-relaxed mb-5">One of the more interesting parts of the role was balancing both B2C and B2B needs. Some efforts focused on prospective students through content, events, campaigns, and website journeys designed to drive info-session signups and applications. Other efforts supported hiring partners, financial partners, and outside marketing relationships.</p>
+<p class="text-lg md:text-xl text-gray-200 leading-relaxed mb-5">That meant the work had to flex between student-centered storytelling, employer-facing value, and broader visibility across channels like billboards, radio, theater pre-roll, and event sponsorships.</p>
+<p class="text-lg md:text-xl text-gray-200 leading-relaxed">It was a fun dynamic because it forced the brand to be useful to more than one audience without losing clarity.</p>
+</div>
+<figure class="story-image story-image--medium hard-shadow-lime" data-media-key="hiring">
+<div class="story-media">
+<!-- CODEUP IMAGE 5: HIRING TALENT TABLE -->
+<img alt="Codeup employer-marketing booth and hiring banner" decoding="async" height="1600" loading="lazy" src="assets/codeup/IMG_0276-2.jpg" width="1200"/>
+</div>
+<figcaption class="story-caption">
+<span class="asset-label" data-media-label="">Employer Marketing</span>
+<span data-media-caption="">Hiring-partner and employer-facing work gave the marketing more range than a standard student-acquisition playbook.</span>
+</figcaption>
+</figure>
+</div>
+</section>
+<section class="bg-white border-b-4 border-black px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto grid md:grid-cols-[1fr_1fr] gap-8 md:gap-12 items-start">
+<div>
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-6 border-l-8 border-black pl-4">Values-based storytelling still mattered</h2>
+<p class="text-lg leading-relaxed mb-5">Veteran-focused outreach and events were an important part of the work. They represented a distinct audience with different questions, benefits, and career-transition goals, and deserved marketing that spoke clearly to that reality.</p>
+<p class="text-lg leading-relaxed mb-5">That kind of work reminded me that good education marketing is not just about volume. It is about relevance, credibility, and making people feel like the brand actually understands what they need.</p>
+<div class="bg-yellow-200 border-2 border-black p-5 hard-shadow">
+<p class="text-lg font-bold leading-relaxed">Codeup also launched its first podcast during my time there, helping expand the brand’s thought leadership and create another channel for storytelling beyond the usual social-and-web rhythm.</p>
+</div>
+</div>
+<div class="space-y-6">
+<figure class="story-image story-image--medium hard-shadow-cyan" data-media-key="veterans">
+<div class="story-media">
+<!-- CODEUP IMAGE 6: VETERANS -->
+<img alt="Framed flag presented to Codeup for its commitment to veterans" decoding="async" height="1600" loading="lazy" src="assets/codeup/IMG_0651-2.jpg" width="1200"/>
+</div>
+<figcaption class="story-caption">
+<span class="asset-label" data-media-label="">Veteran Support</span>
+<span data-media-caption="">A meaningful reminder that some of the best work was about helping the brand show up well for communities with specific needs and real stakes.</span>
+</figcaption>
+</figure>
+<figure class="story-image story-image--small hard-shadow-yellow" data-media-key="swag">
+<div class="story-media">
+<!-- CODEUP IMAGE 7: 1 YEAR SWAG -->
+<img alt="Codeup anniversary swag featuring a rubber duck and stickers" decoding="async" height="1600" loading="lazy" src="assets/codeup/IMG_1122-2.jpg" width="1200"/>
+</div>
+<figcaption class="story-caption">
+<span class="asset-label">Brand Texture</span>
+              A small culture-and-brand detail, but one that says a lot about how Codeup tried to make milestones feel visible, human, and memorable.
+            </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="bg-cyan-100 border-b-4 border-black px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-8 border-l-8 border-black pl-4">Content production and media support</h2>
+<div class="grid md:grid-cols-2 gap-6 items-start">
+<div class="bg-white border-2 border-black p-6 hard-shadow">
+<p class="text-lg leading-relaxed mb-4">This role was not just strategy and writing. It also included real content production. I helped create and execute marketing videos, promotional assets, and event-related content, while supporting the production side when the work needed to get made.</p>
+<p class="text-lg leading-relaxed">That made the marketing stronger because the strategy was connected to the actual footage, visual needs, and live campaign moments instead of being developed in a vacuum.</p>
+</div>
+<figure class="story-image story-image--medium hard-shadow-fuchsia" data-media-key="bts">
+<div class="story-media">
+<!-- CODEUP IMAGE 8: BTS MEDIA SHOOT -->
+<img alt="Behind-the-scenes video production setup at Codeup" decoding="async" height="1600" loading="lazy" src="assets/codeup/IMG_1779-2.jpg" width="1200"/>
+</div>
+<figcaption class="story-caption">
+<span class="asset-label">Behind the Scenes</span>
+              Production work mattered because content needed to be captured, shaped, and distributed well — not just planned.
+            </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="bg-white border-b-4 border-black px-4 py-14 md:px-8 md:py-20">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-3xl md:text-5xl font-black uppercase mb-8 border-l-8 border-black pl-4">Selected video work</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<figure class="story-image hard-shadow-lime aspect-video relative bg-black">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="absolute inset-0 w-full h-full" frameborder="0" loading="lazy" src="https://www.youtube.com/embed/fIGYmHgtnHI?rel=0" title="Codeup Student Experience Team Overview"></iframe>
+<figcaption class="story-caption">
+<span class="asset-label">Student Experience Team Overview</span>
+              Video support that reinforced the community, support, and student-experience side of the brand.
+            </figcaption>
+</figure>
+<figure class="story-image hard-shadow-cyan aspect-video relative bg-black">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="absolute inset-0 w-full h-full" frameborder="0" loading="lazy" src="https://www.youtube.com/embed/yY3gQb3aOw4?rel=0" title="Codeup Financial Aid Walkthrough and Overview"></iframe>
+<figcaption class="story-caption">
+<span class="asset-label">Financial Aid Walkthrough</span>
+              Content that helped answer practical enrollment questions and reduce friction deeper in the funnel.
+            </figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="bg-cyan-100 border-b-4 border-black px-4 py-14 md:px-8 md:py-20"><div class="max-w-5xl mx-auto"><h2 class="text-3xl md:text-5xl font-black uppercase mb-6 border-l-8 border-black pl-4">What I learned</h2><div class="space-y-5 bg-white border-4 border-black p-6 md:p-8 hard-shadow-cyan"><p class="text-lg md:text-xl leading-relaxed">A funnel feels stronger when every touchpoint answers the next question. Social created curiosity, long-form content built understanding, events created trust, and community made the promise feel real after the click.</p><p class="text-lg md:text-xl leading-relaxed">Marketing a technical product requires enough subject knowledge to translate it accurately. The goal was never to make the work sound simple; it was to make the path forward feel clear.</p></div></div></section><section class="bg-fuchsia-500 text-white px-4 py-14 md:px-8 md:py-20 border-b-4 border-black"><div class="max-w-5xl mx-auto text-center"><p class="text-sm md:text-base font-black uppercase tracking-widest mb-3">Keep exploring</p><h2 class="text-3xl md:text-6xl font-black uppercase mb-5">Explore another case study</h2><p class="text-lg md:text-2xl font-bold max-w-3xl mx-auto mb-8">See how I applied the same audience-first thinking to a major destination brand and a project-based architecture firm.</p><div class="flex flex-wrap justify-center gap-4"><a class="px-8 py-4 text-lg font-black uppercase bg-black text-white border-2 border-black hard-shadow btn-push hover:bg-lime-400 transition-colors" href="./san-antonio-zoo.html">Read Zoo →</a><a class="px-8 py-4 text-lg font-black uppercase bg-black text-white border-2 border-black hard-shadow btn-push hover:bg-lime-400 transition-colors" href="./overland-partners.html">Read Overland →</a></div></div></section>
+<section class="bg-lime-300 p-8 pt-16 border-t-4 border-black" id="case-study-contact">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="text-4xl md:text-6xl font-black uppercase mb-5 leading-none">Like how I think?</h2>
+<p class="text-lg md:text-2xl font-bold bg-white inline-block max-w-4xl px-6 py-4 border-2 border-black hard-shadow-fuchsia mb-8 -rotate-1 leading-snug">
+          Whether you need a content system that actually moves people, a stronger campaign engine, or a marketer who can connect the story to the funnel, let’s talk. I build strategy, systems, and creative that help brands show up with more clarity, consistency, and impact.
+        </p>
+<div class="max-w-2xl mx-auto">
+<form action="../success.html" class="contact-form bg-white border-4 border-black hard-shadow p-6 md:p-8 text-left" data-netlify="true" method="POST" name="portfolio-contact" netlify-honeypot="bot-field">
+<input name="form-name" type="hidden" value="portfolio-contact"/>
+<p class="hidden">
+<label>Don’t fill this out if you're human: <input name="bot-field"/></label>
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block mb-2 font-black uppercase text-sm" for="name">Name</label>
+<input class="w-full px-4 py-3 border-2 border-black rounded-none bg-white focus:outline-none focus:ring-0 focus:border-fuchsia-500" id="name" name="name" placeholder="Your Name" required="" type="text"/>
+</div>
+<div>
+<label class="block mb-2 font-black uppercase text-sm" for="email">Email</label>
+<input class="w-full px-4 py-3 border-2 border-black rounded-none bg-white focus:outline-none focus:ring-0 focus:border-fuchsia-500" id="email" name="email" placeholder="your@email.com" required="" type="email"/>
+</div>
+</div>
+<div class="mb-4">
+<label class="block mb-2 font-black uppercase text-sm" for="message">What are you hiring for?</label>
+<textarea class="w-full px-4 py-3 border-2 border-black rounded-none bg-white resize-y focus:outline-none focus:ring-0 focus:border-fuchsia-500" id="message" name="message" placeholder="Tell me about the role, project, or creative problem you need help solving." required="" rows="5"></textarea>
+</div>
+<button class="w-full px-6 py-4 text-lg md:text-2xl font-black text-white bg-black border-4 border-black hard-shadow hover:bg-fuchsia-500 transition-colors btn-push uppercase" type="submit">
+              Let’s Talk
+            </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-black text-white px-4 py-6 md:px-8 border-t-4 border-lime-400">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="font-bold text-sm md:text-base uppercase tracking-wide">Ben Campbell · Social Media + Content Marketing Strategist</p>
+<div class="flex gap-3">
+<a class="bg-white text-black border-2 border-white px-4 py-2 font-black uppercase text-sm btn-push" href="mailto:hirebencampbell@gmail.com">Email Me</a>
+<a class="bg-lime-400 text-black border-2 border-lime-400 px-4 py-2 font-black uppercase text-sm btn-push" href="../index.html#contact">Contact Form</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

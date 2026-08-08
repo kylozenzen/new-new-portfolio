@@ -1,0 +1,124 @@
+{
+  "sectionTitle": "Selected Writing",
+  "sectionSubtitle": "Blogs, press releases, campaign copy, and product documentation shaped for real audiences and real goals.",
+  "categories": [
+    {
+      "id": "all",
+      "label": "All"
+    },
+    {
+      "id": "blog",
+      "label": "Blogs"
+    },
+    {
+      "id": "press",
+      "label": "Press Releases"
+    },
+    {
+      "id": "careers",
+      "label": "Careers"
+    },
+    {
+      "id": "product",
+      "label": "Product Docs"
+    }
+  ],
+  "items": [
+    {
+      "id": "love-is-wild",
+      "category": "blog",
+      "title": "Love is Wild: Valentines Day 2025",
+      "client": "San Antonio Zoo",
+      "url": "https://sazoo.org/love-is-wild-why-san-antonio-zoo-is-the-valentines-day-capital-of-the-world/",
+      "featured": true
+    },
+    {
+      "id": "zoo-year-new-you",
+      "category": "blog",
+      "title": "Happy Zoo Year, New You!",
+      "client": "San Antonio Zoo",
+      "url": "https://sazoo.org/zoo-year-new-you/",
+      "featured": true
+    },
+    {
+      "id": "membership-reasons",
+      "category": "blog",
+      "title": "Top Reasons to Become a Member",
+      "client": "San Antonio Zoo",
+      "url": "https://sazoo.org/top-reasons-to-become-a-member-at-san-antonio-zoo/",
+      "featured": true
+    },
+    {
+      "id": "hsi-education",
+      "category": "blog",
+      "title": "Empowering the Future: Hispanic Serving Institutions",
+      "client": "Overland Partners",
+      "url": "https://www.overlandpartners.com/empowering-the-future-hispanic-serving-institutions-excellence-in-higher-education-through-design/",
+      "featured": true
+    },
+    {
+      "id": "overnight-lodge",
+      "category": "press",
+      "title": "SA Zoo Announces Overnight Lodge",
+      "client": "San Antonio Zoo",
+      "url": "https://sanantoniozoo.app.box.com/s/evjd2lncwhjr6vallo41xxg759jnplh3",
+      "featured": false
+    },
+    {
+      "id": "fenolio-finalist",
+      "category": "press",
+      "title": "Dr Fenolio Honored as Finalist",
+      "client": "San Antonio Zoo",
+      "url": "https://sanantoniozoo.app.box.com/s/a8suj2i5fwwqihharsu2po0lz7et4rsr/file/1667702516920",
+      "featured": false
+    },
+    {
+      "id": "locals-day",
+      "category": "press",
+      "title": "Locals Day at SA Zoo",
+      "client": "San Antonio Zoo",
+      "url": "https://sanantoniozoo.app.box.com/s/a8suj2i5fwwqihharsu2po0lz7et4rsr/file/1655254341378",
+      "featured": false
+    },
+    {
+      "id": "overland-leadership",
+      "category": "press",
+      "title": "Overland Appoints New Leadership Team",
+      "client": "Overland Partners",
+      "url": "https://www.overlandpartners.com/overland-appoints-new-president-and-leadership-team-for-bold-future-of-firm/",
+      "featured": false
+    },
+    {
+      "id": "downtown-hotel",
+      "category": "press",
+      "title": "New Downtown Hotel",
+      "client": "Overland Partners",
+      "url": "https://www.overlandpartners.com/zachry-breaks-ground-on-new-downtown-san-antonio-hotel/",
+      "featured": false
+    },
+    {
+      "id": "zion-renderings",
+      "category": "press",
+      "title": "Zion National Park New Renderings",
+      "client": "Overland Partners",
+      "url": "https://www.overlandpartners.com/overland-partners-architects-unveil-new-renderings-for-conservation-focused-zion-national-park-discovery-center/",
+      "featured": false
+    },
+    {
+      "id": "careers-page",
+      "category": "careers",
+      "title": "Careers Page Content",
+      "client": "Overland Partners",
+      "url": "https://overlandpartners.pinpointhq.com/",
+      "featured": false
+    },
+    {
+      "id": "linkup-docs",
+      "category": "product",
+      "title": "How to Use Linkup CRM",
+      "client": "BenCampbell Docs",
+      "url": "https://help.followup.cc/en/",
+      "featured": false
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ben Campbell | Social Media &amp; Content Marketing Links</title>
+<meta content="Social media and content marketing strategist connecting brand goals to content people care about. Explore Ben Campbell’s portfolio, case studies, resume, and selected tools." name="description"/>
+<meta content="Ben Campbell | Social Media &amp; Content Marketing" property="og:title"/>
+<meta content="Social strategy, content marketing, community building, and practical tools designed around better audience experiences." property="og:description"/>
+<meta content="https://bencampbell.netlify.app/assets/images/portfolio-share-card.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://bencampbell.netlify.app/assets/images/portfolio-share-card.png" name="twitter:image"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #000;
+    --white: #fff9f9;
+    --yellow: #facc15;
+    --yellow-light: #fef9c3;
+    --lime: #bef264;
+    --fuchsia: #d946ef;
+    --cyan: #67e8f9;
+    --red: #ef4444;
+    --indigo: #1e1b4b;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* AVATAR */
+  .avatar-wrap {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid var(--black);
+    box-shadow: 5px 5px 0px var(--lime);
+    overflow: hidden;
+    background: #ddd;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+    animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  a:focus-visible { outline: 4px solid var(--black); outline-offset: 4px; }
+  .skip-link { position: fixed; top: 0.75rem; left: 0.75rem; z-index: 99; padding: 0.65rem 0.9rem; background: var(--yellow); border: 2px solid var(--black); font-weight: 900; transform: translateY(-160%); }
+  .skip-link:focus { transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  }
+
+  /* NAME BLOCK */
+  .name-block {
+    text-align: center;
+    margin-bottom: 1.25rem;
+    animation: slide-up 0.4s 0.1s ease both;
+  }
+  .name-block h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    margin-bottom: 0.35rem;
+  }
+  .name-block .handle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* BIO CARD */
+  .bio-card {
+    width: 100%;
+    background: #fff;
+    border: 2px solid var(--black);
+    padding: 0.9rem 1.1rem;
+    box-shadow: 4px 4px 0px var(--cyan);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    animation: slide-up 0.4s 0.15s ease both;
+  }
+  .bio-card p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+  }
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .stat-pill {
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: 2px solid var(--black);
+    padding: 0.3rem 0.6rem;
+    background: var(--yellow-light);
+    white-space: nowrap;
+  }
+
+  /* STATUS BADGE */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--black);
+    color: var(--lime);
+    font-size: 0.62rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 2px solid var(--black);
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 1.5rem;
+    animation: slide-up 0.4s 0.2s ease both;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    background: var(--lime);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    align-self: flex-start;
+    font-size: 0.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #777;
+    border-left: 3px solid var(--black);
+    padding-left: 0.5rem;
+    margin-bottom: 0.6rem;
+    margin-top: 0.25rem;
+    width: 100%;
+  }
+
+  /* LINK BUTTONS */
+  .links-stack {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 2px solid var(--black);
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 900;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .link-btn:hover {
+    transform: translate(-2px, -2px);
+  }
+  .link-btn:active {
+    transform: translate(2px, 2px);
+  }
+
+  .link-btn .icon-box {
+    width: 52px;
+    min-width: 52px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid var(--black);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .link-btn .label-box {
+    flex: 1;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .link-btn .label-main { font-size: 0.88rem; font-weight: 900; }
+  .link-btn .label-sub { font-size: 0.65rem; font-weight: 700; color: #555; text-transform: uppercase; letter-spacing: 0.05em; }
+  .link-btn .arrow {
+    width: 36px;
+    min-width: 36px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    border-left: 2px solid var(--black);
+  }
+
+  /* COLOR THEMES */
+  .btn-yellow  { background: var(--yellow);       box-shadow: 4px 4px 0px var(--black); }
+  .btn-fuchsia { background: #fce7ff;             box-shadow: 4px 4px 0px var(--fuchsia); }
+  .btn-lime    { background: #f0fdf4;             box-shadow: 4px 4px 0px var(--lime); }
+  .btn-cyan    { background: #ecfeff;             box-shadow: 4px 4px 0px var(--cyan); }
+  .btn-black   { background: var(--black); color: #fff; box-shadow: 4px 4px 0px #555; }
+  .btn-black .icon-box, .btn-black .arrow { border-color: #333; color: #fff; }
+  .btn-black .label-sub { color: #aaa; }
+  .btn-red     { background: #fff5f5;             box-shadow: 4px 4px 0px var(--red); }
+  .btn-indigo  { background: #eef2ff;             box-shadow: 4px 4px 0px var(--indigo); }
+
+  /* SOCIAL ROW */
+  .social-row {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .social-btn {
+    width: 48px; height: 48px;
+    border: 2px solid var(--black);
+    background: #fff;
+    box-shadow: 3px 3px 0px var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--black);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s;
+  }
+  .social-btn:hover {
+    background: var(--fuchsia);
+    color: #fff;
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--black);
+  }
+  .social-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--black); }
+
+  /* FOOTER */
+  .footer-sig {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #aaa;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  .footer-sig a { color: #aaa; text-decoration: none; border-bottom: 1px solid #ccc; }
+  .footer-sig a:hover { color: var(--black); border-color: var(--black); }
+
+  /* HAZARD DIVIDER */
+  .hazard-bar {
+    width: 100%;
+    background-image: repeating-linear-gradient(45deg, #000, #000 8px, #facc15 8px, #facc15 16px);
+    height: 6px;
+    margin: 1.25rem 0;
+    border-top: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
+  }
+
+  /* ANIMATIONS */
+  @keyframes pop-in {
+    from { opacity: 0; transform: scale(0.7); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .links-stack .link-btn:nth-child(1)  { animation: slide-up 0.35s 0.25s ease both; }
+  .links-stack .link-btn:nth-child(2)  { animation: slide-up 0.35s 0.32s ease both; }
+  .links-stack .link-btn:nth-child(3)  { animation: slide-up 0.35s 0.39s ease both; }
+  .links-stack .link-btn:nth-child(4)  { animation: slide-up 0.35s 0.46s ease both; }
+  .links-stack .link-btn:nth-child(5)  { animation: slide-up 0.35s 0.53s ease both; }
+  .links-stack .link-btn:nth-child(6)  { animation: slide-up 0.35s 0.60s ease both; }
+
+  @media (max-width: 400px) {
+    .page { padding: 1.75rem 1rem 3rem; }
+    .avatar-wrap { width: 84px; height: 84px; }
+    .name-block h1 { font-size: 1.65rem; }
+    .link-btn .label-main { font-size: 0.8rem; }
+    .link-btn .icon-box { width: 44px; min-width: 44px; height: 52px; }
+    .link-btn .arrow { width: 30px; min-width: 30px; height: 52px; }
+  }
+</style>
+<link href="https://bencampbell.netlify.app/links.html" rel="canonical"/>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to links</a>
+<div class="bg-grid"></div>
+<main class="page" id="main-content">
+<!-- AVATAR -->
+<div class="avatar-wrap">
+<img alt="Ben Campbell" src="assets/images/ben-campbell-headshot.jpg"/>
+</div>
+<!-- NAME -->
+<div class="name-block">
+<h1>Ben Campbell</h1>
+<div class="handle">@Ben_Soup · Social Strategist</div>
+</div>
+<!-- STATUS -->
+<div class="status-badge">
+<span class="status-dot"></span>
+    Open to full-time roles
+  </div>
+<!-- BIO CARD -->
+<div class="bio-card">
+<p>Social media and content marketing strategist turning brand goals into useful, human content.</p>
+<div class="stats-row">
+<span class="stat-pill">6M Audience Footprint</span>
+<span class="stat-pill">470M+ Impressions</span>
+<span class="stat-pill">15M+ Interactions</span>
+</div>
+</div>
+<!-- PRIMARY LINKS -->
+<div class="section-label">Portfolio &amp; Work</div>
+<div class="links-stack">
+<a class="link-btn btn-yellow" href="https://bencampbell.netlify.app" rel="noopener noreferrer" target="_blank">
+<div class="icon-box">🎯</div>
+<div class="label-box">
+<span class="label-main">Portfolio</span>
+<span class="label-sub">Full work, case studies &amp; more</span>
+</div>
+<div class="arrow">↗</div>
+</a>
+<a class="link-btn btn-fuchsia" href="https://drive.google.com/file/d/1brTQvb5ZOdq3yUGhY0DbtB00QEz4GBaI/view?usp=sharing" rel="noopener noreferrer" target="_blank">
+<div class="icon-box">📄</div>
+<div class="label-box">
+<span class="label-main">Resume</span>
+<span class="label-sub">View my latest resume</span>
+</div>
+<div class="arrow">↗</div>
+</a>
+<a class="link-btn btn-cyan" href="https://bencampbell.netlify.app/case-studies.html" rel="noopener noreferrer" target="_blank">
+<div class="icon-box">📊</div>
+<div class="label-box">
+<span class="label-main">Case Studies</span>
+<span class="label-sub">Zoo, Codeup, Overland Partners</span>
+</div>
+<div class="arrow">↗</div>
+</a>
+</div>
+<div class="hazard-bar"></div>
+<!-- BUILDER LINKS -->
+<div class="section-label">Builder Lab — Workflow Thinking in Practice</div>
+<div class="links-stack">
+<a class="link-btn btn-indigo" href="https://ccpostiq.netlify.app" rel="noopener noreferrer" style="color:#fff; box-shadow: 4px 4px 0px #1e1b4b;" target="_blank">
+<div class="icon-box" style="border-color:#3730a3; color:#fff;">📬</div>
+<div class="label-box">
+<span class="label-main" style="color:#fff;">PostIQ</span>
+<span class="label-sub" style="color:#a5b4fc;">Buffer companion PWA</span>
+</div>
+<div class="arrow" style="border-color:#3730a3; color:#fff;">↗</div>
+</a>
+<a class="link-btn btn-red" href="https://kylozenzen.github.io/ptmovies-tester/" rel="noopener noreferrer" target="_blank">
+<div class="icon-box">🍿</div>
+<div class="label-box">
+<span class="label-main">Plot Twisted</span>
+<span class="label-sub">Audience-first game concept and content system</span>
+</div>
+<div class="arrow">↗</div>
+</a>
+<a class="link-btn btn-lime" href="https://receiptsdemo.netlify.app" rel="noopener noreferrer" target="_blank">
+<div class="icon-box">✏️</div>
+<div class="label-box">
+<span class="label-main">Receipts</span>
+<span class="label-sub">Social-content review and approval workflow</span>
+</div>
+<div class="arrow">↗</div>
+</a>
+</div>
+<div class="hazard-bar"></div>
+<!-- SOCIAL ICONS -->
+<div class="section-label">Find Me Online</div>
+<div class="social-row"><a aria-label="Email Ben" class="social-btn" href="mailto:hirebencampbell@gmail.com" title="Email Ben">@</a>
+<a aria-label="X / Twitter" class="social-btn" href="https://x.com/Ben_Soup" rel="noopener noreferrer" target="_blank" title="X / Twitter">𝕏</a>
+<a aria-label="LinkedIn" class="social-btn" href="https://linkedin.com/in/bencampbell8" rel="noopener noreferrer" target="_blank" title="LinkedIn">Li</a>
+<a aria-label="Instagram" class="social-btn" href="https://instagram.com/bensoup" rel="noopener noreferrer" target="_blank" title="Instagram">Ig</a>
+<a aria-label="GitHub" class="social-btn" href="https://github.com/kylozenzen" rel="noopener noreferrer" target="_blank" title="GitHub">Gh</a>
+</div>
+<div class="footer-sig">
+    Ben Campbell Creative © 2026 · Built with Nobody Studios
+  </div>
+</main>
+</body>
+</html>

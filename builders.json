@@ -1,0 +1,120 @@
+{
+  "sectionTitle": "Builder Lab",
+  "sectionSubtitle": "Product-marketing experiments with working software underneath them.",
+  "skills": {
+    "technical": "HTML/CSS \u00b7 Vanilla JavaScript \u00b7 React \u00b7 APIs \u00b7 GitHub \u00b7 Netlify \u00b7 Supabase \u00b7 PWAs \u00b7 frontend debugging",
+    "ai": "ChatGPT \u00b7 Claude \u00b7 Gemini \u00b7 prompt and context design \u00b7 model/task selection \u00b7 output evaluation \u00b7 iterative debugging \u00b7 AI-assisted development"
+  },
+  "categories": [
+    {
+      "id": "all",
+      "label": "All"
+    },
+    {
+      "id": "tool",
+      "label": "Tools"
+    },
+    {
+      "id": "app",
+      "label": "Apps"
+    },
+    {
+      "id": "game",
+      "label": "Games"
+    }
+  ],
+  "projects": [
+    {
+      "id": "postiq",
+      "category": "tool",
+      "title": "PostIQ",
+      "tagline": "A Buffer-connected workspace built to move rough ideas into review-ready, scheduled content with less copy-paste friction.",
+      "tags": [
+        "PWA",
+        "Buffer API",
+        "GraphQL",
+        "Netlify"
+      ],
+      "emoji": "\ud83d\udcec",
+      "accentColor": "amber",
+      "url": "https://ccpostiq.netlify.app",
+      "featured": true
+    },
+    {
+      "id": "plot-twisted",
+      "category": "game",
+      "title": "Plot Twisted",
+      "tagline": "Movie trivia where the plot is the puzzle. Daily Challenge, Pass & Play, and voice recognition.",
+      "tags": [
+        "Game",
+        "Trivia",
+        "Multiplayer",
+        "Nobody Studios"
+      ],
+      "emoji": "\ud83c\udf7f",
+      "accentColor": "red",
+      "url": "https://kylozenzen.github.io/ptmovies-tester/",
+      "featured": false
+    },
+    {
+      "id": "steady",
+      "category": "app",
+      "title": "Steady",
+      "tagline": "Nutrition tracking PWA with 8-step onboarding, custom numeric keypad & serving multiplier.",
+      "tags": [
+        "PWA",
+        "Nutrition",
+        "Onboarding",
+        "Nobody Studios"
+      ],
+      "emoji": "\ud83e\udd57",
+      "accentColor": "lime",
+      "url": "#",
+      "featured": false
+    },
+    {
+      "id": "planet-strength",
+      "category": "app",
+      "title": "Planet Strength",
+      "tagline": "Fitness PWA built for Planet Fitness members. 110+ exercises with smart progressive overload.",
+      "tags": [
+        "PWA",
+        "Fitness",
+        "Nobody Studios"
+      ],
+      "emoji": "\ud83d\udcaa",
+      "accentColor": "fuchsia",
+      "url": "#",
+      "featured": false
+    },
+    {
+      "id": "receipts-demo",
+      "category": "app",
+      "title": "Receipts",
+      "tagline": "A lightweight approvals workflow built around a simple audience truth: clients should not need another login to give feedback.",
+      "tags": [
+        "PWA",
+        "Creator",
+        "Nobody Studios"
+      ],
+      "emoji": "\u270f\ufe0f",
+      "accentColor": "amber",
+      "url": "https://receiptsdemo.netlify.app",
+      "featured": true
+    }
+  ],
+  "approach": [
+    {
+      "title": "Product marketer first",
+      "body": "I define the audience, friction, value proposition, user journey, onboarding, and adoption story before deciding what the product should do."
+    },
+    {
+      "title": "AI-literate, not AI-passive",
+      "body": "I use AI for research, scoping, prototyping, code generation, QA, and iteration\u2014while providing context, comparing outputs, inspecting the work, and keeping human judgment in charge."
+    },
+    {
+      "title": "Technical enough to direct the build",
+      "body": "My time at Codeup taught me to reason through front-end logic, APIs, states, errors, version control, deployment, and debugging\u2014not simply ask a chatbot for a pretty screen."
+    }
+  ]
+}

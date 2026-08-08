@@ -1,0 +1,73 @@
+{
+  "sectionTitle": "Selected Video Work",
+  "sectionSubtitle": "Three examples spanning destination marketing and tech education.",
+  "skills": {
+    "production": "Storyboarding \u00b7 Content Strategy \u00b7 Scripting \u00b7 Filming \u00b7 Editing \u00b7 Producing \u00b7 Post Production \u00b7 Project Management \u00b7 Livestreaming",
+    "software": "Adobe Premiere \u00b7 Final Cut Pro \u00b7 CapCut \u00b7 Canva \u00b7 Adobe Photoshop"
+  },
+  "categories": [
+    {
+      "id": "all",
+      "label": "All"
+    },
+    {
+      "id": "Codeup",
+      "label": "Codeup"
+    },
+    {
+      "id": "Zoo",
+      "label": "San Antonio Zoo"
+    }
+  ],
+  "videos": [
+    {
+      "id": "student-experience",
+      "category": "Codeup",
+      "title": "Student Experience Team Overview",
+      "youtubeId": "fIGYmHgtnHI",
+      "featured": true
+    },
+    {
+      "id": "fundraising",
+      "category": "Zoo",
+      "title": "Fundraising Video",
+      "youtubeId": "eBAaybiEfkw",
+      "featured": true
+    },
+    {
+      "id": "financial-aid",
+      "category": "Codeup",
+      "title": "Financial Aid Walkthrough",
+      "youtubeId": "yY3gQb3aOw4",
+      "featured": false
+    },
+    {
+      "id": "job-promise",
+      "category": "Codeup",
+      "title": "Job Promise Social Media Video",
+      "youtubeId": "abbcUgqDtoA",
+      "featured": false
+    },
+    {
+      "id": "end-of-year",
+      "category": "Zoo",
+      "title": "End of Year Recap",
+      "youtubeId": "QID9grQsAi8",
+      "featured": true
+    },
+    {
+      "id": "wildlife-rescue",
+      "category": "Zoo",
+      "title": "Wildlife Rescue Sizzle Reel",
+      "youtubeId": "Kau9MVfnTVU",
+      "featured": false
+    },
+    {
+      "id": "zoo-school",
+      "category": "Zoo",
+      "title": "Zoo School Pen Pal Letter",
+      "youtubeId": "QNOM9LmNyGM",
+      "featured": false
+    }
+  ]
+}

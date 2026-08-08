@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ben Campbell | Social Media &amp; Content Marketing Strategist</title>
+<!-- SEO & LINK PREVIEWS -->
+<meta content="Social media and content marketing portfolio for Ben Campbell, featuring audience strategy, campaigns, community management, copywriting, content systems, and selected product experiments." name="description"/>
+<meta content="Ben Campbell" name="author"/>
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta content="website" property="og:type"/>
+<meta content="https://bencampbell.netlify.app/" property="og:url"/>
+<meta content="Ben Campbell | Social Media &amp; Content Marketing Strategist" property="og:title"/>
+<meta content="Audience-first social strategy, content marketing, campaign thinking, and practical systems that help brands move from posting to purpose." property="og:description"/>
+<meta content="https://bencampbell.netlify.app/assets/images/portfolio-share-card.png" property="og:image"/>
+<!-- Twitter / X -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://bencampbell.netlify.app/" name="twitter:url"/>
+<meta content="Ben Campbell | Social Media &amp; Content Marketing Strategist" name="twitter:title"/>
+<meta content="Social media strategy, content marketing, campaigns, community, and workflow thinking from Ben Campbell." name="twitter:description"/>
+<meta content="https://bencampbell.netlify.app/assets/images/portfolio-share-card.png" name="twitter:image"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="mobile-patches.css" rel="stylesheet"/>
+<link href="https://bencampbell.netlify.app/" rel="canonical"/>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #fff9f9; 
+            color: #000;
+            overflow-x: hidden; 
+            transition: filter 0.3s ease;
+        }
+
+        body.chaos-active { filter: invert(1) hue-rotate(180deg); }
+        body.chaos-active img { filter: invert(1) hue-rotate(180deg); }
+
+        .hard-shadow {
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.2s ease-out;
+        }
+        .hard-shadow:hover {
+            box-shadow: 6px 6px 0px #000;
+            transform: translate(-1px, -1px);
+        }
+        
+        .hard-shadow-fuchsia { box-shadow: 6px 6px 0px #d946ef; }
+        .hard-shadow-lime { box-shadow: 6px 6px 0px #bef264; }
+        .hard-shadow-cyan { box-shadow: 6px 6px 0px #67e8f9; }
+        .hard-shadow-red { box-shadow: 6px 6px 0px #ef4444; }
+        .hard-shadow-yellow { box-shadow: 6px 6px 0px #facc15; }
+
+        .btn-push:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000; }
+        .btn-push:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #000; }
+
+        .bg-grid {
+            background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-color: #fff9f9;
+            opacity: 0.1;
+        }
+
+        .easter-egg-box { border: 3px solid #000; box-shadow: 4px 4px 0 #000; }
+        
+        .filter-btn.active, .video-filter-btn.active {
+            background-color: #000;
+            color: #fff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #d946ef;
+        }
+
+        .builder-filter-btn.active {
+            background-color: #fff;
+            color: #000;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #facc15;
+        }
+
+        .play-overlay { background: rgba(0,0,0,0.4); transition: all 0.3s; }
+        .video-card:hover .play-overlay { background: rgba(0,0,0,0.1); }
+        .play-icon { transition: transform 0.3s; }
+        .video-card:hover .play-icon { transform: scale(1.1); }
+
+        .hazard-stripes {
+            background-color: #000;
+            background-image: repeating-linear-gradient(45deg, #000, #000 10px, #111 10px, #111 20px);
+        }
+
+        .glitch-wrapper { position: relative; display: inline-block; }
+        .glitch { position: relative; }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #fff9f9;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff00c1;
+            clip: rect(0, 0, 0, 0);
+            animation: glitch-anim-1 4s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -1px 0 #00fff9;
+            clip: rect(0, 0, 0, 0);
+            animation: glitch-anim-2 4s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0%, 90% { clip: rect(0, 0, 0, 0); }
+            91% { clip: rect(30px, 9999px, 10px, 0); }
+            94% { clip: rect(10px, 9999px, 80px, 0); }
+            97% { clip: rect(50px, 9999px, 90px, 0); }
+            100% { clip: rect(20px, 9999px, 60px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0%, 90% { clip: rect(0, 0, 0, 0); }
+            91% { clip: rect(10px, 9999px, 90px, 0); }
+            94% { clip: rect(20px, 9999px, 70px, 0); }
+            97% { clip: rect(80px, 9999px, 10px, 0); }
+            100% { clip: rect(60px, 9999px, 10px, 0); }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .builder-card {
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+        .builder-card:hover {
+            transform: translate(-2px, -2px);
+        }
+
+        details[open] summary .arrow-icon {
+            transform: rotate(90deg);
+        }
+        .arrow-icon {
+            display: inline-block;
+            transition: transform 0.2s ease;
+            line-height: 1;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::marker { content: ''; }
+        .nav-contact-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-hire-pill {
+            font-size: 11px;
+            line-height: 1;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: #bef264;
+            border: 2px solid #000;
+            padding: 8px 10px;
+            box-shadow: 3px 3px 0px #000;
+            transform: rotate(-2deg);
+            white-space: nowrap;
+        }
+        @keyframes floaty {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        @media (max-width: 767px) {
+        }
+
+
+        .hero-flip-scene { perspective: 1800px; }
+        .hero-flip-card {
+            position: relative;
+            width: 100%;
+            height: 29.5rem;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+        .hero-flip-card.is-flipped { transform: rotateY(180deg); }
+        .hero-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .hero-face-back {
+            position: absolute;
+            inset: 0;
+            transform: rotateY(180deg);
+        }
+        .hero-flip-trigger {
+            position: absolute;
+            right: 1rem;
+            bottom: 0.9rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #4b5563;
+            border: 1px solid rgba(0,0,0,0.7);
+            background: rgba(255,255,255,0.82);
+            padding: 0.45rem 0.7rem;
+            transition: all 0.2s ease;
+        }
+        .hero-flip-trigger:hover {
+            color: #000;
+            background: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px #000;
+        }
+        .hero-flip-back-btn {
+            position: absolute;
+            right: 1rem;
+            bottom: 0.9rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #4b5563;
+            border: 1px solid rgba(0,0,0,0.7);
+            background: rgba(255,255,255,0.82);
+            padding: 0.45rem 0.7rem;
+            transition: all 0.2s ease;
+        }
+        .hero-flip-back-btn:hover {
+            color: #000;
+            background: #fff;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .skip-link {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            z-index: 9999;
+            transform: translateY(-180%);
+            background: #000;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 0.75rem 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .skip-link:focus { transform: translateY(0); }
+        :focus-visible { outline: 4px solid #d946ef; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto !important; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            [data-aos] { opacity: 1 !important; transform: none !important; }
+        }
+
+    </style>
+</head>
+<body class="selection:bg-fuchsia-500 selection:text-white">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- HERO SECTION -->
+<main class="relative z-10 w-full min-h-[90vh] p-4 flex flex-col border-b-4 border-black md:p-8" data-aos="fade-in" id="main-content">
+<div class="absolute inset-0 z-0 bg-grid"></div>
+<!-- Desktop Navigation -->
+<nav class="relative z-20 hidden md:flex flex-wrap justify-between items-center w-full mb-16">
+<div class="text-2xl font-black tracking-tighter uppercase border-2 border-black bg-white px-2 py-1">BEN CAMPBELL.</div>
+<div class="flex gap-5 font-bold uppercase items-center">
+<a class="hover:bg-yellow-300 px-2 border-2 border-transparent hover:border-black transition-all" href="#case-studies">Case Studies</a>
+<a class="hover:bg-fuchsia-400 px-2 border-2 border-transparent hover:border-black transition-all" href="#social">Work Samples</a>
+<a class="hover:bg-cyan-300 px-2 border-2 border-transparent hover:border-black transition-all" href="#about">About</a>
+<a class="hover:bg-lime-300 px-2 border-2 border-transparent hover:border-black transition-all" href="#builder">Builder Lab</a>
+<a class="hover:bg-yellow-300 px-2 border-2 border-transparent hover:border-black transition-all" href="https://drive.google.com/file/d/1brTQvb5ZOdq3yUGhY0DbtB00QEz4GBaI/view?usp=sharing" rel="noopener noreferrer" target="_blank">Resume</a>
+</div>
+<div class="nav-contact-wrap">
+<a class="px-6 py-2 font-bold text-white bg-black border-2 border-black hover:bg-fuchsia-500 transition-colors" href="#contact">CONTACT</a>
+</div>
+</nav>
+<!-- Mobile Title -->
+<div class="md:hidden w-full flex justify-between items-center mb-8 relative z-20">
+<div class="text-xl font-black tracking-tighter uppercase border-2 border-black bg-white px-2 py-1">BEN CAMPBELL.</div>
+</div>
+<div class="relative z-10 flex flex-col justify-center flex-grow max-w-6xl mx-auto w-full">
+<div class="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-center gap-8 md:gap-12">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-black hard-shadow-lime bg-gray-200 flex-shrink-0" data-aos="fade-right">
+<img alt="Ben Campbell" class="w-full h-full object-cover" src="assets/images/ben-campbell-headshot.jpg"/>
+</div>
+<div class="text-center md:text-right" data-aos="fade-left">
+<h1 class="text-6xl font-black uppercase md:text-[7rem] leading-[0.9] tracking-tight mb-2">
+                        HI, I'M <br/>
+<div class="glitch-wrapper">
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 to-purple-600 glitch" data-text="BEN" style="-webkit-text-stroke: 2px black;">BEN</span>
+</div>
+</h1>
+</div>
+</div>
+<!-- MOBILE NAV TABS -->
+<div aria-label="Portfolio navigation" class="flex flex-wrap justify-center gap-2 mt-8 md:hidden relative z-30">
+<a class="bg-white border-2 border-black px-3 py-2 font-bold uppercase text-sm hard-shadow hover:bg-yellow-300 active:bg-yellow-300 transition-colors" href="#case-studies">Case Studies</a>
+<a class="bg-white border-2 border-black px-3 py-2 font-bold uppercase text-sm hard-shadow hover:bg-fuchsia-400 active:bg-fuchsia-400 transition-colors" href="#social">Work</a>
+<a class="bg-white border-2 border-black px-3 py-2 font-bold uppercase text-sm hard-shadow hover:bg-cyan-300 active:bg-cyan-300 transition-colors" href="#about">About</a>
+<a class="bg-white border-2 border-black px-3 py-2 font-bold uppercase text-sm hard-shadow hover:bg-lime-300 active:bg-lime-300 transition-colors" href="https://drive.google.com/file/d/1brTQvb5ZOdq3yUGhY0DbtB00QEz4GBaI/view?usp=sharing" rel="noopener noreferrer" target="_blank">Resume</a>
+<a class="bg-black text-white border-2 border-black px-3 py-2 font-bold uppercase text-sm hard-shadow active:bg-gray-800 transition-colors" href="#contact">Contact</a>
+</div>
+<div class="w-full flex justify-center mt-6 md:mt-12" data-aos="fade-up" data-aos-delay="200">
+<div class="w-full max-w-[76rem] bg-white border-2 border-black px-6 py-7 md:px-10 md:py-9 hard-shadow-cyan text-center">
+<p class="text-sm md:text-base font-black uppercase tracking-[0.14em] mb-3">Social Media + Content Marketing</p>
+<h2 class="text-[1.9rem] md:text-[3rem] font-black uppercase leading-[1.03] tracking-tight mb-4">
+                        Social strategy that turns brand goals into content people actually care about.
+                    </h2>
+<p class="text-base md:text-xl font-bold mb-5 leading-relaxed max-w-4xl mx-auto">
+                        I build audience-first strategies, campaign ideas, and practical content systems. My work spans destination brands, tech education, architecture, and SaaS—with equal comfort in the strategy deck, the comment section, and the content calendar.
+                    </p>
+<div aria-label="Core skills" class="flex flex-wrap justify-center gap-3 md:gap-4 mb-5 text-[0.86rem] md:text-[1rem] font-black uppercase">
+<span class="bg-yellow-200 border-2 border-black px-4 py-2">Social Strategy</span>
+<span class="bg-fuchsia-200 border-2 border-black px-4 py-2">Content Marketing</span>
+<span class="bg-cyan-200 border-2 border-black px-4 py-2">Campaigns + Community</span>
+</div>
+<p class="text-[0.68rem] md:text-[0.78rem] font-black text-black uppercase tracking-[0.04em] flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+<span class="inline-block bg-black text-lime-400 border-2 border-black px-3 py-[0.28rem]">Open to full-time roles</span>
+<span>San Antonio, TX <span aria-hidden="true">|</span> Open to remote roles</span>
+</p>
+</div>
+</div>
+<!-- Desktop Buttons -->
+<div class="hidden md:flex flex-wrap justify-center gap-4 mt-8">
+<button class="px-8 py-3 text-lg font-bold uppercase bg-fuchsia-500 border-2 border-black hard-shadow btn-push text-white" onclick="scrollToSection('case-studies')">
+                    View Case Studies
+                </button>
+<a class="px-8 py-3 text-lg font-bold uppercase bg-white border-2 border-black hard-shadow btn-push flex items-center gap-2" href="https://drive.google.com/file/d/1brTQvb5ZOdq3yUGhY0DbtB00QEz4GBaI/view?usp=sharing" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true">📄</span> View Resume
+                </a>
+</div>
+<!-- Mobile Resume Button -->
+<div class="flex md:hidden justify-center mt-6">
+<a class="px-6 py-2 text-sm font-bold uppercase bg-white border-2 border-black hard-shadow btn-push flex items-center gap-2" href="https://drive.google.com/file/d/1brTQvb5ZOdq3yUGhY0DbtB00QEz4GBaI/view?usp=sharing" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true">📄</span> View Resume
+                </a>
+</div>
+</div>
+</main>
+<!-- HAZARD BANNER -->
+<section class="w-full py-4 hazard-stripes border-b-4 border-black overflow-hidden">
+<div class="text-center">
+<span class="text-xl md:text-3xl font-black italic uppercase text-lime-400 tracking-widest bg-black px-2">
+                /// SOCIAL STRATEGY /// CONTENT SYSTEMS /// CAMPAIGNS /// COMMUNITY ///
+            </span>
+</div>
+</section>
+<!-- ABOUT / HOW I WORK -->
+<section class="p-4 py-8 md:px-12 md:py-10 bg-cyan-100 border-b-4 border-black scroll-mt-20" id="about">
+<div class="max-w-7xl mx-auto">
+<details class="group bg-white border-4 border-black hard-shadow-fuchsia">
+<summary class="cursor-pointer list-none p-6 md:p-8 hover:bg-cyan-50 transition-colors" aria-label="Expand more about Ben and how he works">
+<div class="grid lg:grid-cols-[0.8fr_1.2fr_auto] gap-4 lg:gap-8 items-center">
+<div>
+<p class="text-sm font-black uppercase tracking-widest mb-2">About Ben</p>
+<h2 class="text-3xl md:text-5xl font-black uppercase leading-[0.95]">Strategy brain. Hands-on marketer. Useful internet person.</h2>
+</div>
+<p class="text-base md:text-lg leading-relaxed font-medium">I’m a social media and content marketing professional who connects audience insight, business goals, and strong creative ideas—then builds practical systems that help teams keep doing the work well.</p>
+<span class="inline-flex items-center gap-2 font-black uppercase text-sm border-2 border-black px-4 py-3 bg-yellow-300 whitespace-nowrap justify-center">
+<span class="group-open:hidden">More about me</span><span class="hidden group-open:inline">Show less</span><span class="arrow-icon" aria-hidden="true">→</span>
+</span>
+</div>
+</summary>
+<div class="border-t-4 border-black p-6 md:p-8 grid lg:grid-cols-2 gap-8 items-start">
+<div class="space-y-4 text-base md:text-lg leading-relaxed">
+<h3 class="text-2xl md:text-3xl font-black uppercase">The useful longer version</h3>
+<p>I’ve worked across destination brands, tech education, architecture, and SaaS. I can lead the strategy, write the copy, shape the campaign, manage the calendar, work the comments, coordinate with stakeholders, and help a good idea survive contact with the real world.</p>
+<p>I also build small tools when a marketing workflow is clunky. That work strengthens my social-media practice through audience empathy, product thinking, experimentation, and a better understanding of the technology behind modern content teams.</p>
+<p class="font-bold bg-lime-200 border-2 border-black p-4">Off the clock: girl dad, husband to a zookeeper, theme-park person, gamer, and firm believer that “professional” does not have to mean “written by a committee of beige cardigans.”</p>
+</div>
+<div>
+<h3 class="text-2xl md:text-3xl font-black uppercase mb-4 border-l-8 border-black pl-4">How I work</h3>
+<div class="grid sm:grid-cols-2 gap-4">
+<article class="bg-yellow-200 border-2 border-black p-4"><h4 class="text-lg font-black uppercase mb-1">Start with the goal</h4><p class="text-sm md:text-base leading-relaxed">Tie attention to awareness, trust, action, revenue, or a clearer brand position.</p></article>
+<article class="bg-fuchsia-200 border-2 border-black p-4"><h4 class="text-lg font-black uppercase mb-1">Respect the platform</h4><p class="text-sm md:text-base leading-relaxed">Keep the brand recognizable without copy-pasting one idea into every feed.</p></article>
+<article class="bg-lime-200 border-2 border-black p-4"><h4 class="text-lg font-black uppercase mb-1">Build useful systems</h4><p class="text-sm md:text-base leading-relaxed">Create planning rhythms and reusable formats that leave room for timely creativity.</p></article>
+<article class="bg-cyan-200 border-2 border-black p-4"><h4 class="text-lg font-black uppercase mb-1">Learn and iterate</h4><p class="text-sm md:text-base leading-relaxed">Measure what changed, own what did not work, and make the next idea smarter.</p></article>
+</div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<!-- STATS SECTION -->
+<section class="p-4 py-12 md:p-12 border-b-4 border-black bg-white">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-10" data-aos="fade-up">
+<h2 class="text-3xl md:text-5xl font-black uppercase inline-block bg-yellow-300 px-4 py-2 border-2 border-black hard-shadow">
+                    Selected Career Impact
+                </h2>
+<p class="text-base md:text-lg font-bold max-w-3xl mx-auto mt-6 leading-relaxed">A snapshot of audience scale and measurable outcomes across my career. The case studies explain the context, my role, and where the wins were shared with a team.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-fuchsia-200 border-2 border-black p-3 md:p-4 hard-shadow flex flex-col justify-center items-center text-center" data-aos="flip-up">
+<span class="text-2xl md:text-4xl font-black mb-1">6M+</span>
+<span class="text-xs md:text-sm font-bold uppercase border-t-2 border-black pt-1 w-full">Audience Footprint</span>
+</div>
+<div class="bg-lime-200 border-2 border-black p-3 md:p-4 hard-shadow flex flex-col justify-center items-center text-center" data-aos="flip-up" data-aos-delay="50">
+<span class="text-2xl md:text-4xl font-black mb-1">470M+</span>
+<span class="text-xs md:text-sm font-bold uppercase border-t-2 border-black pt-1 w-full">Impressions</span>
+</div>
+<div class="bg-cyan-200 border-2 border-black p-3 md:p-4 hard-shadow flex flex-col justify-center items-center text-center" data-aos="flip-up" data-aos-delay="100">
+<span class="text-2xl md:text-4xl font-black mb-1">15M+</span>
+<span class="text-xs md:text-sm font-bold uppercase border-t-2 border-black pt-1 w-full">Interactions</span>
+</div>
+<div class="bg-yellow-200 border-2 border-black p-3 md:p-4 hard-shadow flex flex-col justify-center items-center text-center" data-aos="flip-up" data-aos-delay="150">
+<span class="text-2xl md:text-4xl font-black mb-1">$75K+</span>
+<span class="text-xs md:text-sm font-bold uppercase border-t-2 border-black pt-1 w-full">Attributed Revenue</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CASE STUDIES -->
+<section class="featured-case-study-mobile p-4 py-16 md:p-12 bg-white border-b-4 border-black scroll-mt-20" id="case-studies">
+<div class="max-w-7xl mx-auto">
+<div class="bg-white border-4 border-black p-6 md:p-8 hard-shadow-fuchsia mb-8">
+<p class="text-sm md:text-base font-black uppercase tracking-widest mb-3 bg-yellow-300 inline-block px-3 py-1 border-2 border-black">
+            Featured Case Study
+          </p>
+<div class="preview-grid grid grid-cols-1 lg:grid-cols-[1.15fr_.85fr] gap-8 items-start">
+<div>
+<h2 class="text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-4">San Antonio Zoo</h2>
+<p class="preview-subhead text-lg md:text-2xl font-bold leading-snug mb-5 max-w-3xl">How I helped move a 6M+ audience from reactive posting toward a more strategic social storytelling system.</p>
+<p class="preview-body text-base md:text-lg leading-relaxed mb-6 max-w-3xl">I rebuilt the planning rhythm, created repeatable content buckets, strengthened collaboration with animal care teams, and connected social storytelling more intentionally to attendance, memberships, PR, and campaign goals.</p>
+<div class="preview-cta-row flex flex-wrap gap-4 items-start">
+<a class="px-8 py-4 text-lg font-black uppercase bg-black text-white border-2 border-black hard-shadow btn-push hover:bg-fuchsia-500 transition-colors" href="case-studies/san-antonio-zoo.html">Read Featured Case Study →</a>
+</div>
+</div>
+<div class="preview-panel bg-black text-white border-4 border-black p-6 md:p-8 hard-shadow-lime">
+<p class="text-sm md:text-base font-black uppercase tracking-widest text-lime-400 mb-4">What changed</p>
+<ul class="space-y-4 text-base md:text-lg font-bold leading-relaxed">
+<li>→ Rebuilt the content calendar in my first 60 days</li>
+<li>→ Planned content up to 2 months ahead</li>
+<li>→ Increased comments and shares by 15%</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t-4 border-black pt-5">
+<div class="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-8">
+<p class="shrink-0 text-sm font-black uppercase tracking-widest bg-black text-white px-3 py-2 self-start">More Case Studies</p>
+<div class="flex-1 divide-y-2 divide-black border-y-2 border-black">
+<a class="group grid md:grid-cols-[10rem_1fr_auto] gap-2 md:gap-5 py-4 items-baseline hover:bg-yellow-100 transition-colors" href="case-studies/codeup.html">
+<span class="font-black uppercase text-lg">Codeup</span>
+<span class="text-sm md:text-base leading-relaxed">Connected social, content, events, community, and web journeys to support student demand and employer engagement.</span>
+<span class="font-black uppercase text-sm whitespace-nowrap group-hover:text-fuchsia-600">Read →</span>
+</a>
+<a class="group grid md:grid-cols-[10rem_1fr_auto] gap-2 md:gap-5 py-4 items-baseline hover:bg-cyan-100 transition-colors" href="case-studies/overland-partners.html">
+<span class="font-black uppercase text-lg">Overland Partners</span>
+<span class="text-sm md:text-base leading-relaxed">Turned complex architecture, awards, leadership, and culture stories into clearer social, web, PR, and recruiting content.</span>
+<span class="font-black uppercase text-sm whitespace-nowrap group-hover:text-fuchsia-600">Read →</span>
+</a>
+</div>
+</div>
+<div class="mt-4 text-right">
+<a class="inline-flex items-center gap-2 text-sm font-black uppercase border-b-2 border-black hover:text-fuchsia-500 hover:border-fuchsia-500 transition-colors" href="case-studies.html">Browse the full case-study library →</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SOCIAL SECTION -->
+<section class="bg-yellow-300 border-b-4 border-black p-4 py-20 md:p-12 scroll-mt-20" id="social">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-5xl md:text-6xl font-black uppercase mb-8 border-l-8 border-black pl-6" data-aos="zoom-in" id="social-header">Selected Social Work</h2>
+<p class="mb-8 text-xl max-w-3xl">Campaigns, community moments, and platform-native ideas. The case studies explain the strategy; these links show the work in the wild.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="social-grid">
+<div class="skeleton h-[500px] border-2 border-black"></div>
+<div class="skeleton h-[500px] border-2 border-black"></div>
+</div>
+<div class="text-center mt-12">
+<button class="px-8 py-4 text-xl font-black uppercase bg-black text-white border-2 border-white hover:bg-white hover:text-black hover:border-black transition-all hard-shadow btn-push" id="social-toggle-btn" onclick="toggleSocial()">
+                    Show More Social Work 👇
+                </button>
+</div>
+</div>
+</section>
+<!-- WRITING SECTION -->
+<section class="p-4 py-20 md:p-12 bg-white border-b-4 border-black scroll-mt-20" id="writing">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-5xl md:text-6xl font-black uppercase mb-8 border-l-8 border-black pl-6" id="writing-header">Selected Writing</h2>
+<p class="mb-8 text-xl max-w-3xl">Blogs, press releases, campaign copy, and product documentation shaped for real audiences and real goals.</p>
+<div class="flex flex-wrap gap-4 mb-12" id="writing-filters"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="writing-grid">
+<div class="skeleton h-48 border-2 border-black"></div>
+<div class="skeleton h-48 border-2 border-black"></div>
+<div class="skeleton h-48 border-2 border-black"></div>
+<div class="skeleton h-48 border-2 border-black"></div>
+</div>
+<div class="text-center mt-12">
+<button class="px-8 py-4 text-xl font-black uppercase bg-black text-white border-2 border-white hover:bg-white hover:text-black hover:border-black transition-all hard-shadow btn-push" id="writing-toggle-btn" onclick="toggleWriting()">
+                    Show All Writing 👇
+                </button>
+</div>
+</div>
+</section>
+<!-- VIDEO SECTION -->
+<section class="bg-black text-white p-4 py-20 md:p-12 border-b-4 border-white scroll-mt-20" id="video">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-5xl md:text-7xl font-black uppercase text-white mb-6" id="video-header">Selected <span class="text-fuchsia-500">Video Work</span></h2>
+<p class="text-gray-300 text-xl mb-8 max-w-3xl">Three examples spanning destination marketing and tech education, with work across strategy, scripting, production support, and post-production.</p>
+<div class="bg-neutral-900 border-2 border-white p-6 mb-12 hard-shadow-lime text-left" id="video-skills"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="video-grid">
+<div class="skeleton h-64 border-2 border-white"></div>
+<div class="skeleton h-64 border-2 border-white"></div>
+<div class="skeleton h-64 border-2 border-white"></div>
+</div>
+</div>
+</section>
+<!-- BUILDER MODE SECTION -->
+<section class="bg-indigo-950 text-white p-4 py-20 md:p-12 border-b-4 border-black scroll-mt-20 relative overflow-hidden" id="builder">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="max-w-7xl mx-auto relative z-10">
+<h2 class="text-5xl md:text-7xl font-black uppercase text-white mb-6" data-aos="zoom-in" id="builder-header">Builder <span class="text-yellow-400">Lab</span></h2>
+<p class="text-indigo-100 text-xl mb-4 max-w-5xl">These are product-marketing experiments with working software underneath them. I start with an audience problem, map the workflow and message, then use AI-assisted development and a technical foundation shaped during my time at Codeup to prototype, test, debug, and ship.</p>
+<p class="text-indigo-300 text-base md:text-lg mb-8 max-w-5xl font-bold">The point is not “look, AI made an app.” The point is that I can identify useful problems, direct the tools, inspect the output, and turn an idea into something people can actually use.</p>
+<div class="bg-indigo-900 border-2 border-indigo-700 p-6 mb-12 hard-shadow-yellow text-left" data-aos="fade-up" id="builder-skills"></div>
+<div class="flex flex-wrap gap-4 mb-12 justify-center md:justify-start" id="builder-filters"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="builder-grid">
+<div class="skeleton h-64 border-2 border-indigo-700 opacity-30"></div>
+<div class="skeleton h-64 border-2 border-indigo-700 opacity-30"></div>
+</div>
+<div class="text-center mt-12">
+<button class="hidden px-8 py-4 text-xl font-black uppercase bg-black text-white border-2 border-white hover:bg-white hover:text-black hover:border-black transition-all hard-shadow btn-push" id="builder-toggle-btn" onclick="toggleBuilder()">
+                    Show All Projects 👇
+                </button>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="bg-lime-300 p-8 pt-20 border-t-2 border-black relative overflow-hidden" id="contact">
+<div class="max-w-7xl mx-auto relative z-10 text-center">
+<h2 class="text-5xl md:text-8xl font-black uppercase mb-6 leading-none">LET'S TALK ABOUT WHAT YOUR SOCIAL TEAM NEEDS</h2>
+<p class="text-lg md:text-2xl font-bold bg-white inline-block max-w-4xl px-6 py-4 border-2 border-black hard-shadow-fuchsia mb-6 -rotate-1 leading-snug">
+                Hiring for a full-time role? I bring strategy, storytelling, platform instincts, community judgment, and hands-on execution—so your team gets someone who can both shape the plan and make the work.
+            </p>
+<p class="max-w-3xl mx-auto text-base md:text-lg font-medium mb-6 leading-relaxed">
+                I’m strongest in social media strategy, content marketing, campaign ideation, copywriting, community management, and turning big-picture goals into repeatable creative systems.
+            </p>
+<div class="flex flex-wrap justify-center gap-2 mb-10 text-xs md:text-sm font-black uppercase">
+<span class="bg-white border-2 border-black px-3 py-2">Social Media Strategy</span>
+<span class="bg-white border-2 border-black px-3 py-2">Content Marketing</span>
+<span class="bg-white border-2 border-black px-3 py-2">Creative Campaigns</span>
+<span class="bg-white border-2 border-black px-3 py-2">Copy + Storytelling</span>
+</div>
+<div class="flex flex-wrap justify-center gap-3 mb-8">
+<a class="bg-white border-2 border-black px-5 py-3 font-black uppercase hard-shadow btn-push" href="mailto:hirebencampbell@gmail.com">Email Ben</a>
+<a aria-label="LinkedIn" class="bg-white border-2 border-black px-5 py-3 font-black uppercase hard-shadow btn-push" href="https://linkedin.com/in/bencampbell8" rel="noopener noreferrer" target="_blank">LinkedIn ↗</a>
+<a class="bg-white border-2 border-black px-5 py-3 font-black uppercase hard-shadow btn-push" href="https://drive.google.com/file/d/1brTQvb5ZOdq3yUGhY0DbtB00QEz4GBaI/view?usp=sharing" rel="noopener noreferrer" target="_blank">View Resume ↗</a>
+</div>
+<div class="block mb-16 max-w-2xl mx-auto">
+<form action="/success" class="contact-form bg-white border-4 border-black hard-shadow-fuchsia p-6 md:p-8 text-left" data-netlify="true" method="POST" name="portfolio-contact" netlify-honeypot="bot-field">
+<input name="form-name" type="hidden" value="portfolio-contact"/>
+<p class="hidden">
+<label>Don’t fill this out if you're human: <input name="bot-field"/></label>
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div class="form-group">
+<label class="block mb-2 font-black uppercase text-sm" for="name">Name</label>
+<input class="w-full px-4 py-3 border-2 border-black rounded-none bg-white focus:outline-none focus:ring-0 focus:border-fuchsia-500" id="name" name="name" placeholder="Your Name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="block mb-2 font-black uppercase text-sm" for="email">Email</label>
+<input class="w-full px-4 py-3 border-2 border-black rounded-none bg-white focus:outline-none focus:ring-0 focus:border-fuchsia-500" id="email" name="email" placeholder="your@email.com" required="" type="email"/>
+</div>
+</div>
+<div class="form-group mb-4">
+<label class="block mb-2 font-black uppercase text-sm" for="message">What are you hiring for?</label>
+<textarea class="w-full px-4 py-3 border-2 border-black rounded-none bg-white resize-y focus:outline-none focus:ring-0 focus:border-fuchsia-500" id="message" name="message" placeholder="Tell me about the role, project, or chaos you need help wrangling." required="" rows="5"></textarea>
+</div>
+<p class="text-sm font-medium text-gray-600 mb-6">For the fastest reply, email hirebencampbell@gmail.com. Full-time social media and content roles are the priority.</p>
+<button class="w-full px-6 py-4 text-lg md:text-2xl font-black text-white bg-black border-4 border-black hard-shadow hover:bg-fuchsia-500 transition-colors btn-push uppercase" type="submit">
+                        Send Ben a Note
+                    </button>
+</form>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-end border-t-4 border-black pt-8">
+<div class="text-left mb-8 md:mb-0">
+<p class="font-bold text-xl uppercase">Ben Campbell Creative © 2026</p>
+</div>
+<div class="flex gap-4">
+<a aria-label="X / Twitter" class="w-12 h-12 flex items-center justify-center border-2 border-black bg-white hover:bg-fuchsia-500 hover:text-white transition-colors font-bold text-xl" href="https://x.com/Ben_Soup" rel="noopener noreferrer" target="_blank">X</a>
+<a aria-label="LinkedIn" class="w-12 h-12 flex items-center justify-center border-2 border-black bg-white hover:bg-fuchsia-500 hover:text-white transition-colors font-bold text-xl" href="https://linkedin.com/in/bencampbell8" rel="noopener noreferrer" target="_blank">Li</a>
+<a aria-label="Instagram" class="w-12 h-12 flex items-center justify-center border-2 border-black bg-white hover:bg-fuchsia-500 hover:text-white transition-colors font-bold text-xl" href="https://instagram.com/bensoup" rel="noopener noreferrer" target="_blank">Ig</a>
+<a aria-label="GitHub" class="w-12 h-12 flex items-center justify-center border-2 border-black bg-white hover:bg-fuchsia-500 hover:text-white transition-colors font-bold text-xl" href="https://github.com/kylozenzen" rel="noopener noreferrer" target="_blank">Gh</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- BACK TO TOP -->
+<div class="fixed bottom-4 right-4 z-50 transition-opacity opacity-0 pointer-events-none" id="back-to-top">
+<button class="bg-black text-white w-10 h-10 md:w-12 md:h-12 border-2 border-white hard-shadow hover:bg-fuchsia-500 transition-colors flex items-center justify-center font-bold text-xl" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆</button>
+</div>
+<!-- HIDDEN NOTEPAD -->
+<div class="fixed top-24 left-1/2 -translate-x-1/2 w-[90%] md:w-[500px] bg-yellow-100 border-4 border-black p-4 z-[100] hard-shadow hidden" id="notepad">
+<div class="flex justify-between items-center mb-4 border-b-2 border-black pb-2">
+<h3 class="font-black uppercase text-xl">📝 Secret Ideas</h3>
+<button class="font-bold hover:text-red-600" onclick="toggleNotepad()">X CLOSE</button>
+</div>
+<textarea class="w-full h-64 bg-white border-2 border-black p-2 font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type your secret viral ideas here..."></textarea>
+</div>
+<!-- KONAMI MODAL -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-90 hidden" id="konami-modal">
+<div class="bg-white border-4 border-lime-400 p-8 max-w-md text-center hard-shadow-fuchsia transform rotate-2">
+<h2 class="text-4xl font-black uppercase mb-4">🦍 GORILLA MODE ACTIVATED</h2>
+<p class="text-xl font-bold mb-6">You found the secret code! My wife says "Hi".</p>
+<button class="bg-black text-white font-bold uppercase px-6 py-3 border-2 border-black hover:bg-lime-400 hover:text-black transition-colors" onclick="document.getElementById('konami-modal').classList.add('hidden')">Close</button>
+</div>
+</div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script async="" src="https://www.instagram.com/embed.js"></script>
+<script>
+        // ==========================================
+        // DATA STORES
+        // ==========================================
+        let socialData = null;
+        let writingData = null;
+        let videoData = null;
+        let builderData = null;
+        let socialExpanded = false;
+        let writingExpanded = false;
+        let builderExpanded = false;
+
+        // ==========================================
+        // INITIALIZATION
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.AOS && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) { AOS.init({ once: true, duration: 650, offset: 40, easing: 'ease-out-cubic' }); }
+            await Promise.all([
+                loadSocialContent(),
+                loadWritingContent(),
+                loadVideoContent(),
+                loadBuilderContent()
+            ]);
+        });
+
+        // ==========================================
+        // CONTENT LOADERS
+        // ==========================================
+        async function loadSocialContent() {
+            try {
+                const response = await fetch('social.json');
+                socialData = await response.json();
+                renderSocialContent();
+            } catch (error) {
+                console.error('Error loading social content:', error);
+                document.getElementById('social-grid').innerHTML = '<p class="text-red-600 font-bold">Error loading social content</p>';
+            }
+        }
+
+        async function loadWritingContent() {
+            try {
+                const response = await fetch('writing.json');
+                writingData = await response.json();
+                renderWritingFilters();
+                renderWritingContent();
+            } catch (error) {
+                console.error('Error loading writing content:', error);
+                document.getElementById('writing-grid').innerHTML = '<p class="text-red-600 font-bold">Error loading writing content</p>';
+            }
+        }
+
+        async function loadVideoContent() {
+            try {
+                const response = await fetch('video.json');
+                videoData = await response.json();
+                renderVideoSkills();
+                renderVideoContent();
+            } catch (error) {
+                console.error('Error loading video content:', error);
+                document.getElementById('video-grid').innerHTML = '<p class="text-red-600 font-bold">Error loading video content</p>';
+            }
+        }
+
+        async function loadBuilderContent() {
+            try {
+                const response = await fetch('builders.json');
+                builderData = await response.json();
+                renderBuilderSkills();
+                renderBuilderFilters();
+                renderBuilderContent();
+            } catch (error) {
+                console.error('Error loading builder content:', error);
+                document.getElementById('builder-grid').innerHTML = '<p class="text-red-400 font-bold">Error loading builder content</p>';
+            }
+        }
+
+        // ==========================================
+        // SOCIAL RENDERING
+        // ==========================================
+        function renderSocialContent() {
+            const grid = document.getElementById('social-grid');
+            grid.innerHTML = '';
+            socialData.posts.forEach((post, index) => {
+                const isHidden = !post.featured && !socialExpanded;
+                const card = document.createElement('div');
+                card.className = `bg-white border-2 border-black p-4 hard-shadow flex flex-col h-full ${isHidden ? 'social-hidden hidden' : ''}`;
+                card.setAttribute('data-aos', 'fade-up');
+                if (index > 0) card.setAttribute('data-aos-delay', (index % 2) * 50);
+                card.innerHTML = `
+                    <h3 class="font-black uppercase text-lg mb-4 border-b-2 border-black pb-2">${post.title}</h3>
+                    <div class="flex-grow flex items-center justify-center bg-gray-50 min-h-[450px] border border-gray-200 relative mb-4">
+                        <span class="absolute text-gray-400 font-bold text-center p-4 text-sm z-0">Loading Embed...</span>
+                        <blockquote class="instagram-media relative z-10 w-full" data-instgrm-permalink="${post.permalink}" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:none; margin: 0; padding:0; width:100%;"></blockquote>
+                    </div>
+                    <a href="${post.permalink}" target="_blank" rel="noopener noreferrer" class="block text-center bg-black text-white font-bold py-3 hover:bg-fuchsia-500 transition-colors uppercase text-sm border-2 border-black btn-push">View on Instagram ↗</a>
+                `;
+                grid.appendChild(card);
+            });
+            if (window.instgrm) window.instgrm.Embeds.process();
+        }
+
+        function toggleSocial() {
+            socialExpanded = !socialExpanded;
+            const hiddenPosts = document.querySelectorAll('.social-hidden');
+            const btn = document.getElementById('social-toggle-btn');
+            const header = document.getElementById('social-header');
+            hiddenPosts.forEach(post => post.classList.toggle('hidden'));
+            if (socialExpanded) {
+                btn.innerText = 'Show Less Social Work ☝️';
+                if (window.instgrm) window.instgrm.Embeds.process();
+            } else {
+                btn.innerText = 'Show More Social Work 👇';
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // ==========================================
+        // WRITING RENDERING
+        // ==========================================
+        function renderWritingFilters() {
+            const container = document.getElementById('writing-filters');
+            container.innerHTML = '';
+            writingData.categories.forEach((cat, index) => {
+                const btn = document.createElement('button');
+                btn.className = `filter-btn px-6 py-2 border-2 border-black font-bold uppercase transition-all hover:bg-black hover:text-white ${index === 0 ? 'active' : ''}`;
+                btn.textContent = cat.label;
+                btn.onclick = () => filterWriting(cat.id);
+                container.appendChild(btn);
+            });
+        }
+
+        function renderWritingContent(filterCategory = 'all') {
+            const grid = document.getElementById('writing-grid');
+            grid.innerHTML = '';
+            const categoryColors = { blog: 'bg-lime-300', press: 'bg-cyan-300', careers: 'bg-yellow-300', product: 'bg-fuchsia-300' };
+            writingData.items.forEach(item => {
+                let shouldShow = filterCategory === 'all' ? true : item.category === filterCategory;
+                let isHidden = filterCategory === 'all' && !item.featured && !writingExpanded;
+                if (!shouldShow) return;
+                const card = document.createElement('div');
+                card.className = `writing-item ${item.category} bg-gray-50 border-2 border-black p-6 hard-shadow flex flex-col justify-between ${isHidden ? 'writing-extra hidden' : ''}`;
+                card.setAttribute('data-featured', item.featured);
+                card.innerHTML = `
+                    <div>
+                        <span class="inline-block px-2 py-1 ${categoryColors[item.category] || 'bg-gray-300'} border border-black text-xs font-bold uppercase mb-2">${item.category}</span>
+                        <h3 class="text-2xl font-black uppercase mb-2">${item.title}</h3>
+                        <p class="font-bold text-gray-500 mb-4">${item.client}</p>
+                    </div>
+                    <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-fuchsia-600 font-bold hover:underline uppercase">Read More -></a>
+                `;
+                grid.appendChild(card);
+            });
+            const toggleBtn = document.getElementById('writing-toggle-btn');
+            toggleBtn.style.display = filterCategory === 'all' ? 'inline-block' : 'none';
+        }
+
+        function filterWriting(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === category || (category === 'all' && btn.textContent === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+            writingExpanded = false;
+            document.getElementById('writing-toggle-btn').innerText = 'Show All Writing 👇';
+            renderWritingContent(category);
+        }
+
+        function toggleWriting() {
+            writingExpanded = !writingExpanded;
+            const extras = document.querySelectorAll('.writing-extra');
+            const btn = document.getElementById('writing-toggle-btn');
+            const header = document.getElementById('writing-header');
+            if (writingExpanded) {
+                extras.forEach(item => item.classList.remove('hidden'));
+                btn.innerText = 'Show Less Writing ☝️';
+            } else {
+                extras.forEach(item => item.classList.add('hidden'));
+                btn.innerText = 'Show All Writing 👇';
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // ==========================================
+        // VIDEO RENDERING
+        // ==========================================
+        function renderVideoSkills() {
+            const container = document.getElementById('video-skills');
+            container.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lime-300 font-black uppercase mb-4 text-xl border-b border-gray-700 pb-2">Production Skills</h3>
+                        <p class="text-gray-300 leading-relaxed font-medium">${videoData.skills.production}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-fuchsia-400 font-black uppercase mb-4 text-xl border-b border-gray-700 pb-2">Software Arsenal</h3>
+                        <p class="text-gray-300 leading-relaxed font-medium">${videoData.skills.software}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderVideoContent() {
+            const grid = document.getElementById('video-grid');
+            grid.innerHTML = '';
+            const categoryColors = {
+                Codeup: { bg: 'bg-fuchsia-500', text: 'text-white', shadow: 'hard-shadow-fuchsia' },
+                Zoo: { bg: 'bg-lime-500', text: 'text-black', shadow: 'hard-shadow-lime' }
+            };
+            const featuredVideos = videoData.videos.filter(video => video.featured).slice(0, 3);
+            featuredVideos.forEach(video => {
+                const colors = categoryColors[video.category] || { bg: 'bg-gray-500', text: 'text-white', shadow: 'hard-shadow' };
+                const card = document.createElement('div');
+                card.className = `video-card ${video.category} bg-neutral-900 border-2 border-white p-4 ${colors.shadow} group`;
+                card.innerHTML = `
+                    <span class="inline-block px-2 py-1 ${colors.bg} ${colors.text} border border-white text-xs font-bold uppercase mb-3">${video.category}</span>
+                    <h3 class="font-bold text-lg mb-4 min-h-12 line-clamp-2">${video.title}</h3>
+                    <div class="relative w-full aspect-video bg-gray-800 cursor-pointer overflow-hidden border border-white video-thumb" data-id="${video.youtubeId}" role="button" tabindex="0" aria-label="Play ${video.title}">
+                        <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg" alt="Video thumbnail for ${video.title}" loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                        <div class="absolute inset-0 flex items-center justify-center play-overlay">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center play-icon">
+                                <div class="w-0 h-0 border-t-[8px] border-t-transparent border-l-[16px] border-l-black border-b-[8px] border-b-transparent ml-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            attachVideoClickHandlers();
+        }
+
+        function attachVideoClickHandlers() {
+            document.querySelectorAll('.video-thumb').forEach(thumb => {
+                const playVideo = () => {
+                    const id = thumb.getAttribute('data-id');
+                    const iframe = document.createElement('iframe');
+                    iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+                    iframe.setAttribute('frameborder', '0');
+                    iframe.setAttribute('allowfullscreen', '');
+                    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                    iframe.className = 'w-full h-full';
+                    thumb.innerHTML = '';
+                    iframe.title = thumb.getAttribute('aria-label') || 'Portfolio video';
+                    thumb.appendChild(iframe);
+                };
+                thumb.addEventListener('click', playVideo);
+                thumb.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        playVideo();
+                    }
+                });
+            });
+        }
+
+        // ==========================================
+        // BUILDER RENDERING
+        // ==========================================
+        function renderBuilderSkills() {
+            const container = document.getElementById('builder-skills');
+            container.innerHTML = `
+                <p class="text-sm font-black uppercase tracking-widest text-yellow-400 mb-4">How I use AI to build</p>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
+                    ${builderData.approach.map((item, index) => `
+                        <article class="border-2 border-indigo-600 bg-indigo-950 p-5">
+                            <span class="text-xs font-black uppercase text-indigo-400">0${index + 1}</span>
+                            <h3 class="text-xl font-black uppercase text-white mt-1 mb-2">${item.title}</h3>
+                            <p class="text-indigo-200 text-sm md:text-base leading-relaxed">${item.body}</p>
+                        </article>
+                    `).join('')}
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t-2 border-indigo-700 pt-6">
+                    <div>
+                        <h3 class="text-lime-400 font-black uppercase mb-3 text-lg">Technical foundation</h3>
+                        <p class="text-indigo-200 leading-relaxed font-medium">${builderData.skills.technical}</p>
+                    </div>
+                    <div>
+                        <h3 class="text-fuchsia-400 font-black uppercase mb-3 text-lg">AI workflow + tooling</h3>
+                        <p class="text-indigo-200 leading-relaxed font-medium">${builderData.skills.ai}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderBuilderFilters() {
+            const container = document.getElementById('builder-filters');
+            container.innerHTML = '';
+            builderData.categories.forEach((cat, index) => {
+                const btn = document.createElement('button');
+                btn.className = `builder-filter-btn px-6 py-2 border-2 border-white bg-indigo-950 text-white font-bold uppercase transition-all hover:bg-white hover:text-black ${index === 0 ? 'active' : ''}`;
+                btn.textContent = cat.label;
+                btn.onclick = () => filterBuilder(cat.id);
+                container.appendChild(btn);
+            });
+        }
+
+        function renderBuilderContent(filterCategory = 'all') {
+            const grid = document.getElementById('builder-grid');
+            grid.innerHTML = '';
+
+            const accentMap = {
+                amber:   { badge: 'bg-yellow-400 text-yellow-900',  border: 'border-yellow-400', shadow: '4px 4px 0px #facc15' },
+                lime:    { badge: 'bg-lime-400 text-lime-900',       border: 'border-lime-400',   shadow: '4px 4px 0px #bef264' },
+                fuchsia: { badge: 'bg-fuchsia-500 text-white',       border: 'border-fuchsia-500',shadow: '4px 4px 0px #d946ef' },
+                red:     { badge: 'bg-red-500 text-white',           border: 'border-red-500',    shadow: '4px 4px 0px #ef4444' },
+                cyan:    { badge: 'bg-cyan-400 text-cyan-900',       border: 'border-cyan-400',   shadow: '4px 4px 0px #67e8f9' }
+            };
+
+            builderData.projects.forEach((project, index) => {
+                const shouldShow = filterCategory === 'all' ? true : project.category === filterCategory;
+                const isHidden = filterCategory === 'all' && !project.featured && !builderExpanded;
+                if (!shouldShow) return;
+
+                const accent = accentMap[project.accentColor] || accentMap.amber;
+                const isLive = project.url && project.url !== '#';
+
+                const card = document.createElement('div');
+                card.className = `builder-card builder-item ${project.category} bg-indigo-900 border-2 ${accent.border} p-6 flex flex-col justify-between ${isHidden ? 'builder-extra hidden' : ''}`;
+                card.style.boxShadow = accent.shadow;
+                card.setAttribute('data-featured', project.featured);
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', (index % 2) * 50);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between mb-3">
+                            <span class="text-4xl">${project.emoji}</span>
+                            <span class="inline-block px-2 py-1 ${accent.badge} text-xs font-black uppercase">${project.category}</span>
+                        </div>
+                        <h3 class="text-2xl font-black uppercase mb-2 text-white">${project.title}</h3>
+                        <p class="text-indigo-300 font-medium mb-4 text-sm leading-relaxed">${project.tagline}</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${project.tags.map(tag => `<span class="px-2 py-1 bg-indigo-800 border border-indigo-600 text-indigo-300 text-xs font-bold uppercase">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                    <a href="${project.url}" ${isLive ? 'target="_blank" rel="noopener noreferrer"' : ''} class="block text-center font-black uppercase py-3 border-2 transition-colors text-sm ${isLive
+                        ? `${accent.badge} ${accent.border} hover:bg-white hover:text-black hover:border-white`
+                        : 'bg-indigo-800 text-indigo-500 border-indigo-700 cursor-not-allowed pointer-events-none'
+                    }">
+                        ${isLive ? 'View Project ↗' : 'Coming Soon'}
+                    </a>
+                `;
+
+                grid.appendChild(card);
+            });
+
+            const toggleBtn = document.getElementById('builder-toggle-btn');
+            const hasExtras = builderData.projects.some(p => filterCategory === 'all' && !p.featured);
+            toggleBtn.classList.toggle('hidden', !(filterCategory === 'all' && hasExtras));
+        }
+
+        function filterBuilder(category) {
+            document.querySelectorAll('.builder-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === category || (category === 'all' && btn.textContent === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+            builderExpanded = false;
+            document.getElementById('builder-toggle-btn').innerText = 'Show All Projects 👇';
+            renderBuilderContent(category);
+        }
+
+        function toggleBuilder() {
+            builderExpanded = !builderExpanded;
+            const extras = document.querySelectorAll('.builder-extra');
+            const btn = document.getElementById('builder-toggle-btn');
+            const header = document.getElementById('builder-header');
+            if (builderExpanded) {
+                extras.forEach(item => item.classList.remove('hidden'));
+                btn.innerText = 'Show Less Projects ☝️';
+            } else {
+                extras.forEach(item => item.classList.add('hidden'));
+                btn.innerText = 'Show All Projects 👇';
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // ==========================================
+        // UTILITY FUNCTIONS
+        // ==========================================
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                const y = section.getBoundingClientRect().top + window.pageYOffset - 20;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('back-to-top');
+            if (window.scrollY > 500) {
+                btn.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                btn.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        function toggleNotepad() {
+            document.getElementById('notepad').classList.toggle('hidden');
+        }
+
+        function toggleChaos() {
+            document.body.classList.toggle('chaos-active');
+        }
+
+
+        const konamiCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+        let konamiIndex = 0;
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    document.getElementById('konami-modal').classList.remove('hidden');
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+    </script>
+</body>
+</html>
