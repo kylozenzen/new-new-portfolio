@@ -2,8 +2,8 @@
   "sectionTitle": "Builder Lab",
   "sectionSubtitle": "Product-marketing experiments with working software underneath them.",
   "skills": {
-    "technical": "HTML/CSS · Vanilla JavaScript · React · APIs · GitHub · Netlify · Supabase · PWAs · frontend debugging",
-    "ai": "ChatGPT · Claude · Gemini · prompt and context design · model/task selection · output evaluation · iterative debugging · AI-assisted development"
+    "technical": "HTML/CSS \u00b7 Vanilla JavaScript \u00b7 React \u00b7 APIs \u00b7 GitHub \u00b7 Netlify \u00b7 Supabase \u00b7 PWAs \u00b7 frontend debugging",
+    "ai": "ChatGPT \u00b7 Claude \u00b7 Gemini \u00b7 prompt and context design \u00b7 model/task selection \u00b7 output evaluation \u00b7 iterative debugging \u00b7 AI-assisted development"
   },
   "categories": [
     {
@@ -35,7 +35,7 @@
         "GraphQL",
         "Netlify"
       ],
-      "emoji": "📬",
+      "emoji": "\ud83d\udcec",
       "accentColor": "amber",
       "url": "https://ccpostiq.netlify.app",
       "featured": true
@@ -51,7 +51,7 @@
         "Multiplayer",
         "Nobody Studios"
       ],
-      "emoji": "🍿",
+      "emoji": "\ud83c\udf7f",
       "accentColor": "red",
       "url": "https://kylozenzen.github.io/ptmovies-tester/",
       "featured": false
@@ -67,7 +67,7 @@
         "Onboarding",
         "Nobody Studios"
       ],
-      "emoji": "🥗",
+      "emoji": "\ud83e\udd57",
       "accentColor": "lime",
       "url": "#",
       "featured": false
@@ -82,7 +82,7 @@
         "Fitness",
         "Nobody Studios"
       ],
-      "emoji": "💪",
+      "emoji": "\ud83d\udcaa",
       "accentColor": "fuchsia",
       "url": "#",
       "featured": false
@@ -97,7 +97,7 @@
         "Creator",
         "Nobody Studios"
       ],
-      "emoji": "✏️",
+      "emoji": "\u270f\ufe0f",
       "accentColor": "amber",
       "url": "https://receiptsdemo.netlify.app",
       "featured": true
@@ -110,11 +110,11 @@
     },
     {
       "title": "AI-literate, not AI-passive",
-      "body": "I use AI for research, scoping, prototyping, code generation, QA, and iteration—while providing context, comparing outputs, inspecting the work, and keeping human judgment in charge."
+      "body": "I use AI for research, scoping, prototyping, code generation, QA, and iteration\u2014while providing context, comparing outputs, inspecting the work, and keeping human judgment in charge."
     },
     {
       "title": "Technical enough to direct the build",
-      "body": "My time at Codeup taught me to reason through front-end logic, APIs, states, errors, version control, deployment, and debugging—not simply ask a chatbot for a pretty screen."
+      "body": "My time at Codeup taught me to reason through front-end logic, APIs, states, errors, version control, deployment, and debugging\u2014not simply ask a chatbot for a pretty screen."
     }
   ]
 }
