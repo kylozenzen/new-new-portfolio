@@ -1,14 +1,26 @@
 {
-  "sectionTitle": "Nobody Creative",
-  "sectionSubtitle": "Product marketer first. Technical enough to prototype, debug and ship.",
+  "sectionTitle": "Builder Lab",
+  "sectionSubtitle": "Product-marketing experiments with working software underneath them.",
   "skills": {
-    "technical": "HTML/CSS · JavaScript · React · APIs · GitHub · Netlify · Supabase",
-    "ai": "AI-assisted development · prompt and context design · output evaluation · iterative debugging"
+    "technical": "HTML/CSS · Vanilla JavaScript · React · APIs · GitHub · Netlify · Supabase · PWAs · frontend debugging",
+    "ai": "ChatGPT · Claude · Gemini · prompt and context design · model/task selection · output evaluation · iterative debugging · AI-assisted development"
   },
   "categories": [
     {
       "id": "all",
-      "label": "Selected"
+      "label": "All"
+    },
+    {
+      "id": "tool",
+      "label": "Tools"
+    },
+    {
+      "id": "app",
+      "label": "Apps"
+    },
+    {
+      "id": "game",
+      "label": "Games"
     }
   ],
   "projects": [
@@ -16,11 +28,12 @@
       "id": "postiq",
       "category": "tool",
       "title": "PostIQ",
-      "tagline": "A Buffer-connected workspace for drafting, thread splitting, planning, reusable snippets, and scheduling.",
+      "tagline": "A Buffer-connected workspace built to move rough ideas into review-ready, scheduled content with less copy-paste friction.",
       "tags": [
+        "PWA",
         "Buffer API",
-        "Product Marketing",
-        "Workflow Design"
+        "GraphQL",
+        "Netlify"
       ],
       "emoji": "📬",
       "accentColor": "amber",
@@ -31,29 +44,61 @@
       "id": "plot-twisted",
       "category": "game",
       "title": "Plot Twisted",
-      "tagline": "A browser-based movie game built around one simple hook: identify the movie from a wildly bad plot description.",
+      "tagline": "Movie trivia where the plot is the puzzle. Daily Challenge, Pass & Play, and voice recognition.",
       "tags": [
-        "Game Design",
-        "Branding",
-        "Launch Strategy"
+        "Game",
+        "Trivia",
+        "Multiplayer",
+        "Nobody Studios"
       ],
       "emoji": "🍿",
       "accentColor": "red",
-      "url": "https://plot-twisted.netlify.app",
-      "featured": true
+      "url": "https://kylozenzen.github.io/ptmovies-tester/",
+      "featured": false
+    },
+    {
+      "id": "steady",
+      "category": "app",
+      "title": "Steady",
+      "tagline": "Nutrition tracking PWA with 8-step onboarding, custom numeric keypad & serving multiplier.",
+      "tags": [
+        "PWA",
+        "Nutrition",
+        "Onboarding",
+        "Nobody Studios"
+      ],
+      "emoji": "🥗",
+      "accentColor": "lime",
+      "url": "#",
+      "featured": false
+    },
+    {
+      "id": "planet-strength",
+      "category": "app",
+      "title": "Planet Strength",
+      "tagline": "Fitness PWA built for Planet Fitness members. 110+ exercises with smart progressive overload.",
+      "tags": [
+        "PWA",
+        "Fitness",
+        "Nobody Studios"
+      ],
+      "emoji": "💪",
+      "accentColor": "fuchsia",
+      "url": "#",
+      "featured": false
     },
     {
       "id": "receipts-demo",
       "category": "app",
       "title": "Receipts",
-      "tagline": "A no-login content approval workflow designed around the messy handoff between creators, clients, and publishing.",
+      "tagline": "A lightweight approvals workflow built around a simple audience truth: clients should not need another login to give feedback.",
       "tags": [
-        "Buffer API",
-        "Approvals",
-        "Product Strategy"
+        "PWA",
+        "Creator",
+        "Nobody Studios"
       ],
       "emoji": "✏️",
-      "accentColor": "fuchsia",
+      "accentColor": "amber",
       "url": "https://receiptsdemo.netlify.app",
       "featured": true
     }
@@ -61,21 +106,15 @@
   "approach": [
     {
       "title": "Product marketer first",
-      "body": "I start with the audience, the friction, the positioning, and the user journey before deciding what the product should do."
+      "body": "I define the audience, friction, value proposition, user journey, onboarding, and adoption story before deciding what the product should do."
     },
     {
-      "title": "Learn the product",
-      "body": "Good marketers learn what they are selling. Two years working at a coding school meant learning the fundamentals of full-stack web development, APIs, deployment, and debugging instead of treating the technology like a black box."
+      "title": "AI-literate, not AI-passive",
+      "body": "I use AI for research, scoping, prototyping, code generation, QA, and iteration—while providing context, comparing outputs, inspecting the work, and keeping human judgment in charge."
     },
     {
-      "title": "Prototype, debug, ship",
-      "body": "Those skills turned small workflow experiments into working products, and eventually into Nobody Creative: an independent home for apps, games, tools, and ideas worth shipping."
+      "title": "Technical enough to direct the build",
+      "body": "My time at Codeup taught me to reason through front-end logic, APIs, states, errors, version control, deployment, and debugging—not simply ask a chatbot for a pretty screen."
     }
-  ],
-  "studio": {
-    "name": "Nobody Creative",
-    "url": "https://nobodycreative.com",
-    "tagline": "Build weird things. Ship the good ones.",
-    "cta": "Explore Nobody Creative"
-  }
+  ]
 }
