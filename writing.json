@@ -21,6 +21,10 @@
     {
       "id": "product",
       "label": "Product Docs"
+    },
+    {
+      "id": "medium",
+      "label": "Medium"
     }
   ],
   "items": [
@@ -54,6 +58,14 @@
       "title": "Empowering the Future: Hispanic Serving Institutions",
       "client": "Overland Partners",
       "url": "https://www.overlandpartners.com/empowering-the-future-hispanic-serving-institutions-excellence-in-higher-education-through-design/",
+      "featured": true
+    },
+    {
+      "id": "medium-profile",
+      "category": "medium",
+      "title": "More Writing on Medium",
+      "client": "Ben Campbell",
+      "url": "https://medium.com/@hirebencampbell",
       "featured": true
     },
     {

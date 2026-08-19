@@ -1,2 +1,3 @@
 [build]
+  command = "node scripts/update-medium-writing.mjs"
   publish = "."
