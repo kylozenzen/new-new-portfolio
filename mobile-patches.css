@@ -309,16 +309,18 @@
     margin-top: 1.5rem !important;
 }
 
-/* On All, pair the two CTAs as one centered row. */
-#writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) {
+/* On All, pair the two CTAs as one centered row: Show All | Medium. */
+#writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) > div:has(#writing-toggle-btn) {
     grid-column: 1;
     justify-self: end;
+    text-align: right;
+    order: 1000;
 }
 
-#writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) > div:has(#writing-toggle-btn) {
+#writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) {
     grid-column: 2;
     justify-self: start;
-    text-align: left;
+    order: 1001;
 }
 
 @media (max-width: 767px) {
