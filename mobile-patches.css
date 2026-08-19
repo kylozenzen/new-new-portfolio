@@ -235,3 +235,123 @@
         height: 2.75rem !important;
     }
 }
+
+/* WRITING / MEDIUM CTA LAYOUT */
+#writing > .max-w-7xl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+}
+
+#writing-header,
+#writing > .max-w-7xl > p,
+#writing-filters {
+    grid-column: 1 / -1;
+}
+
+#writing-grid {
+    display: contents;
+}
+
+#writing-grid .writing-item {
+    margin-bottom: 1.5rem;
+}
+
+#writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    align-self: start;
+    width: max-content;
+    max-width: 100%;
+    min-height: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+#writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) > div {
+    display: none;
+}
+
+#writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border: 2px solid #000;
+    background: #bef264;
+    color: #000 !important;
+    box-shadow: 4px 4px 0 #000;
+    font-size: 0;
+    line-height: 1;
+    text-decoration: none !important;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+#writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) > a::before {
+    content: "Read More on Medium ↗";
+    font-size: 1.25rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+#writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) > a:hover {
+    background: #67e8f9;
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 0 #000;
+}
+
+#writing > .max-w-7xl > div:has(#writing-toggle-btn) {
+    align-self: start;
+    margin-top: 1.5rem !important;
+}
+
+/* On All, pair the two CTAs as one centered row. */
+#writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) {
+    grid-column: 1;
+    justify-self: end;
+}
+
+#writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) > div:has(#writing-toggle-btn) {
+    grid-column: 2;
+    justify-self: start;
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    #writing > .max-w-7xl {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    #writing-header,
+    #writing > .max-w-7xl > p,
+    #writing-filters,
+    #writing-grid .writing-item,
+    #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]),
+    #writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]),
+    #writing > .max-w-7xl > div:has(#writing-toggle-btn),
+    #writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) > div:has(#writing-toggle-btn) {
+        grid-column: 1;
+    }
+
+    #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]),
+    #writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]),
+    #writing > .max-w-7xl > div:has(#writing-toggle-btn),
+    #writing > .max-w-7xl:has(#writing-toggle-btn[style*="inline-block"]) > div:has(#writing-toggle-btn) {
+        justify-self: stretch;
+        text-align: center;
+    }
+
+    #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) {
+        width: 100%;
+    }
+
+    #writing-grid .writing-item.medium:has(> a[href="https://medium.com/@hirebencampbell"]) > a,
+    #writing-toggle-btn {
+        width: 100%;
+    }
+}
