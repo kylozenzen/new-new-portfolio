@@ -61,14 +61,6 @@
       "featured": true
     },
     {
-      "id": "medium-profile",
-      "category": "medium",
-      "title": "More Writing on Medium",
-      "client": "Ben Campbell",
-      "url": "https://medium.com/@hirebencampbell",
-      "featured": true
-    },
-    {
       "id": "overnight-lodge",
       "category": "press",
       "title": "SA Zoo Announces Overnight Lodge",
@@ -131,6 +123,62 @@
       "client": "BenCampbell Docs",
       "url": "https://help.followup.cc/en/",
       "featured": false
+    },
+    {
+      "id": "medium-story-2026-08-19-i-was-rebuilding-the-same-buffer-integration-so-i-stop",
+      "category": "medium",
+      "title": "I Was Rebuilding the Same Buffer Integration. So I Stopped.",
+      "client": "Medium · Aug 19, 2026",
+      "url": "https://medium.com/@hirebencampbell/i-was-rebuilding-the-same-buffer-integration-so-i-stopped-9b40f2009b9b?source=rss-c960e9c91a45------2",
+      "featured": false
+    },
+    {
+      "id": "medium-story-2026-07-22-i-built-a-spaceship-console-for-a-two-minute-workflow",
+      "category": "medium",
+      "title": "I Built a Spaceship Console for a Two-Minute Workflow",
+      "client": "Medium · Jul 22, 2026",
+      "url": "https://medium.com/@hirebencampbell/i-built-a-spaceship-console-for-a-two-minute-workflow-4f5cddb7c03f?source=rss-c960e9c91a45------2",
+      "featured": false
+    },
+    {
+      "id": "medium-story-2026-04-20-i-learned-to-code-at-a-coding-bootcamp-without-being-a",
+      "category": "medium",
+      "title": "I Learned to Code at a Coding Bootcamp… Without Being a Developer",
+      "client": "Medium · Apr 20, 2026",
+      "url": "https://medium.com/@hirebencampbell/i-learned-to-code-at-a-coding-bootcamp-without-being-a-developer-d74e7eb627db?source=rss-c960e9c91a45------2",
+      "featured": false
+    },
+    {
+      "id": "medium-story-2026-03-07-stop-treating-social-media-engagement-like-a-math-prob",
+      "category": "medium",
+      "title": "Stop Treating Social Media Engagement Like a Math Problem",
+      "client": "Medium · Mar 7, 2026",
+      "url": "https://medium.com/@hirebencampbell/stop-treating-social-media-engagement-like-a-math-problem-79d73588aff5?source=rss-c960e9c91a45------2",
+      "featured": false
+    },
+    {
+      "id": "medium-story-2025-05-15-the-hardest-part-isn-t-the-resume",
+      "category": "medium",
+      "title": "The Hardest Part Isn’t the Resume",
+      "client": "Medium · May 15, 2025",
+      "url": "https://medium.com/@hirebencampbell/the-hardest-part-isnt-the-resume-265425addaa4?source=rss-c960e9c91a45------2",
+      "featured": false
+    },
+    {
+      "id": "medium-story-2025-03-19-the-future-of-tech-education-in-san-antonio-how-a-new-",
+      "category": "medium",
+      "title": "The Future of Tech Education in San Antonio: How a New Codeup Could Succeed",
+      "client": "Medium · Mar 19, 2025",
+      "url": "https://medium.com/@hirebencampbell/the-future-of-tech-education-in-san-antonio-how-a-new-codeup-could-succeed-3d0c946b224f?source=rss-c960e9c91a45------2",
+      "featured": false
+    },
+    {
+      "id": "medium-profile",
+      "category": "medium",
+      "title": "More Writing on Medium",
+      "client": "Ben Campbell",
+      "url": "https://medium.com/@hirebencampbell",
+      "featured": true
     }
   ]
 }
