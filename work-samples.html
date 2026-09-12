@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Work Samples | Ben Campbell</title>
+<meta content="The full archive of Ben Campbell's social posts, published writing, and video work—campaigns, blogs, press releases, product documentation, and destination marketing video." name="description"/>
+<meta content="Ben Campbell" name="author"/>
+<meta content="website" property="og:type"/>
+<meta content="https://bencampbell.netlify.app/work-samples" property="og:url"/>
+<meta content="Work Samples | Ben Campbell" property="og:title"/>
+<meta content="Social posts, published writing, and video work in one place. The case studies explain the strategy; this is the output." property="og:description"/>
+<meta content="https://bencampbell.netlify.app/assets/images/portfolio-share-card.png/?v=2" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://bencampbell.netlify.app/work-samples" name="twitter:url"/>
+<meta content="Work Samples | Ben Campbell" name="twitter:title"/>
+<meta content="Social posts, published writing, and video work in one place. The case studies explain the strategy; this is the output." name="twitter:description"/>
+<meta content="https://bencampbell.netlify.app/assets/images/portfolio-share-card.png/?v=2" name="twitter:image"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="mobile-patches.css" rel="stylesheet"/>
+<link href="https://bencampbell.netlify.app/work-samples" rel="canonical"/>
+<style>
+body { font-family: 'Space Grotesk', sans-serif; background-color: #fff9f9; color: #000; overflow-x: hidden; transition: filter 0.3s ease; }
+body.chaos-active { filter: invert(1) hue-rotate(180deg); }
+body.chaos-active img { filter: invert(1) hue-rotate(180deg); }
+.hard-shadow { box-shadow: 4px 4px 0px #000; transition: all 0.2s ease-out; }
+.hard-shadow:hover { box-shadow: 6px 6px 0px #000; transform: translate(-1px, -1px); }
+.hard-shadow-fuchsia { box-shadow: 6px 6px 0px #d946ef; }
+.hard-shadow-lime { box-shadow: 6px 6px 0px #bef264; }
+.hard-shadow-cyan { box-shadow: 6px 6px 0px #67e8f9; }
+.hard-shadow-red { box-shadow: 6px 6px 0px #ef4444; }
+.hard-shadow-yellow { box-shadow: 6px 6px 0px #facc15; }
+.btn-push:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000; }
+.btn-push:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #000; }
+.bg-grid { background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 20px 20px; background-color: #fff9f9; opacity: 0.1; }
+.filter-btn.active, .video-filter-btn.active { background-color: #000; color: #fff; transform: translate(2px, 2px); box-shadow: 2px 2px 0px #d946ef; }
+.play-overlay { background: rgba(0,0,0,0.4); transition: all 0.3s; }
+.video-card:hover .play-overlay { background: rgba(0,0,0,0.1); }
+.play-icon { transition: transform 0.3s; }
+.video-card:hover .play-icon { transform: scale(1.1); }
+.hazard-stripes { background-color: #000; background-image: repeating-linear-gradient(45deg, #000, #000 10px, #111 10px, #111 20px); }
+.glitch-wrapper { position: relative; display: inline-block; }
+.glitch { position: relative; }
+.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff9f9; }
+.glitch::before { left: 2px; text-shadow: -1px 0 #ff00c1; clip: rect(0, 0, 0, 0); animation: glitch-anim-1 4s infinite linear alternate-reverse; }
+.glitch::after { left: -2px; text-shadow: -1px 0 #00fff9; clip: rect(0, 0, 0, 0); animation: glitch-anim-2 4s infinite linear alternate-reverse; }
+@keyframes glitch-anim-1 { 0%,90% { clip: rect(0,0,0,0); } 91% { clip: rect(30px,9999px,10px,0); } 94% { clip: rect(10px,9999px,80px,0); } 97% { clip: rect(50px,9999px,90px,0); } 100% { clip: rect(20px,9999px,60px,0); } }
+@keyframes glitch-anim-2 { 0%,90% { clip: rect(0,0,0,0); } 91% { clip: rect(10px,9999px,90px,0); } 94% { clip: rect(20px,9999px,70px,0); } 97% { clip: rect(80px,9999px,10px,0); } 100% { clip: rect(60px,9999px,10px,0); } }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: skeleton-loading 1.5s infinite; }
+@keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.builder-card { transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; }
+.builder-card:hover { transform: translate(-2px, -2px); }
+details[open] summary .arrow-icon { transform: rotate(90deg); }
+.arrow-icon { display: inline-block; transition: transform 0.2s ease; line-height: 1; }
+summary::-webkit-details-marker { display: none; }
+summary::marker { content: ''; }
+.nav-contact-wrap { display: flex; align-items: center; gap: 10px; }
+.skip-link { position: fixed; left: 1rem; top: 1rem; z-index: 9999; transform: translateY(-180%); background:#000; color:#fff; border:2px solid #fff; padding:.75rem 1rem; font-weight:900; text-transform:uppercase; }
+.skip-link:focus { transform: translateY(0); }
+:focus-visible { outline: 4px solid #d946ef; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } [data-aos] { opacity: 1 !important; transform: none !important; } }
+</style>
+</head>
+<body class="selection:bg-fuchsia-500 selection:text-white">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<main class="relative z-10 w-full p-4 pb-10 flex flex-col border-b-4 border-black md:p-8 md:pb-14" id="main-content">
+<div class="absolute inset-0 z-0 bg-grid"></div>
+<nav class="relative z-20 flex flex-wrap justify-between items-center gap-4 w-full mb-10 md:mb-14">
+<a class="text-xl md:text-2xl font-black tracking-tighter uppercase border-2 border-black bg-white px-3 py-2 hard-shadow" href="index.html">BEN CAMPBELL.</a>
+<div class="flex flex-wrap gap-3 md:gap-5 font-bold uppercase items-center">
+<a class="hover:bg-yellow-300 px-2 border-2 border-transparent hover:border-black transition-all" href="case-studies.html">Case Studies</a>
+<a class="hover:bg-cyan-300 px-2 border-2 border-transparent hover:border-black transition-all" href="index.html#about">About</a>
+<a class="hover:bg-lime-300 px-2 border-2 border-transparent hover:border-black transition-all" href="index.html#builder">Builds</a>
+<a class="hover:bg-yellow-300 px-2 border-2 border-transparent hover:border-black transition-all" href="https://drive.google.com/file/d/1UCN5ni_gwb2K2jXjWVzgLvumo0GQTx6N/view?usp=sharing" rel="noopener noreferrer" target="_blank">Resume</a>
+</div>
+<div class="nav-contact-wrap"><a class="px-6 py-2 font-bold text-white bg-black border-2 border-black hover:bg-fuchsia-500 transition-colors" href="index.html#contact">CONTACT</a></div>
+</nav>
+<div class="relative z-10 max-w-7xl mx-auto w-full">
+<p class="text-sm md:text-base font-black uppercase tracking-[0.18em] mb-3">The Archive</p>
+<h1 class="text-5xl md:text-8xl font-black uppercase leading-[0.9] tracking-tight mb-6">Work Samples</h1>
+<p class="text-lg md:text-2xl font-bold max-w-4xl leading-snug mb-4">Social posts, published writing, and video work in one place—the output behind the strategy.</p>
+<p class="text-base md:text-lg font-medium max-w-4xl leading-relaxed mb-8">If you want the context—the goal, my role, and what actually changed—start with the <a class="font-black underline decoration-4 underline-offset-2 hover:text-fuchsia-600 transition-colors" href="case-studies.html">case studies</a>. This page is the receipts.</p>
+<div aria-label="Jump to a section" class="flex flex-wrap gap-3">
+<a class="bg-white border-2 border-black px-5 py-3 font-black uppercase text-sm md:text-base hard-shadow btn-push hover:bg-fuchsia-400 transition-colors" href="#social">Social ↓</a>
+<a class="bg-white border-2 border-black px-5 py-3 font-black uppercase text-sm md:text-base hard-shadow btn-push hover:bg-lime-300 transition-colors" href="#writing">Writing ↓</a>
+<a class="bg-white border-2 border-black px-5 py-3 font-black uppercase text-sm md:text-base hard-shadow btn-push hover:bg-cyan-300 transition-colors" href="#video">Video ↓</a>
+</div>
+</div>
+</main>
+
+<section class="bg-yellow-300 border-b-4 border-black p-4 py-20 md:p-12 scroll-mt-20" id="social"><div class="max-w-7xl mx-auto"><h2 class="text-5xl md:text-6xl font-black uppercase mb-8 border-l-8 border-black pl-6" data-aos="zoom-in" id="social-header">Selected Social Work</h2><p class="mb-8 text-xl max-w-3xl">Campaigns, community moments, and platform-native ideas. The case studies explain the strategy; these links show the work in the wild.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="social-grid"><div class="skeleton h-[500px] border-2 border-black"></div><div class="skeleton h-[500px] border-2 border-black"></div></div><div class="text-center mt-12"><button class="px-8 py-4 text-xl font-black uppercase bg-black text-white border-2 border-white hover:bg-white hover:text-black hover:border-black transition-all hard-shadow btn-push" id="social-toggle-btn" onclick="toggleSocial()">Show Less Social Work ☝️</button></div></div></section>
+
+<section class="p-4 py-20 md:p-12 bg-white border-b-4 border-black scroll-mt-20" id="writing"><div class="max-w-7xl mx-auto"><h2 class="text-5xl md:text-6xl font-black uppercase mb-8 border-l-8 border-black pl-6" id="writing-header">Selected Writing</h2><p class="mb-8 text-xl max-w-3xl">Blogs, press releases, campaign copy, and product documentation shaped for real audiences and real goals.</p><div class="flex flex-wrap gap-4 mb-12" id="writing-filters"></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="writing-grid"><div class="skeleton h-48 border-2 border-black"></div><div class="skeleton h-48 border-2 border-black"></div><div class="skeleton h-48 border-2 border-black"></div><div class="skeleton h-48 border-2 border-black"></div></div><div class="text-center mt-12"><button class="px-8 py-4 text-xl font-black uppercase bg-black text-white border-2 border-white hover:bg-white hover:text-black hover:border-black transition-all hard-shadow btn-push" id="writing-toggle-btn" onclick="toggleWriting()">Show Less Writing ☝️</button></div></div></section>
+
+<section class="bg-black text-white p-4 py-20 md:p-12 border-b-4 border-white scroll-mt-20" id="video"><div class="max-w-7xl mx-auto"><h2 class="text-5xl md:text-7xl font-black uppercase text-white mb-6" id="video-header">Selected <span class="text-fuchsia-500">Video Work</span></h2><p class="text-gray-300 text-xl mb-8 max-w-3xl">Examples spanning destination marketing and tech education, with work across strategy, scripting, production support, and post-production.</p><div class="bg-neutral-900 border-2 border-white p-6 mb-12 hard-shadow-lime text-left" id="video-skills"></div><div class="flex flex-wrap gap-4 mb-8" id="video-filters"></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="video-grid"><div class="skeleton h-64 border-2 border-white"></div><div class="skeleton h-64 border-2 border-white"></div><div class="skeleton h-64 border-2 border-white"></div></div></div></section>
+
+<footer class="bg-lime-300 p-4 py-12 md:p-12 border-t-4 border-black relative overflow-hidden" id="contact"><div class="max-w-7xl mx-auto relative z-10 text-center">
+<h2 class="text-4xl md:text-7xl font-black uppercase mb-6 leading-none">SEEN ENOUGH? LET'S TALK.</h2>
+<p class="text-base md:text-xl font-bold bg-white inline-block max-w-3xl px-6 py-4 border-2 border-black hard-shadow-fuchsia mb-8 -rotate-1 leading-snug">Hiring for a full-time social media or content role? I bring the strategy and the hands-on execution—plan and output, same person.</p>
+<div class="flex flex-wrap justify-center gap-3 mb-10"><a class="bg-white border-2 border-black px-5 py-3 font-black uppercase hard-shadow btn-push" href="mailto:hirebencampbell@gmail.com">Email Ben</a><a class="bg-black text-white border-2 border-black px-5 py-3 font-black uppercase hard-shadow btn-push hover:bg-fuchsia-500 transition-colors" href="index.html#contact">Contact Form</a><a class="bg-white border-2 border-black px-5 py-3 font-black uppercase hard-shadow btn-push" href="case-studies.html">Case Studies</a><a class="bg-white border-2 border-black px-5 py-3 font-black uppercase hard-shadow btn-push" href="https://drive.google.com/file/d/1UCN5ni_gwb2K2jXjWVzgLvumo0GQTx6N/view?usp=sharing" rel="noopener noreferrer" target="_blank">View Resume ↗</a></div>
+<div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-6 border-t-4 border-black pt-8"><div class="text-center md:text-left"><p class="font-bold text-xl uppercase">Ben Campbell Creative © 2026</p></div><div class="flex gap-4"><a aria-label="X / Twitter" class="w-12 h-12 flex items-center justify-center border-2 border-black bg-white hover:bg-fuchsia-500 hover:text-white transition-colors font-bold text-xl" href="https://x.com/Ben_Soup" rel="noopener noreferrer" target="_blank">X</a><a aria-label="LinkedIn" class="w-12 h-12 flex items-center justify-center border-2 border-black bg-white hover:bg-fuchsia-500 hover:text-white transition-colors font-bold text-xl" href="https://linkedin.com/in/bencampbell8" rel="noopener noreferrer" target="_blank">Li</a><a aria-label="Instagram" class="w-12 h-12 flex items-center justify-center border-2 border-black bg-white hover:bg-fuchsia-500 hover:text-white transition-colors font-bold text-xl" href="https://instagram.com/bensoup" rel="noopener noreferrer" target="_blank">Ig</a><a aria-label="GitHub" class="w-12 h-12 flex items-center justify-center border-2 border-black bg-white hover:bg-fuchsia-500 hover:text-white transition-colors font-bold text-xl" href="https://github.com/kylozenzen" rel="noopener noreferrer" target="_blank">Gh</a></div></div>
+</div></footer>
+
+<div class="fixed bottom-4 right-4 z-50 transition-opacity opacity-0 pointer-events-none" id="back-to-top"><button class="bg-black text-white w-10 h-10 md:w-12 md:h-12 border-2 border-white hard-shadow hover:bg-fuchsia-500 transition-colors flex items-center justify-center font-bold text-xl" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">⬆</button></div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script async="" src="https://www.instagram.com/embed.js"></script>
+<script>
+let socialData = null;
+let writingData = null;
+let videoData = null;
+let socialExpanded = true;
+let writingExpanded = true;
+let videoFilter = 'all';
+
+document.addEventListener('DOMContentLoaded', async () => {
+  if (window.AOS && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) AOS.init({ once: true, duration: 650, offset: 40, easing: 'ease-out-cubic' });
+  await Promise.all([loadSocialContent(), loadWritingContent(), loadVideoContent()]);
+});
+async function loadSocialContent() { try { const response = await fetch('social.json'); socialData = await response.json(); renderSocialContent(); } catch (error) { console.error('Error loading social content:', error); document.getElementById('social-grid').innerHTML = '<p class="text-red-600 font-bold">Error loading social content</p>'; } }
+async function loadWritingContent() { try { const response = await fetch('writing.json'); writingData = await response.json(); renderWritingFilters(); renderWritingContent(); } catch (error) { console.error('Error loading writing content:', error); document.getElementById('writing-grid').innerHTML = '<p class="text-red-600 font-bold">Error loading writing content</p>'; } }
+async function loadVideoContent() { try { const response = await fetch('video.json'); videoData = await response.json(); renderVideoSkills(); renderVideoFilters(); renderVideoContent(); } catch (error) { console.error('Error loading video content:', error); document.getElementById('video-grid').innerHTML = '<p class="text-red-600 font-bold">Error loading video content</p>'; } }
+function renderSocialContent() { const grid = document.getElementById('social-grid'); grid.innerHTML = ''; socialData.posts.forEach((post, index) => { const isHidden = !post.featured && !socialExpanded; const card = document.createElement('div'); card.className = `bg-white border-2 border-black p-4 hard-shadow flex flex-col h-full ${post.featured ? '' : 'social-hidden'} ${isHidden ? 'hidden' : ''}`; card.setAttribute('data-aos', 'fade-up'); if (index > 0) card.setAttribute('data-aos-delay', (index % 2) * 50); card.innerHTML = `<h3 class="font-black uppercase text-lg mb-4 border-b-2 border-black pb-2">${post.title}</h3><div class="flex-grow flex items-center justify-center bg-gray-50 min-h-[450px] border border-gray-200 relative mb-4"><span class="absolute text-gray-400 font-bold text-center p-4 text-sm z-0">Loading Embed...</span><blockquote class="instagram-media relative z-10 w-full" data-instgrm-permalink="${post.permalink}" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:none; margin:0; padding:0; width:100%;"></blockquote></div><a href="${post.permalink}" target="_blank" rel="noopener noreferrer" class="block text-center bg-black text-white font-bold py-3 hover:bg-fuchsia-500 transition-colors uppercase text-sm border-2 border-black btn-push">View on Instagram ↗</a>`; grid.appendChild(card); }); if (window.instgrm) window.instgrm.Embeds.process(); }
+function toggleSocial() { socialExpanded = !socialExpanded; document.querySelectorAll('.social-hidden').forEach(post => post.classList.toggle('hidden')); const btn = document.getElementById('social-toggle-btn'); const header = document.getElementById('social-header'); if (socialExpanded) { btn.innerText = 'Show Less Social Work ☝️'; if (window.instgrm) window.instgrm.Embeds.process(); } else { btn.innerText = 'Show More Social Work 👇'; header.scrollIntoView({ behavior:'smooth', block:'start' }); } }
+function renderWritingFilters() { const container = document.getElementById('writing-filters'); container.innerHTML = ''; writingData.categories.forEach((cat, index) => { const btn = document.createElement('button'); btn.className = `filter-btn px-6 py-2 border-2 border-black font-bold uppercase transition-all hover:bg-black hover:text-white ${index === 0 ? 'active' : ''}`; btn.textContent = cat.label; btn.onclick = () => filterWriting(cat.id); container.appendChild(btn); }); }
+function renderWritingContent(filterCategory = 'all') { const grid = document.getElementById('writing-grid'); grid.innerHTML = ''; const categoryColors = { blog:'bg-lime-300', press:'bg-cyan-300', careers:'bg-yellow-300', product:'bg-fuchsia-300' }; writingData.items.forEach(item => { const shouldShow = filterCategory === 'all' || item.category === filterCategory; const isHidden = filterCategory === 'all' && !item.featured && !writingExpanded; if (!shouldShow) return; const card = document.createElement('div'); card.className = `writing-item ${item.category} bg-gray-50 border-2 border-black p-6 hard-shadow flex flex-col justify-between ${filterCategory === 'all' && !item.featured ? 'writing-extra' : ''} ${isHidden ? 'hidden' : ''}`; card.innerHTML = `<div><span class="inline-block px-2 py-1 ${categoryColors[item.category] || 'bg-gray-300'} border border-black text-xs font-bold uppercase mb-2">${item.category}</span><h3 class="text-2xl font-black uppercase mb-2">${item.title}</h3><p class="font-bold text-gray-500 mb-4">${item.client}</p></div><a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-fuchsia-600 font-bold hover:underline uppercase">Read More →</a>`; grid.appendChild(card); }); document.getElementById('writing-toggle-btn').style.display = filterCategory === 'all' ? 'inline-block' : 'none'; }
+function filterWriting(category) { document.querySelectorAll('.filter-btn').forEach(btn => { btn.classList.remove('active'); if (btn.textContent.toLowerCase() === category || (category === 'all' && btn.textContent === 'All')) btn.classList.add('active'); }); writingExpanded = false; document.getElementById('writing-toggle-btn').innerText = 'Show All Writing 👇'; renderWritingContent(category); }
+function toggleWriting() { writingExpanded = !writingExpanded; const extras = document.querySelectorAll('.writing-extra'); const btn = document.getElementById('writing-toggle-btn'); const header = document.getElementById('writing-header'); if (writingExpanded) { extras.forEach(item => item.classList.remove('hidden')); btn.innerText = 'Show Less Writing ☝️'; } else { extras.forEach(item => item.classList.add('hidden')); btn.innerText = 'Show All Writing 👇'; header.scrollIntoView({ behavior:'smooth', block:'start' }); } }
+function renderVideoSkills() { document.getElementById('video-skills').innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 gap-8"><div><h3 class="text-lime-300 font-black uppercase mb-4 text-xl border-b border-gray-700 pb-2">Production Skills</h3><p class="text-gray-300 leading-relaxed font-medium">${videoData.skills.production}</p></div><div><h3 class="text-fuchsia-400 font-black uppercase mb-4 text-xl border-b border-gray-700 pb-2">Software Arsenal</h3><p class="text-gray-300 leading-relaxed font-medium">${videoData.skills.software}</p></div></div>`; }
+function renderVideoFilters() { const container = document.getElementById('video-filters'); container.innerHTML = ''; videoData.categories.forEach((cat, index) => { const btn = document.createElement('button'); btn.className = `video-filter-btn px-6 py-2 bg-white text-black border-2 border-white font-bold uppercase transition-all hover:bg-fuchsia-500 hover:text-white ${index === 0 ? 'active' : ''}`; btn.dataset.category = cat.id; btn.textContent = cat.label; btn.onclick = () => filterVideo(cat.id); container.appendChild(btn); }); }
+function filterVideo(category) { videoFilter = category; document.querySelectorAll('.video-filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.category === category)); renderVideoContent(); }
+function renderVideoContent() { const grid = document.getElementById('video-grid'); grid.innerHTML = ''; const categoryColors = { Codeup:{ bg:'bg-fuchsia-500', text:'text-white', shadow:'hard-shadow-fuchsia' }, Zoo:{ bg:'bg-lime-500', text:'text-black', shadow:'hard-shadow-lime' } }; videoData.videos.filter(video => videoFilter === 'all' || video.category === videoFilter).forEach(video => { const colors = categoryColors[video.category] || { bg:'bg-gray-500', text:'text-white', shadow:'hard-shadow' }; const card = document.createElement('div'); card.className = `video-card ${video.category} bg-neutral-900 border-2 border-white p-4 ${colors.shadow} group`; card.innerHTML = `<span class="inline-block px-2 py-1 ${colors.bg} ${colors.text} border border-white text-xs font-bold uppercase mb-3">${video.category}</span><h3 class="font-bold text-lg mb-4 min-h-12 line-clamp-2">${video.title}</h3><div class="relative w-full aspect-video bg-gray-800 cursor-pointer overflow-hidden border border-white video-thumb" data-id="${video.youtubeId}" role="button" tabindex="0" aria-label="Play ${video.title}"><img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg" alt="Video thumbnail for ${video.title}" loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"><div class="absolute inset-0 flex items-center justify-center play-overlay"><div class="w-12 h-12 bg-white rounded-full flex items-center justify-center play-icon"><div class="w-0 h-0 border-t-[8px] border-t-transparent border-l-[16px] border-l-black border-b-[8px] border-b-transparent ml-1"></div></div></div></div>`; grid.appendChild(card); }); attachVideoClickHandlers(); }
+function attachVideoClickHandlers() { document.querySelectorAll('.video-thumb').forEach(thumb => { const playVideo = () => { const id = thumb.getAttribute('data-id'); const iframe = document.createElement('iframe'); iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`; iframe.setAttribute('frameborder','0'); iframe.setAttribute('allowfullscreen',''); iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'); iframe.className='w-full h-full'; iframe.title = thumb.getAttribute('aria-label') || 'Portfolio video'; thumb.innerHTML=''; thumb.appendChild(iframe); }; thumb.addEventListener('click', playVideo); thumb.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); playVideo(); } }); }); }
+window.addEventListener('scroll', () => { const btn = document.getElementById('back-to-top'); if (window.scrollY > 500) btn.classList.remove('opacity-0','pointer-events-none'); else btn.classList.add('opacity-0','pointer-events-none'); });
+</script>
+</body>
+</html>
