@@ -6,6 +6,7 @@ on:
       - main
     paths-ignore:
       - writing.json
+      - writing/index.html
   schedule:
     - cron: '17 13 * * *'
   workflow_dispatch:
@@ -29,16 +30,19 @@ jobs:
       - name: Pull latest Medium stories
         run: node scripts/update-medium-writing.mjs
 
+      - name: Refresh the writing portfolio
+        run: node scripts/render-portfolio.mjs
+
       - name: Commit changes when the feed changed
         shell: bash
         run: |
-          if git diff --quiet -- writing.json; then
+          if git diff --quiet -- writing.json writing/index.html; then
             echo "Medium writing is already up to date."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add writing.json
+          git add writing.json writing/index.html
           git commit -m "Sync latest Medium writing"
           git push

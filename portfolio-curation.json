@@ -1,0 +1,69 @@
+{
+  "writing": {
+    "groups": [
+      { "id": "press", "title": "Press releases & announcements", "items": ["overland-leadership", "zion-renderings", "downtown-hotel", "overnight-lodge", "locals-day", "fenolio-finalist"] },
+      { "id": "web-product", "title": "Web & product copy", "items": ["careers-page", "linkup-docs"] },
+      { "id": "brand-stories", "title": "Brand stories & editorial", "items": ["hsi-education", "love-is-wild"] }
+    ],
+    "context": {
+      "overland-leadership": { "format": "Corporate announcement", "description": "Leadership news written for an architecture firm's clients, partners, and industry audience." },
+      "zion-renderings": { "format": "Project announcement", "description": "An introduction to the design and conservation priorities behind a national park discovery center." },
+      "downtown-hotel": { "format": "Groundbreaking announcement", "description": "A development milestone translated into a clear story about a new downtown San Antonio hotel." },
+      "overnight-lodge": { "format": "Press release", "description": "A new overnight experience introduced through news and destination messaging." },
+      "locals-day": { "format": "Promotional announcement", "description": "Local-audience messaging for a zoo promotion, with the visit opportunity at the center." },
+      "fenolio-finalist": { "format": "Recognition announcement", "description": "A staff recognition story connecting an individual expert with the zoo's work." },
+      "careers-page": { "format": "Recruiting web copy", "description": "Employer-brand content for prospective architecture candidates. The live careers site may have changed since my work." },
+      "linkup-docs": { "format": "Help-center documentation", "description": "Product guidance designed to help people understand and use a CRM. The live help center may have changed since my work." },
+      "hsi-education": { "format": "Thought leadership", "description": "A brand story connecting higher-education design with the needs of Hispanic Serving Institutions." },
+      "love-is-wild": { "format": "Seasonal brand story", "description": "A Valentine's Day story that brings the zoo's personality into its seasonal offerings." },
+      "zoo-year-new-you": { "format": "Brand blog", "description": "A New Year angle on the zoo experience, written for visitors and families." },
+      "membership-reasons": { "format": "Membership content", "description": "Benefit-led content giving prospective members reasons to make the zoo part of their routine." }
+    }
+  },
+  "social": {
+    "groups": [
+      { "id": "personality", "title": "Brand personality & culture", "items": ["poop-candle", "gen-z-slang", "turn-down-watt"] },
+      { "id": "campaigns", "title": "Campaigns & reasons to visit", "items": ["christmas-promo", "zoo-lights-ad", "valentines-day", "spring-break", "five-reasons", "christmas-zone"] },
+      { "id": "community", "title": "Community & participation", "items": ["capybara-naming", "community-ugc"] }
+    ],
+    "context": {
+      "poop-candle": { "format": "Product humor", "description": "An unconventional product gives the zoo permission to bring a little absurdity into the feed." },
+      "gen-z-slang": { "format": "Trend adaptation", "description": "A familiar internet format adapted to a destination brand's voice." },
+      "turn-down-watt": { "format": "Playful brand content", "description": "A pop-culture hook used to give zoo content a recognizable, playful entry point." },
+      "christmas-promo": { "format": "Seasonal promotion", "description": "Holiday content focused on the experience visitors can expect at the zoo." },
+      "zoo-lights-ad": { "format": "Paid social creative", "description": "Event promotion built around Zoo Lights and a reason to plan a visit." },
+      "valentines-day": { "format": "Seasonal reel", "description": "A Valentine's Day angle shaped for the zoo's audience and brand personality." },
+      "spring-break": { "format": "Destination reel", "description": "A timely visit prompt tied to spring-break planning." },
+      "five-reasons": { "format": "Visitor-focused content", "description": "A simple list format that makes the case for a zoo visit easy to scan." },
+      "christmas-zone": { "format": "Seasonal experience", "description": "A closer look at the holiday experience beyond the event announcement." },
+      "capybara-naming": { "format": "Audience participation", "description": "An animal-naming moment that gives the community something to join in on." },
+      "community-ugc": { "format": "Community content", "description": "A guest perspective brought into the brand's own social presence." }
+    }
+  },
+  "video": {
+    "groups": [
+      { "id": "destination", "title": "Destination & nonprofit stories", "items": ["end-of-year", "fundraising", "wildlife-rescue", "zoo-school"] },
+      { "id": "education", "title": "Education & recruitment", "items": ["student-experience", "financial-aid", "job-promise"] }
+    ],
+    "context": {
+      "end-of-year": { "format": "Year-in-review video", "description": "A look back at the zoo's year through its work, people, and moments." },
+      "fundraising": { "format": "Fundraising story", "description": "Mission-focused video connecting the zoo's work with a reason to support it." },
+      "wildlife-rescue": { "format": "Sizzle reel", "description": "An energetic overview of wildlife rescue work." },
+      "zoo-school": { "format": "Education story", "description": "A pen-pal letter becomes a human entry point into the zoo's education work." },
+      "student-experience": { "format": "Team introduction", "description": "An introduction to the people and support behind the Codeup student experience." },
+      "financial-aid": { "format": "Explainer", "description": "A walkthrough built around a practical question for prospective students: how financial aid works." },
+      "job-promise": { "format": "Social video", "description": "A concise introduction to Codeup's Job Promise for a social audience." }
+    }
+  },
+  "builder": {
+    "groups": [
+      { "id": "marketing-tools", "title": "Tools for the work behind the work", "items": ["postiq", "receipts-demo"] },
+      { "id": "creative-products", "title": "Creative products", "items": ["plot-twisted"] }
+    ],
+    "context": {
+      "postiq": { "format": "Social publishing workspace", "problem": "Drafting, planning, and repurposing content meant hopping between disconnected tools.", "contribution": "Product concept, workflow design, interface direction, AI-assisted development, testing, and Buffer integration.", "evidence": "Profiled in Buffer's companion-app case study." },
+      "receipts-demo": { "format": "Content approval prototype", "problem": "Content feedback scattered across messages makes approvals harder to follow.", "contribution": "Product concept, review flow, interface direction, and prototyping around creator and client feedback.", "evidence": "Working demo; featured alongside PostIQ by Buffer." },
+      "plot-twisted": { "format": "Movie guessing game", "problem": "Turn a love of movies into a playful experience people can understand and start quickly.", "contribution": "Game concept, voice, visual direction, product experience, and AI-assisted prototyping and iteration.", "evidence": "A playable product from Nobody Creative." }
+    }
+  }
+}
