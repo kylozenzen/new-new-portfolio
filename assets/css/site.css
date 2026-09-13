@@ -59,7 +59,7 @@ section[id], article[id], div[id] { scroll-margin-top: 100px; }
 .hero-copy { max-width: 610px; font-size: 1.05rem; margin-top: 22px; }
 .location { margin-top: 15px; font-size: .8rem; color: var(--muted); }
 .portrait { margin: 0; border: 2px solid var(--ink); background: white; padding: 9px; box-shadow: 7px 7px 0 var(--pink); transform: rotate(2deg); }
-.portrait img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center; }
+.portrait img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: center; }
 .portrait figcaption { padding: 10px 3px 3px; display: flex; justify-content: space-between; gap: 6px; font-size: .67rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
 .experience-line { display: flex; flex-wrap: wrap; gap: 8px 22px; border-top: 1px solid var(--line); margin-top: 38px; padding-top: 18px; font-size: .8rem; }
 .experience-line strong { font-weight: 500; }
