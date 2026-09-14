@@ -80,7 +80,7 @@ function page(key, content) {
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="${origin}${m.path}"><meta name="twitter:title" content="${e(m.title)}"><meta name="twitter:description" content="${e(m.description)}">
 <meta name="twitter:image" content="${origin}/assets/images/portfolio-share-card.png?v=2"><meta name="twitter:image:alt" content="Ben Campbell Creative portfolio">
 <meta name="theme-color" content="#fffdf8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css"><script src="/assets/js/site.js" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css"><link rel="stylesheet" href="/assets/css/charm.css"><script src="/assets/js/site.js" defer></script>
 <script type="application/ld+json">${JSON.stringify(structured).replace(/</g, '\\u003c')}</script>
 </head><body data-lens="${key}">${header(key)}<main id="main-content">${content}</main>${footer(key)}</body></html>\n`;
 }
@@ -110,6 +110,23 @@ function contact({ home = false, title = 'Like what you see?', description = 'Op
   </div></div></section>`;
 }
 
+const TICKER_WORDS = '/// SOCIAL STRATEGY /// CONTENT SYSTEMS /// CAMPAIGNS /// COMMUNITY /// COPYWRITING /// VIDEO /// BUILT TOOLS ///&nbsp;';
+
+// Repeated four times so the -50% translate loops seamlessly at any width.
+function ticker() {
+  return `<div class="ticker" aria-hidden="true"><div class="ticker-track">${`<span>${TICKER_WORDS}</span>`.repeat(4)}</div></div>`;
+}
+
+function stats() {
+  const figures = [
+    ['6M+', 'Audience footprint'],
+    ['470M+', 'Organic impressions'],
+    ['15M+', 'Interactions'],
+    ['$75K+', 'Attributed revenue'],
+  ];
+  return `<section class="stats" aria-labelledby="stats-heading"><div class="wrap"><p class="eyebrow">A few useful receipts</p><h2 id="stats-heading">The numbers behind the work.</h2><p class="stats-note">Career totals across destination brands, tech education, architecture, and SaaS. The case studies explain the context and my role.</p><div class="stat-grid">${figures.map(([figure, label]) => `<div class="stat"><b>${figure}</b><span>${e(label)}</span></div>`).join('')}</div></div></section>`;
+}
+
 function homePage() {
   return page('home', `
 <section class="hero" aria-labelledby="hero-heading"><div class="wrap">
@@ -121,7 +138,9 @@ function homePage() {
   <figure class="portrait"><img src="/assets/images/ben-campbell-headshot.jpg" width="400" height="500" alt="Ben Campbell" fetchpriority="high"><figcaption><span>Strategy + sleeves rolled up</span><span aria-hidden="true">↗</span></figcaption></figure></div>
   <div class="experience-line"><span class="muted">Experience with</span><strong>San Antonio Zoo</strong><strong>Overland Partners</strong><strong>Codeup</strong></div>
 </div></section>
+${ticker()}
 <section class="section" id="work" aria-labelledby="work-heading"><div class="wrap"><div class="section-head"><div><p class="eyebrow">01 / Work examples</p><h2 id="work-heading">Start with the work.</h2></div><p>A few things I’ve made. Explore the portfolio that fits what you’re looking for.</p></div>${workCards()}</div></section>
+${stats()}
 <section class="section cases" id="case-studies" aria-labelledby="cases-heading"><div class="wrap"><div class="section-head"><div><p class="eyebrow">02 / Case studies</p><h2 id="cases-heading">The thinking behind it.</h2></div><a class="text-link" href="/case-studies.html">All four case studies <span aria-hidden="true">→</span></a></div>
   <div class="case-list"><a class="case-row" href="/case-studies/san-antonio-zoo.html"><div><p class="eyebrow">Social strategy + content operations</p><h3>San Antonio Zoo</h3></div><p>A repeatable planning system with room for the moments nobody could schedule.<strong>6M+ audience supported · +15% comments and shares</strong></p><span class="case-arrow" aria-hidden="true">↗</span></a>
   <a class="case-row" href="/case-studies/codeup.html"><div><p class="eyebrow">Growth + community marketing</p><h3>Codeup</h3></div><p>Connecting content, community, events, and the path from curiosity to application.<strong>+25% student applications · shared marketing outcome</strong></p><span class="case-arrow" aria-hidden="true">↗</span></a>
