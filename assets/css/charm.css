@@ -1,0 +1,125 @@
+/* ============================================================
+   CHARM LAYER — sits on top of site.css, changes nothing structural.
+   Everything here is either a token swap or one small added block.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&display=swap');
+
+:root {
+  /* Pastels stay for big fills. Saturated twins do the shadows + accents. */
+  --pink: #f9a8d4;   --pink-hot:  #d946ef;
+  --lime: #d9f99d;   --lime-hot:  #a3e635;
+  --cyan: #a5f3fc;   --cyan-hot:  #22d3ee;
+  --yellow: #fde68a; --yellow-hot:#facc15;
+  --accent-hot: var(--pink-hot);
+}
+body[data-lens='writing'] { --accent-hot: var(--lime-hot); }
+body[data-lens='video']   { --accent-hot: var(--cyan-hot); }
+body[data-lens='builder'] { --accent-hot: var(--yellow-hot); }
+
+/* --- 1. TYPE: bring back the heavy uppercase voice ------------------- */
+h1, h2 { font-family: 'Archivo Black', 'Space Grotesk', sans-serif; font-weight: 400; }
+/* Archivo Black sets wider than Space Grotesk 700 — pull the sizes back
+   so the hero still lands in two lines. */
+h1 { font-size: clamp(2.3rem, 4.4vw, 3.9rem); letter-spacing: -.035em; line-height: 1.02; }
+h2 { text-transform: uppercase; letter-spacing: -.03em; font-size: clamp(1.85rem, 2.9vw, 2.6rem); }
+.contact h2 { font-size: clamp(1.7rem, 2.5vw, 2.25rem); }
+.work-card h3, .recognition h3 { text-transform: uppercase; letter-spacing: -.03em; font-weight: 700; }
+.eyebrow { letter-spacing: .15em; }
+
+/* --- 2. WEIGHT: thicker rules, deeper colored shadows ---------------- */
+.section, .hero, .site-header { border-bottom-width: 3px; }
+.work-card { border-width: 3px; box-shadow: 6px 6px 0 var(--card-accent-hot); }
+.work-card.social  { --card-accent-hot: var(--pink-hot); }
+.work-card.writing { --card-accent-hot: var(--lime-hot); }
+.work-card.video   { --card-accent-hot: var(--cyan-hot); }
+.work-card.builder { --card-accent-hot: var(--yellow-hot); }
+.work-card-top { border-bottom-width: 3px; }
+.work-card:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--card-accent-hot); }
+.work-card { transition: transform .15s, box-shadow .15s; }
+.recognition { border-width: 3px; box-shadow: 7px 7px 0 var(--pink-hot); }
+.portrait { box-shadow: 9px 9px 0 var(--lime-hot); border-width: 3px; }
+.button { box-shadow: 4px 4px 0 var(--accent-hot); }
+.button:hover { box-shadow: 6px 6px 0 var(--accent-hot); }
+.button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--accent-hot); }
+.contact .button { box-shadow: 4px 4px 0 var(--ink); }
+.contact .button:hover { box-shadow: 6px 6px 0 var(--ink); }
+.hero h1 span { background: linear-gradient(transparent 62%, var(--pink-hot) 62%); }
+.primary-nav a:not(.nav-contact):hover { background: var(--yellow-hot); text-decoration: none; box-shadow: 0 0 0 4px var(--yellow-hot); }
+.nav-contact:hover { background: var(--pink-hot); border-color: var(--ink); }
+
+/* --- 3. TEXTURE: the grid is back, quietly -------------------------- */
+.hero { position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: linear-gradient(var(--ink) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+  background-size: 24px 24px; opacity: .05;
+}
+.hero > .wrap { position: relative; z-index: 1; }
+
+/* --- 4. MARQUEE: the hazard strip under the hero -------------------- */
+.ticker {
+  background: var(--ink); border-bottom: 3px solid var(--ink);
+  overflow: hidden; padding: 11px 0;
+}
+.ticker-track {
+  display: flex; width: max-content; gap: 0;
+  animation: ticker 38s linear infinite;
+}
+.ticker span {
+  color: var(--lime-hot); font-weight: 700; font-style: italic;
+  text-transform: uppercase; letter-spacing: .12em;
+  font-size: clamp(.85rem, 1.4vw, 1.05rem); white-space: nowrap; padding-right: 0;
+}
+@keyframes ticker { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+}
+
+/* --- 5. STATS: the receipts, in color, on black --------------------- */
+.stats { background: var(--ink); border-bottom: 3px solid var(--ink); padding: 46px 0; }
+.stats .eyebrow { color: var(--lime-hot); margin-bottom: 10px; }
+.stats h2 { color: var(--paper); margin-bottom: 8px; }
+.stats .stats-note { color: #a3a39c; font-size: .82rem; max-width: 620px; }
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; }
+.stat {
+  border: 3px solid var(--ink); padding: 18px 16px; text-align: center;
+  box-shadow: 5px 5px 0 var(--paper);
+}
+.stat:nth-child(1) { background: var(--pink); }
+.stat:nth-child(2) { background: var(--lime); }
+.stat:nth-child(3) { background: var(--cyan); }
+.stat:nth-child(4) { background: var(--yellow); }
+.stat b {
+  display: block; font-family: 'Archivo Black', sans-serif; font-weight: 400;
+  font-size: clamp(1.6rem, 2.6vw, 2.3rem); letter-spacing: -.03em; margin-bottom: 6px;
+}
+.stat span {
+  display: block; border-top: 2px solid var(--ink); padding-top: 7px;
+  font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+}
+
+/* --- 6. PERSONALITY: the human line stops hiding -------------------- */
+.about-copy .personal {
+  font-size: .92rem !important; color: var(--ink);
+  background: var(--lime); border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 16px 18px; margin-top: 28px; transform: rotate(-1deg);
+  font-weight: 500;
+}
+
+/* --- 7. CONTACT: loud close ---------------------------------------- */
+.contact { background: var(--lime-hot); border-bottom: 3px solid var(--ink); }
+.contact-details { border-top-color: #6b8a2a; }
+
+/* --- 8. FOOTER: a little life -------------------------------------- */
+.site-footer { border-top: 3px solid var(--ink); }
+.footer-inner nav a:hover { background: var(--yellow-hot); box-shadow: 0 0 0 3px var(--yellow-hot); text-decoration: none; }
+
+@media (max-width: 720px) {
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .stats { padding: 32px 0; }
+  .portrait { box-shadow: 5px 5px 0 var(--lime-hot); }
+  .about-copy .personal { transform: none; }
+}
