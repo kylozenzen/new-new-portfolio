@@ -175,8 +175,6 @@ function currently() {
 // Photo is optional until Ben adds one — set this to the image path and the
 // placeholder disappears. Landscape or square reads best in this layout.
 const ethosPhoto = '/assets/images/IMG_7920.jpeg';
-';
-
 function statement() {
   const media = ethosPhoto
     ? `<img src="${href(ethosPhoto)}" alt="Ben Campbell at work" width="720" height="720" loading="lazy">`
