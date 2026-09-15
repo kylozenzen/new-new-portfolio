@@ -148,7 +148,7 @@ h2 { text-transform: uppercase; letter-spacing: -.03em; font-size: clamp(1.85rem
 
 /* --- Portrait: 15% tighter on the face ------------------------------- */
 .portrait { overflow: hidden; }
-.portrait img { scale: 1.15; transform-origin: 50% 38%; transition: scale .4s ease; }
+.portrait img { scale: 1.32; transform-origin: 50% 38%; transition: scale .4s ease; }
 .portrait:hover img { scale: 1.19; }
 
 /* --- Arrows: outbound marks shrink back, inbound stay loud ----------- */
