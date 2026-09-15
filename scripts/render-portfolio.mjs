@@ -174,7 +174,7 @@ function currently() {
 
 // Photo is optional until Ben adds one — set this to the image path and the
 // placeholder disappears. Landscape or square reads best in this layout.
-const ethosPhoto = 'const ethosPhoto = '/assets/images/image_7920.jpeg';
+const ethosPhoto = '/assets/images/IMG_7920.jpeg';
 ';
 
 function statement() {
