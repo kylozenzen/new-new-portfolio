@@ -1,5 +1,5 @@
 /**
- * Markup for the 15-second showreel. Content comes from showreel.json; timing and
+ * Markup for the 30-second showreel. Content comes from showreel.json; timing and
  * choreography live in assets/js/showreel.js; the look lives in assets/css/showreel.css.
  *
  * Without JavaScript only the final frame shows (name, availability, contact), so
@@ -151,7 +151,7 @@ export function renderShowreel(data, { e, href, secondaryHref, headingLevel = 'h
 
   return `<section class="sr${standalone ? ' sr-standalone' : ''}" id="reel" aria-labelledby="reel-title" data-reel>
   <div class="wrap sr-wrap">
-    <div class="sr-head"><p class="eyebrow" id="reel-title">The 15-second version</p><p class="sr-head-note">Or the long version, below.</p></div>
+    <div class="sr-head"><p class="eyebrow" id="reel-title">The 30-second version</p><p class="sr-head-note">Or the long version, below.</p></div>
     <div class="sr-shell">
       <div class="sr-stage" data-stage aria-describedby="reel-transcript">
         <div class="sr-cam" data-el="cam">${who}${scale}${craft}${work}${why}${next}</div>

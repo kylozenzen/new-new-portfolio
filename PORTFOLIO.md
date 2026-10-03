@@ -51,7 +51,7 @@ The existing `portfolio-contact` Netlify form and `/success` route are preserved
 The form now includes full-time, freelance, fractional, and part-time inquiry types.
 Check delivery in Netlify after deployment; local testing must not submit a real inquiry.
 
-## Showreel (the 15-second version)
+## Showreel (the 30-second version)
 
 A motion-graphics reel sits under the homepage hero and the `/social/` hero, and has
 its own page at `/reel/`. No libraries: a ~250-line timeline engine renders every

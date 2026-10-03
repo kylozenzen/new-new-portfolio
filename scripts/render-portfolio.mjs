@@ -48,7 +48,7 @@ const meta = {
   social: { path: '/social/', title: 'Social Media Portfolio | Ben Campbell', description: 'Social media work by Ben Campbell: campaigns, brand personality, and community content for San Antonio Zoo, with the strategy and case studies behind the posts.' },
   video: { path: '/video/', title: 'Video & Content Production Portfolio | Ben Campbell', description: 'Video work by Ben Campbell for San Antonio Zoo and Codeup: destination stories, fundraising, explainers, and social content, with production capabilities and context.' },
   builder: { path: '/builder/', title: 'Builder & AI Portfolio | Ben Campbell', description: 'Marketing tools and creative products built by Ben Campbell: PostIQ, Receipts, and Plot Twisted. Product thinking, workflow design, and AI-assisted development, featured by Buffer.' },
-  reel: { path: '/reel/', title: 'Showreel | Ben Campbell', description: 'Ben Campbell in 15 seconds: social media, content, and community — 6M+ audience, 470M+ organic impressions — and available for a full-time social or content role.' },
+  reel: { path: '/reel/', title: 'Showreel | Ben Campbell', description: 'Ben Campbell in 30 seconds: social media, content, and community — 6M+ audience, 470M+ organic impressions — and available for a full-time social or content role.' },
   work: { path: '/work-samples.html', title: 'Work Samples | Ben Campbell', description: 'Choose a focused portfolio: social media, copywriting, video, or builder and AI work by Ben Campbell. Published examples, context, and ways to get in touch.' }
 };
 
@@ -191,7 +191,7 @@ function statement() {
 </div></section>`;
 }
 
-// The 15-second version. Same component on home, /social/, and the standalone /reel/.
+// The 30-second version. Same component on home, /social/, and the standalone /reel/.
 const reel = (options = {}) => renderShowreel(showreel, { e, href, ...options });
 
 function homePage() {

@@ -1,5 +1,5 @@
 /* ============================================================
-   SHOWREEL — a deterministic, seekable 15-second timeline.
+   SHOWREEL — a deterministic, seekable 30-second timeline.
 
    Nothing here runs on its own clock: every frame is a pure function of
    one number, t (seconds). That is what makes play, pause, replay,
@@ -27,25 +27,27 @@
   // Beats are seconds from that scene's start.
   // ---------------------------------------------------------------------------
   const showreelConfig = {
-    duration: 15,
-    poster: 1.62,            // the frame shown before the reel plays
+    duration: 30,
+    poster: 3.0,             // the frame shown before the reel plays
     fps: 24,                 // timecode + film-grain cadence
     autoplayAt: 0.55,        // share of the stage visible before autoplay
     scenes: [
-      { id: 'who',   label: 'Who',   start: 0,     end: 2.05,  show: [0, 2.05],      fill: 'var(--sr-lime-hot)' },
-      { id: 'scale', label: 'Scale', start: 2.05,  end: 5.05,  show: [2.05, 5.08],   fill: 'var(--sr-pink)' },
-      { id: 'craft', label: 'Craft', start: 5.05,  end: 8.08,  show: [4.83, 8.1],    fill: 'var(--sr-yellow)' },
-      { id: 'work',  label: 'Work',  start: 8.08,  end: 11.15, show: [8.08, 11.17],  fill: 'var(--sr-cyan)' },
-      { id: 'why',   label: 'Why',   start: 11.15, end: 13.05, show: [11.13, 13.36], fill: 'var(--sr-pink-hot)' },
-      { id: 'next',  label: 'Next',  start: 13.05, end: 15,    show: [12.9, Infinity], fill: 'var(--sr-lime)' },
+      { id: 'who',   label: 'Who',   start: 0,    end: 4,    show: [0, 4],             fill: 'var(--sr-lime-hot)' },
+      { id: 'scale', label: 'Scale', start: 4,    end: 11,   show: [4, 11.03],         fill: 'var(--sr-pink)' },
+      { id: 'craft', label: 'Craft', start: 11,   end: 16.5, show: [10.76, 16.52],     fill: 'var(--sr-yellow)' },
+      { id: 'work',  label: 'Work',  start: 16.5, end: 22.5, show: [16.5, 22.52],      fill: 'var(--sr-cyan)' },
+      { id: 'why',   label: 'Why',   start: 22.5, end: 26,   show: [22.48, 26.31],     fill: 'var(--sr-pink-hot)' },
+      { id: 'next',  label: 'Next',  start: 26,   end: 30,   show: [25.85, Infinity],  fill: 'var(--sr-lime)' },
     ],
+    // Transitions are timed to finish exactly at the next scene's start
+    // (punch + 0.33, iris + irisFor, cover + 0.3) — keep those sums in step.
     beats: {
-      who:   { chip: 0.08, ink: 0.42, first: 0.6, last: 0.76, tags: 1.08, tagStagger: 0.11, punch: 1.72 },
-      scale: { slots: [0, 0.72, 1.4, 2.05], zoom: 2.55, zoomFor: 0.42, iris: 2.78, irisFor: 0.24 },
-      craft: { words: [0, 0.48, 0.94, 1.34, 1.68, 1.96, 2.2], band: 2.42, cover: 2.76 },
-      work:  { beats: [0, 0.74, 1.46, 2.18], pile: 2.62, cover: 2.78 },
-      why:   { lines: [0.05, 0.27, 0.52], hold: [0.65, 1.12], payoff: 1.12, out: 1.72 },
-      next:  { name: 0.04, portrait: 0.12, status: 0.55, head: 0.75, actions: 0.95, nudge: 1.6, interactive: 0.6 },
+      who:   { chip: 0.15, ink: 0.7, first: 1.0, last: 1.2, tags: 1.85, tagStagger: 0.16, punch: 3.67 },
+      scale: { slots: [0, 1.65, 3.3, 4.95], zoom: 6.55, zoomFor: 0.42, iris: 6.76, irisFor: 0.24 },
+      craft: { words: [0, 0.85, 1.65, 2.4, 3.05, 3.6, 4.1], band: 4.6, cover: 5.2 },
+      work:  { beats: [0, 1.35, 2.7, 4.05], pile: 5.54, cover: 5.7 },
+      why:   { lines: [0.1, 0.5, 0.95], hold: [1.15, 2.0], payoff: 2.0, out: 3.32 },
+      next:  { name: 0.04, portrait: 0.15, status: 0.7, head: 1.0, actions: 1.3, nudge: 2.4, interactive: 0.7 },
     },
     // How each skill word arrives (by position in showreel.json's skills list).
     craftLooks: [null, null, 'bubble', 'chart', 'stamp', 'rec', 'type'],
@@ -231,7 +233,7 @@
       tl.to($('a-last'), S + b.last, 0.5, { X: 0, k: 0, b: 0 }, 'outExpo');
       tl.to($('a-last'), S + b.last, 0.12, { o: 1 }, 'linear');
       shake(S + b.last + 0.16, 0.012);
-      tl.to($('a-name'), S + 0.95, 1.1, { s: 1.035 }, 'linear');
+      tl.to($('a-name'), S + b.last + 0.5, b.punch - b.last - 0.5, { s: 1.045 }, 'linear');
 
       const rests = [-2.5, 1.5, -1.2];
       const tags = all(/^a-tag\d+$/);
@@ -268,6 +270,9 @@
         }
         if (isPhoto) { tl.set(panel, 0, { o: 0 }); tl.set(panel, at, { o: 1 }); }
         const c = at + (i ? 0.08 : 0.02);
+        const slotEnd = i + 1 < panels.length ? S + b.slots[i + 1] : S + b.zoom;
+        const value = $(`m${i}-value`);
+        if (value) { value.style.transformOrigin = '0 60%'; tl.to(value, c + 0.6, slotEnd - c - 0.6, { s: 1.045 }, 'linear'); }
 
         all(new RegExp(`^m${i}-d\\d+$`)).forEach((col, j) => {
           tl.set(col, 0, { y: 0 });
@@ -291,7 +296,7 @@
           tl.set(chip, 0, { s: 0.4, o: 0, Y: 0.08, r: k % 2 ? 4 : -4 });
           tl.to(chip, c + 0.08 + k * 0.07, 0.45, { s: 1, Y: 0, r: k % 2 ? 2 : -2 }, 'backBig');
           tl.to(chip, c + 0.08 + k * 0.07, 0.1, { o: 1 }, 'linear');
-          tl.to(chip, c + 0.55 + k * 0.07, 0.7, { Y: -0.045 }, 'linear');
+          tl.to(chip, c + 0.55 + k * 0.07, slotEnd - c - 0.55, { Y: -0.07 }, 'linear');
         });
         all(new RegExp(`^m${i}-bar\\d+$`)).forEach((bar, k) => {
           tl.set(bar, 0, { sy: 0 });
@@ -304,7 +309,7 @@
             tl.to(char, at + 0.02 + j * 0.045, 0.45, { y: 0 }, 'outExpo');
           });
           tl.set($(`m${i}-img`), 0, { s: 1.32 });
-          tl.to($(`m${i}-img`), at, 1.0, { s: 1.06 }, 'linear');
+          tl.to($(`m${i}-img`), at, S + b.zoom - at, { s: 1.04 }, 'linear');
           shake(at + 0.04, 0.008);
 
           // Dive through the zero. The next scene opens out of the same point.
@@ -393,7 +398,7 @@
       const band = $('c-band'), track = $('c-track');
       tl.set(band, 0, { sy: 0 });
       tl.to(band, S + b.band, 0.2, { sy: 1 }, 'outExpo');
-      tl.to(track, S + b.band, 0.75, { x: [6, -34] }, 'linear');
+      tl.to(track, S + b.band, b.cover - b.band + 0.3, { x: [6, -34] }, 'linear');
       tl.to(band, S + b.cover, 0.3, { sy: (H / rest(band).h) * 1.15 }, 'inExpo');
       tl.to(track, S + b.cover, 0.1, { o: 0 }, 'linear');
     }
@@ -418,7 +423,7 @@
         if (type.includes('phone')) {
           tl.set(frame, 0, { Y: 1.05, r: 9 });
           tl.to(frame, at(i), 0.55, { Y: 0, r: -3 }, 'outExpo');
-          tl.to($(`d${i}-feed`), at(i) + 0.16, 0.6, { y: -40 }, 'inOut');
+          tl.to($(`d${i}-feed`), at(i) + 0.2, 1.05, { y: -40 }, 'inOut');
         } else if (type.includes('vf')) {
           tl.set(frame, 0, { clip: [0, 100, 0, 0], s: 1.08 });
           tl.to(frame, at(i), 0.32, { clip: [0, 0, 0, 0], s: 1 }, 'outExpo');
@@ -523,6 +528,7 @@
       tl.set($('f-secondary'), 0, { X: -0.02, o: 0 });
       tl.to($('f-secondary'), S + b.actions + 0.1, 0.36, { X: 0, o: 1 }, 'outExpo');
       tl.to($('f-arrow'), S + b.nudge, 0.45, { x: [0, 45], y: [0, -45] }, 'pulse');
+      tl.to($('f-arrow'), S + b.nudge + 0.9, 0.45, { x: [0, 45], y: [0, -45] }, 'pulse');
       const dot = $('f-dot');
       if (dot) tl.fn(t => { dot.style.transform = t < S ? 'none' : `scale(${(1 + 0.22 * Math.max(0, Math.sin((t - S) * 6))).toFixed(3)})`; });
       if (ctaLayer) tl.fn(t => { ctaLayer.inert = t < S + b.interactive; });
@@ -582,7 +588,7 @@
       const s = cfg.scenes[i];
       el.style.setProperty('--p', Math.max(0, Math.min(1, (t - s.start) / (s.end - s.start))).toFixed(3));
     });
-    timeEl.textContent = `0:${String(Math.min(15, Math.floor(t))).padStart(2, '0')} / 0:${String(D).padStart(2, '0')}`;
+    timeEl.textContent = `0:${String(Math.min(D, Math.floor(t))).padStart(2, '0')} / 0:${String(D).padStart(2, '0')}`;
   }
   function render() { if (tl) tl.render(t, W, H); ui(); }
   function rebuild() {
