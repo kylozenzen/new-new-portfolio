@@ -50,3 +50,28 @@ JavaScript is disabled. Old homepage/archive fragments (`#writing`, `#social`,
 The existing `portfolio-contact` Netlify form and `/success` route are preserved.
 The form now includes full-time, freelance, fractional, and part-time inquiry types.
 Check delivery in Netlify after deployment; local testing must not submit a real inquiry.
+
+## Showreel (the 15-second version)
+
+A motion-graphics reel sits under the homepage hero and the `/social/` hero, and has
+its own page at `/reel/`. No libraries: a ~250-line timeline engine renders every
+frame as a pure function of time, so play, pause, replay, chapter jumps, resizing
+mid-reel, and reduced motion all come for free.
+
+- **Content** — `showreel.json`: name, tagline, the four metrics, skills, projects,
+  positioning line, and the closing call to action. Every figure and client already
+  appears elsewhere on the site; keep it that way. Rerun `node scripts/render-portfolio.mjs`.
+- **Timing** — `showreelConfig` at the top of `assets/js/showreel.js`: scene starts,
+  on-screen windows, and per-scene beats in seconds. Choreography below it reads like
+  an edit list: `tl.to(element, at, duration, { props }, ease)`.
+- **Look** — `assets/css/showreel.css`. Everything inside the frame is sized in
+  container units. Phones and portrait tablets get a separate 4:5 composition.
+- **Markup** — `scripts/showreel-markup.mjs`, called from the renderer.
+- **Images** — `assets/reel/`, 900px copies of case-study photos.
+
+Autoplays once when most of the frame is on screen and pauses when scrolled away.
+With `prefers-reduced-motion`, it never autoplays and rests on the final frame (and,
+if played, drops shakes, flashes, and blur). Without JavaScript, the final frame
+(name, availability, contact links) is all that renders. A transcript is in the page
+for screen readers. In the console, `document.querySelector('[data-reel]').showreel.seek(7.2)`
+jumps to any moment for tuning.

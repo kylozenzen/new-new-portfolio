@@ -1,0 +1,73 @@
+{
+  "_about": "Content for the 15-second showreel. Every figure, client, and line here already appears elsewhere on the site (stats in render-portfolio.mjs, case studies, social.json, builders.json, lens heroes). Timing lives in assets/js/showreel.js; look lives in assets/css/showreel.css. Edit this file, then rerun scripts/render-portfolio.mjs.",
+  "person": {
+    "first": "Ben",
+    "last": "Campbell",
+    "role": "Social media + content marketing",
+    "location": "San Antonio, TX",
+    "headshot": "/assets/images/ben-campbell-headshot.jpg"
+  },
+  "tagline": ["Social", "Content", "Community"],
+  "metrics": [
+    { "value": "6M+", "label": "Audience footprint", "note": "Across every channel I have helped run", "color": "pink", "motif": "audience" },
+    { "value": "15M+", "label": "Interactions", "note": "Comments I read. Most of them, anyway", "color": "lime", "motif": "reactions", "reactions": ["Comment", "Share", "Save", "Reply"] },
+    { "value": "$75K+", "label": "Attributed revenue", "note": "Tickets, memberships, and merch", "color": "cyan", "motif": "bars" },
+    { "value": "470M+", "label": "Organic impressions", "note": "Not one dollar of that was paid", "color": "ink", "motif": "photo", "image": "/assets/reel/zoo-news-crew.jpg" }
+  ],
+  "metricsNote": "Career totals across destination brands, tech education, architecture, and SaaS. The case studies explain the context and my role.",
+  "skills": [
+    { "word": "Strategy", "tag": "The plan" },
+    { "word": "Content", "tag": "The work" },
+    { "word": "Community", "tag": "The replies" },
+    { "word": "Analytics", "tag": "The read" },
+    { "word": "PR", "tag": "The story out there" },
+    { "word": "Video", "tag": "The cut" },
+    { "word": "Social", "tag": "All of it, daily" }
+  ],
+  "projects": [
+    {
+      "client": "San Antonio Zoo",
+      "discipline": "Social + PR · 6M+ audience",
+      "frame": "phone",
+      "handle": "San Antonio Zoo",
+      "images": [
+        { "src": "/assets/reel/zoo-giraffe-calf.jpg", "alt": "Giraffe calf behind the scenes at San Antonio Zoo" },
+        { "src": "/assets/reel/zoo-lights-entrance.jpg", "alt": "Zoo Lights entrance at San Antonio Zoo" }
+      ],
+      "posts": ["Poop Candle Review", "Capybara Naming", "Zoo Lights Paid Ad", "Gen Z Slang Trend Pt. 2"]
+    },
+    {
+      "client": "Codeup",
+      "discipline": "Video + community",
+      "frame": "viewfinder",
+      "images": [{ "src": "/assets/reel/codeup-shoot.jpg", "alt": "Filming an interview at Codeup" }]
+    },
+    {
+      "client": "Nobody Creative",
+      "discipline": "Built tools · PostIQ + Receipts",
+      "frame": "browser",
+      "url": "postiq.netlify.app",
+      "title": "PostIQ",
+      "body": "Rough ideas into review-ready, scheduled content.",
+      "stamp": "Featured by Buffer · May 2026"
+    },
+    {
+      "client": "Overland Partners",
+      "discipline": "Brand storytelling",
+      "frame": "document",
+      "kicker": "Press · Web · Recruiting",
+      "headline": "Making complex project work easier to see, understand, and trust."
+    }
+  ],
+  "positioning": {
+    "lines": ["Give people", "a reason to", "stop."],
+    "payoff": "And stay."
+  },
+  "cta": {
+    "eyebrow": "Social media + content marketing",
+    "status": "Available for a full-time social or content role",
+    "headline": "Let’s give your brand something to say.",
+    "primary": { "label": "Let’s talk", "href": "mailto:hirebencampbell@gmail.com" },
+    "secondary": { "label": "See the work", "href": "#work" }
+  }
+}

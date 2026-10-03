@@ -6,11 +6,12 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { renderShowreel } from './showreel-markup.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = async name => JSON.parse(await readFile(resolve(root, name), 'utf8'));
-const [writing, social, video, builders, curation] = await Promise.all([
-  'writing.json', 'social.json', 'video.json', 'builders.json', 'portfolio-curation.json'
+const [writing, social, video, builders, curation, showreel] = await Promise.all([
+  'writing.json', 'social.json', 'video.json', 'builders.json', 'portfolio-curation.json', 'showreel.json'
 ].map(read));
 const origin = 'https://bencampbell.netlify.app';
 const resume = 'https://drive.google.com/file/d/1UCN5ni_gwb2K2jXjWVzgLvumo0GQTx6N/view?usp=sharing';
@@ -47,12 +48,13 @@ const meta = {
   social: { path: '/social/', title: 'Social Media Portfolio | Ben Campbell', description: 'Social media work by Ben Campbell: campaigns, brand personality, and community content for San Antonio Zoo, with the strategy and case studies behind the posts.' },
   video: { path: '/video/', title: 'Video & Content Production Portfolio | Ben Campbell', description: 'Video work by Ben Campbell for San Antonio Zoo and Codeup: destination stories, fundraising, explainers, and social content, with production capabilities and context.' },
   builder: { path: '/builder/', title: 'Builder & AI Portfolio | Ben Campbell', description: 'Marketing tools and creative products built by Ben Campbell: PostIQ, Receipts, and Plot Twisted. Product thinking, workflow design, and AI-assisted development, featured by Buffer.' },
+  reel: { path: '/reel/', title: 'Showreel | Ben Campbell', description: 'Ben Campbell in 15 seconds: social media, content, and community — 6M+ audience, 470M+ organic impressions — and available for a full-time social or content role.' },
   work: { path: '/work-samples.html', title: 'Work Samples | Ben Campbell', description: 'Choose a focused portfolio: social media, copywriting, video, or builder and AI work by Ben Campbell. Published examples, context, and ways to get in touch.' }
 };
 
 function header(lens = 'home') {
   const home = lens === 'home';
-  const directory = lens === 'work';
+  const directory = lens === 'work' || lens === 'reel';
   const nav = home ? [['#work', 'Work'], ['#case-studies', 'Case studies'], ['#about', 'About']] : directory ? [['/#work', 'Home'], ['/case-studies.html', 'Case studies']] : [['#work', `${labels[lens]} work`], [lens === 'builder' ? '#approach' : '#case-study', lens === 'builder' ? 'Approach' : 'Case study']];
   return `<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="wrap header-inner">
@@ -82,7 +84,7 @@ function footer(lens = 'home') {
 </div></footer>`;
 }
 
-function page(key, content) {
+function page(key, content, { reel = false } = {}) {
   const m = meta[key];
   const structured = { '@context': 'https://schema.org', '@type': key === 'home' ? 'ProfilePage' : 'CollectionPage', name: m.title, url: origin + m.path, description: m.description, mainEntity: { '@type': 'Person', name: 'Ben Campbell', url: origin, jobTitle: 'Social Media & Content Marketing Professional', sameAs: [linkedin, 'https://github.com/kylozenzen'] } };
   return `<!DOCTYPE html>
@@ -97,7 +99,7 @@ function page(key, content) {
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="${origin}${m.path}"><meta name="twitter:title" content="${e(m.title)}"><meta name="twitter:description" content="${e(m.description)}">
 <meta name="twitter:image" content="${origin}/assets/images/portfolio-share-card.png?v=2"><meta name="twitter:image:alt" content="Ben Campbell Creative portfolio">
 <meta name="theme-color" content="#fffdf8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css"><link rel="stylesheet" href="/assets/css/charm.css"><script src="/assets/js/site.js" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css"><link rel="stylesheet" href="/assets/css/charm.css">${reel ? '<link rel="stylesheet" href="/assets/css/showreel.css">' : ''}<script src="/assets/js/site.js" defer></script>${reel ? '<script src="/assets/js/showreel.js" defer></script>' : ''}
 <script type="application/ld+json">${JSON.stringify(structured).replace(/</g, '\\u003c')}</script>
 </head><body data-lens="${key}">${header(key)}<main id="main-content">${content}</main>${footer(key)}</body></html>\n`;
 }
@@ -189,6 +191,9 @@ function statement() {
 </div></section>`;
 }
 
+// The 15-second version. Same component on home, /social/, and the standalone /reel/.
+const reel = (options = {}) => renderShowreel(showreel, { e, href, ...options });
+
 function homePage() {
   return page('home', `
 <section class="hero" aria-labelledby="hero-heading"><div class="wrap">
@@ -201,6 +206,7 @@ function homePage() {
   <figure class="portrait"><img src="/assets/images/ben-campbell-headshot.jpg" width="400" height="500" alt="Ben Campbell" fetchpriority="high"><figcaption><span>Strategy + sleeves rolled up</span><span aria-hidden="true">↗</span></figcaption></figure></div>
   <div class="experience-line"><span class="muted">Experience with</span><strong>San Antonio Zoo</strong><strong>Overland Partners</strong><strong>Codeup</strong><strong>SeaWorld</strong><span class="exp-split" aria-hidden="true"></span>${ext(bufferStory, 'Featured by Buffer · May 2026', 'exp-credit')}</div>
 </div></section>
+${reel({ secondaryHref: '#work' })}
 ${ticker()}
 <section class="section" id="work" aria-labelledby="work-heading"><div class="wrap"><div class="section-head"><div><p class="eyebrow">01 / Work examples</p><h2 id="work-heading">Start with the work.</h2></div><p>A few things I’ve made. Explore the portfolio that fits what you’re looking for.</p></div>${workCards()}</div></section>
 ${stats()}
@@ -218,7 +224,7 @@ ${statement()}
   <p class="personal">Girl dad. Husband to a zookeeper. Movie and theme-park person. Firm believer that “professional” doesn’t have to mean “written by a committee of beige cardigans.”</p></div>
   <aside class="recognition" aria-labelledby="buffer-heading"><p class="eyebrow">Featured by Buffer</p><h3 id="buffer-heading">From my workflow<br>to their case study.</h3><p>I started building tools to untangle my own content workflow. When Buffer opened its API, those experiments grew into PostIQ and Receipts — and Buffer told the story.</p><div class="recognition-links">${ext(bufferStory, 'Read the PostIQ + Receipts feature')}${ext(openTabs, 'Open Tabs with Ben Campbell')}</div></aside>
 </div></section>
-${contact({ home: true, title: 'Good work starts<br>with a conversation.' })}`);
+${contact({ home: true, title: 'Good work starts<br>with a conversation.' })}`, { reel: true });
 }
 
 // A lens page is often someone's FIRST page, not their second — Ben sends the
@@ -283,6 +289,7 @@ function writingPage() {
 
 function socialPage() {
   return page('social', `${lensHero('social', { eyebrow: 'Social strategy + content', title: 'Give people a reason<br>to stop. And stay.', intro: 'I connect brand goals with the way people actually use social: timely campaigns, a recognizable voice, and a community worth showing up for.', byline: 'Selected San Antonio Zoo work from my social and PR role. Planning and execution happened in partnership with the broader marketing team and zoo departments.', cta: 'See the posts' })}
+  ${reel({ secondaryHref: '#work' })}
   <section class="lens-section" id="work" aria-labelledby="work-heading"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Selected social work</p><h2 id="work-heading">Different posts. A clear purpose.</h2></div><p>Campaigns, playful brand moments, and community participation. Open an original or preview a post here.</p></div>${jumps('social')}
   ${curation.social.groups.map(group => `<div class="sample-group" id="${group.id}">${groupHeading(group, group.items.length)}${group.items.map((id, index) => {
     const entry = item('social', id), context = curation.social.context[id];
@@ -304,7 +311,7 @@ function socialPage() {
   <p class="embed-hint">If Instagram doesn’t display a preview, the original post is one click away.</p></div></section>
   ${relatedCase({ title: 'San Antonio Zoo', description: 'The planning system behind a brand with a 6M+ audience: repeatable formats, room for timely ideas, and closer collaboration across the zoo.', url: '/case-studies/san-antonio-zoo.html', roleTitle: 'The work beyond the post', role: 'I led the planning system and social/PR execution with a broader team. That included calendar strategy, community management, campaign support, and coordination with animal care and other departments.' })}
   ${otherLenses('social')}
-  ${contact({ title: 'Let’s give your brand<br>something to say.', description: 'Open to full-time social media roles, freelance campaigns, and fractional or part-time help with strategy, content, and community.' })}`);
+  ${contact({ title: 'Let’s give your brand<br>something to say.', description: 'Open to full-time social media roles, freelance campaigns, and fractional or part-time help with strategy, content, and community.' })}`, { reel: true });
 }
 
 function videoPage() {
@@ -334,12 +341,18 @@ function builderPage() {
   ${contact({ title: 'A clunky workflow?<br>A promising idea?', description: 'Open to full-time opportunities and freelance, fractional, or part-time work connecting marketing, content, brand, and useful AI-assisted tools.' })}`);
 }
 
+function reelPage() {
+  return page('reel', `${reel({ standalone: true, headingLevel: 'h1', secondaryHref: '/' })}
+  <section class="lens-section" aria-labelledby="reel-more"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Want the long version?</p><h2 id="reel-more">Pick a portfolio.</h2></div><p>Each one stands on its own: the work, the context, and a way to get in touch.</p></div>${workCards()}</div></section>`, { reel: true });
+}
+
 const outputs = new Map([
   ['index.html', homePage()],
   ['writing/index.html', writingPage()],
   ['social/index.html', socialPage()],
   ['video/index.html', videoPage()],
   ['builder/index.html', builderPage()],
+  ['reel/index.html', reelPage()],
   ['work-samples.html', page('work', `<section class="lens-section" id="work" aria-labelledby="work-heading"><div class="wrap"><a class="back-link" href="/">← Full creative portfolio</a><div class="section-head" style="margin-top:32px"><div><p class="eyebrow">Work samples</p><h1 id="work-heading">Find the work<br>you came for.</h1></div><p>Each portfolio includes the work, its context, and a way to get in touch.</p></div>${workCards()}</div></section>`)]
 ]);
 const sitemapPaths = [...Object.values(meta).map(entry => entry.path), '/case-studies.html', '/case-studies/san-antonio-zoo.html', '/case-studies/codeup.html', '/case-studies/overland-partners.html', '/case-studies/nobody-creative.html'];
