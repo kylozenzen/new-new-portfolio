@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Ben Campbell — Showreel</title>
+<style>
+html,body{margin:0;height:100%;background:#151515;display:grid;place-items:center;overflow:hidden}
+canvas{display:block;max-width:100vw;max-height:100vh}
+</style>
+<style>/*FONTS*/</style>
+</head><body><canvas id="c"></canvas>
+<script>
+/* ==========================================================================
+   BEN CAMPBELL — SHOWREEL (Nobody Creative motion contract)
+   Every frame is a pure function of t: window.renderFrame(t).
+   ?format=4x5 switches to the 1080x1350 feed layout. Without ?render it autoplays.
+   Story: 01 Intro → 02 Career timeline → 03 The numbers → 04 Stop the scroll →
+          05 Now pursuing → 06 End card.
+   ========================================================================== */
+const Q = new URLSearchParams(location.search);
+const TALL = Q.get('format') === '4x5';
+const W = TALL ? 1080 : 1920, H = TALL ? 1350 : 1080;
+const cv = document.getElementById('c'); cv.width = W; cv.height = H;
+const ctx = cv.getContext('2d');
+const IMG_SRC = /*IMAGES*/{};
+
+// ---- CONTENT --------------------------------------------------------------
+const DATA = {
+  name: ['BEN', 'CAMPBELL'],
+  title: TALL ? ['Social Media & Content', 'Marketing Manager'] : ['Social Media & Content Marketing Manager'],
+  jobs: [
+    { years: '2016 – 2019', kind: 'SaaS', title: ['FOLLOWUP.CC +', 'BROKERAGE ENGINE'], tags: ['Customer success', 'Social media'], from: 2016.4, to: 2019.4, c: 'cyan' },
+    { years: '2020 – 2022', kind: 'Tech education', title: ['CODEUP'], tags: ['Social media', 'Community', 'Growth'], from: 2020.8, to: 2022.8, c: 'lime' },
+    { years: '2022 – 2024', kind: 'Architecture', title: ['OVERLAND', 'PARTNERS'], tags: ['Social media', 'PR', 'Brand storytelling'], from: 2022.8, to: 2024.2, c: 'yellow' },
+    { years: '2024 – 2025', kind: 'Destination brand', title: ['SAN ANTONIO', 'ZOO'], tags: ['Social media', 'PR', 'Brand storytelling'], from: 2024.2, to: 2025.3, c: 'pink' },
+  ],
+  next: { years: '2026', kind: 'Next chapter', from: 2025.7, to: 2026.9 },
+  statsHead: 'Career totals',
+  stats: [
+    { v: 6, pre: '', suf: 'M+', label: 'Audience' },
+    { v: 470, pre: '', suf: 'M+', label: 'Organic impressions' },
+    { v: 15, pre: '', suf: 'M+', label: 'Interactions' },
+    { v: 75, pre: '$', suf: 'K+', label: 'Attributed revenue' },
+  ],
+  stamp: 'Not a dollar paid',
+  scroll: ['STORIES THAT', 'STOP THE', 'SCROLL.'],
+  pursuing: { eyebrow: 'Now pursuing', lines: TALL ? ['FULL-TIME', 'WORK IN', 'SOCIAL MEDIA &', 'CONTENT', 'MARKETING'] : ['FULL-TIME WORK IN', 'SOCIAL MEDIA &', 'CONTENT MARKETING'] },
+  cta: 'Let’s talk', url: 'bencampbell.netlify.app',
+  feed: [
+    { img: 'zoo-lights-entrance', handle: 'San Antonio Zoo' },
+    { img: 'codeup-shoot', handle: 'Codeup' },
+    { img: 'zoo-news-crew', handle: 'San Antonio Zoo' },
+    { img: 'zoo-giraffe-calf', handle: 'San Antonio Zoo' },
+  ],
+};
+
+// ---- TIMING (seconds) — tune the whole film here ---------------------------
+const T = {
+  chip: 0.2, flood: 0.85, ben: 1.2, camp: 1.4, type: [2.3, 3.9], underline: 4.0, introOut: 4.75,
+  track: 5.05, stops: [5.5, 8.4, 11.3, 14.2], next: 17.1,
+  numbers: 18.9, count: 19.5, stamp: 22.3, numbersOut: 25.1,
+  scroll: 25.75, stop: 26.75, pursue: 28.9, slotFill: 29.7,
+  end: 31.9, dur: 35.5,
+};
+
+// ---- PALETTE + TYPE (from the portfolio) -----------------------------------
+const C = {
+  ink: '#151515', paper: '#fffdf8',
+  pink: '#f9a8d4', pinkH: '#d946ef', lime: '#d9f99d', limeH: '#a3e635',
+  cyan: '#a5f3fc', cyanH: '#22d3ee', yellow: '#fde68a', yellowH: '#facc15',
+};
+const AB = "'Archivo Black'", SG = "'Space Grotesk'";
+
+// ---- LAYOUT ---------------------------------------------------------------
+const L = TALL ? {
+  pad: 80, nameMax: 230, titleSize: 58, cardTop: 190, cardTitleMax: 170, eyebrow: 34, tag: 46,
+  track: { x0: 90, x1: 990, y: 1205, h: 46 }, yearEvery: 2, yearSize: 28, chip: 46,
+  grid: { x0: 80, x1: 1000, y0: 210, y1: 1250, gap: 30 }, statMax: 158, statLabel: 36,
+  scrollMax: 150, phone: { cx: 540, y: 660, w: 470, h: 760 },
+  pursueMax: 130, endName: 175, photo: { x: 330, y: 90, w: 420 },
+} : {
+  pad: 140, nameMax: 300, titleSize: 66, cardTop: 175, cardTitleMax: 210, eyebrow: 42, tag: 58,
+  track: { x0: 200, x1: 1720, y: 950, h: 58 }, yearEvery: 1, yearSize: 32, chip: 54,
+  grid: { x0: 140, x1: 1766, y0: 190, y1: 990, gap: 40 }, statMax: 215, statLabel: 46,
+  scrollMax: 172, phone: { cx: 1440, y: 120, w: 430, h: 860 },
+  pursueMax: 132, endName: 230, photo: { x: 1330, y: 0, w: 430 },
+};
+
+// ---- MATH + EASING ------------------------------------------------------------
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const lerp = (a, b, p) => a + (b - a) * p;
+const seg = (t, a, d) => clamp((t - a) / d);
+const E = {
+  outCubic: p => 1 - (1 - p) ** 3, inCubic: p => p ** 3,
+  inOutCubic: p => (p < .5 ? 4 * p ** 3 : 1 - (-2 * p + 2) ** 3 / 2),
+  outExpo: p => (p >= 1 ? 1 : 1 - 2 ** (-10 * p)), inExpo: p => (p <= 0 ? 0 : 2 ** (10 * p - 10)),
+  inOutExpo: p => (p <= 0 ? 0 : p >= 1 ? 1 : p < .5 ? 2 ** (20 * p - 10) / 2 : (2 - 2 ** (-20 * p + 10)) / 2),
+  outBack: (p, c = 1.9) => 1 + (c + 1) * (p - 1) ** 3 + c * (p - 1) ** 2,
+  spring: p => (p >= 1 ? 1 : 1 - Math.exp(-6 * p) * Math.cos(12 * p)),
+};
+const hash = n => { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+
+// ---- DRAW HELPERS -----------------------------------------------------------
+function rr(x, y, w, h, r = 0) { ctx.beginPath(); if (r) ctx.roundRect(x, y, w, h, r); else ctx.rect(x, y, w, h); }
+function setFont(fam, wt, size, ls = 0) { ctx.font = `${wt} ${size}px ${fam}`; ctx.letterSpacing = `${ls * size}px`; }
+function tw(str, fam, wt, size, ls = 0) { ctx.save(); setFont(fam, wt, size, ls); const w = ctx.measureText(str).width - ls * size; ctx.restore(); return w; }
+function fitSize(lines, fam, wt, max, maxW, ls = 0) { let m = 0; for (const l of lines) m = Math.max(m, tw(l, fam, wt, 100, ls)); return Math.min(max, 100 * maxW / m); }
+function text(str, x, y, { fam = SG, wt = 700, size = 40, color = C.ink, ls = 0, align = 'left', alpha = 1 } = {}) {
+  ctx.save(); ctx.globalAlpha *= alpha; setFont(fam, wt, size, ls); ctx.textAlign = align; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = color; ctx.fillText(str, x, y); ctx.restore();
+}
+function block(x, y, w, h, fill, { shadow, sh = 12, border = 0, bc = C.ink, r = 0 } = {}) {
+  if (shadow) { ctx.fillStyle = shadow; rr(x + sh, y + sh, w, h, r); ctx.fill(); }
+  ctx.fillStyle = fill; rr(x, y, w, h, r); ctx.fill();
+  if (border) { ctx.lineWidth = border; ctx.strokeStyle = bc; rr(x + border / 2, y + border / 2, w - border, h - border, r ? r - border / 2 : 0); ctx.stroke(); }
+}
+// A line of type that rises out of a mask. p: 0 hidden → 1 in place. q: 0 → 1 leaving upward.
+function maskLine(str, x, y, size, p, opts = {}, q = 0) {
+  if (p <= 0 || q >= 1) return;
+  const asc = size * 0.95, desc = size * 0.25;
+  ctx.save(); ctx.beginPath(); ctx.rect(x - size, y - asc, W * 2, asc + desc); ctx.clip();
+  const off = (1 - p) * (asc + desc) - q * (asc + desc);
+  if (opts.shadow) text(str, x + size * .05, y + off + size * .05, { ...opts, size, color: opts.shadow });
+  text(str, x, y + off, { ...opts, size });
+  ctx.restore();
+}
+function grid(x, y, w, h, color, alpha, step) {
+  ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.beginPath();
+  for (let gx = Math.ceil(x / step) * step; gx < x + w; gx += step) { ctx.moveTo(gx, y); ctx.lineTo(gx, y + h); }
+  for (let gy = Math.ceil(y / step) * step; gy < y + h; gy += step) { ctx.moveTo(x, gy); ctx.lineTo(x + w, gy); }
+  ctx.stroke(); ctx.restore();
+}
+function paper(x = 0, y = 0, w = W, h = H) { ctx.fillStyle = C.paper; ctx.fillRect(x, y, w, h); grid(x, y, w, h, C.ink, .06, TALL ? 60 : 80); }
+function inkBg(x = 0, y = 0, w = W, h = H) { ctx.fillStyle = C.ink; ctx.fillRect(x, y, w, h); grid(x, y, w, h, C.paper, .05, TALL ? 60 : 80); }
+function circleClip(cx, cy, r) { ctx.beginPath(); ctx.arc(cx, cy, Math.max(0, r), 0, Math.PI * 2); ctx.clip(); }
+function cover(img, x, y, w, h, fy = .4) {
+  if (!img) { ctx.fillStyle = '#ddd'; ctx.fillRect(x, y, w, h); return; }
+  const s = Math.max(w / img.width, h / img.height), sw = w / s, sh = h / s;
+  ctx.drawImage(img, (img.width - sw) / 2, (img.height - sh) * fy, sw, sh, x, y, w, h);
+}
+function chip(x, y, size, scale = 1, alpha = 1) { // the BC. wordmark chip, centered at x, y
+  ctx.save(); ctx.globalAlpha *= alpha; ctx.translate(x, y); ctx.scale(scale, scale);
+  const w = tw('BC.', SG, 700, size, -.04) + size * .62, h = size * 1.32;
+  block(-w / 2, -h / 2, w, h, C.ink, { shadow: C.pinkH, sh: size * .12 });
+  text('BC.', 0, size * .36, { size, color: C.paper, align: 'center', ls: -.04 });
+  ctx.restore(); return { w, h };
+}
+function check(cx, cy, s, color, lw) {
+  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(cx - s * .5, cy); ctx.lineTo(cx - s * .12, cy + s * .38); ctx.lineTo(cx + s * .55, cy - s * .4); ctx.stroke(); ctx.restore();
+}
+
+// Shakes + flashes, timed in one place.
+const SHAKES = [[T.chip + .3, 6], [T.camp + .32, 14], [T.stamp + .2, 10], [T.stop, 18]];
+const FLASHES = [[T.stop, .35], [T.stamp + .2, .18]];
+function shake(t) {
+  let x = 0, y = 0;
+  for (const [a, amp] of SHAKES) { const p = seg(t, a, .4); if (p > 0 && p < 1) { const k = amp * (1 - p) ** 2; x += Math.sin((t - a) * 70) * k; y += Math.cos((t - a) * 55) * k * .7; } }
+  return [x, y];
+}
+
+// ---- TIMELINE GEOMETRY ---------------------------------------------------------
+const TR = L.track;
+const xOf = yr => TR.x0 + (yr - 2016) / 11 * (TR.x1 - TR.x0);
+const PH_SEGS = (() => {
+  const s = [];
+  DATA.jobs.forEach((j, i) => { const a = T.stops[i]; s.push([a, .4, xOf(j.from), E.inOutExpo], [a + .4, .65, xOf(j.to), E.outCubic]); });
+  s.push([T.next, .45, xOf(DATA.next.from), E.inOutExpo], [T.next + .45, .55, (xOf(DATA.next.from) + xOf(DATA.next.to)) / 2, E.outCubic]);
+  return s;
+})();
+function playheadX(t) {
+  let x = TR.x0;
+  for (const [a, d, to, e] of PH_SEGS) { if (t < a) return x; if (t < a + d) return lerp(x, to, e((t - a) / d)); x = to; }
+  return x;
+}
+function clipRect(i) { const j = DATA.jobs[i]; return { x: xOf(j.from) + 3, y: TR.y - TR.h / 2, w: xOf(j.to) - xOf(j.from) - 6, h: TR.h }; }
+function clipRight(i, t) { const a = T.stops[i]; if (t < a + .4) return null; if (t < a + 1.05) return playheadX(t); return xOf(DATA.jobs[i].to) - 3; }
+
+function drawTrack(t, { appear = T.track, years = true } = {}) {
+  const p = E.outExpo(seg(t, appear, .8));
+  if (p <= 0) return;
+  ctx.fillStyle = C.ink; ctx.fillRect(TR.x0 - 30, TR.y - 3, (TR.x1 - TR.x0 + 60) * p, 6);
+  if (!years) return;
+  for (let yr = 2016; yr <= 2027; yr++) {
+    const x = xOf(yr), q = E.outCubic(seg(t, appear + .1 + (yr - 2016) * .035, .4));
+    if (q <= 0) continue;
+    ctx.globalAlpha = q; ctx.fillStyle = C.ink; ctx.fillRect(x - 1.5, TR.y + TR.h / 2 + 8, 3, 14); ctx.globalAlpha = 1;
+    if ((yr - 2016) % L.yearEvery === 0) text(String(yr), x, TR.y + TR.h / 2 + 22 + L.yearSize * 1.05, { size: L.yearSize, align: 'center', alpha: q * .6 });
+  }
+}
+function drawClips(t, { allDone = false } = {}) {
+  DATA.jobs.forEach((j, i) => {
+    const r = clipRect(i), right = allDone ? r.x + r.w : clipRight(i, t);
+    if (right == null) return;
+    block(r.x, r.y, Math.max(0, right - r.x), r.h, C[j.c], { shadow: C[j.c + 'H'], sh: 7, border: 4 });
+  });
+}
+function slotRect() { const x = xOf(DATA.next.from) + 3; return { x, y: TR.y - TR.h / 2, w: xOf(DATA.next.to) - x - 3, h: TR.h }; }
+function drawSlot(t, fillP = 0) {
+  const s = slotRect(), a = T.next + .45, p = E.outCubic(seg(t, a, .55));
+  if (p <= 0) return;
+  ctx.save(); ctx.setLineDash([12, 9]); ctx.lineWidth = 4; ctx.strokeStyle = C.ink;
+  ctx.beginPath(); ctx.rect(s.x, s.y, s.w * p, s.h); ctx.stroke(); ctx.restore();
+  if (fillP > 0) block(s.x, s.y, s.w * fillP, s.h, C.limeH, { shadow: C.ink, sh: 7, border: 4 });
+  const q = E.outBack(seg(t, a + .35, .45));
+  if (fillP < 1 && q > 0) {
+    ctx.save(); ctx.translate(s.x + s.w / 2, s.y + s.h / 2); ctx.scale(q * (1 - fillP), q * (1 - fillP));
+    text('?', 0, s.h * .3, { fam: AB, wt: 400, size: s.h * .85, align: 'center', color: C.pinkH }); ctx.restore();
+  }
+  if (fillP > .6) check(s.x + s.w / 2, s.y + s.h / 2, s.h * .62, C.ink, s.h * .14 * E.outBack(seg(fillP, .6, .4)));
+}
+function drawPlayhead(t, x, appear = T.track + .35) {
+  const p = E.outBack(seg(t, appear, .5));
+  if (p <= 0) return;
+  // a little settle-bounce whenever the playhead lands
+  let bob = 0;
+  for (const [a, d] of PH_SEGS) { const k = seg(t, a + d, .5); if (k > 0 && k < 1) bob += Math.sin(k * Math.PI * 3) * (1 - k) * 8; }
+  const top = TR.y - TR.h / 2 - 34;
+  ctx.save(); ctx.globalAlpha = clamp(p);
+  ctx.fillStyle = C.ink; ctx.fillRect(x - 3, top, 6, TR.h + 58);
+  ctx.beginPath(); ctx.moveTo(x - 14, top); ctx.lineTo(x + 14, top); ctx.lineTo(x, top + 16); ctx.fill();
+  ctx.restore();
+  chip(x, top - L.chip * .78 + bob, L.chip, p);
+}
+
+// ---- 01 INTRO ------------------------------------------------------------------
+function intro(t) {
+  if (t > T.introOut + .6) return;
+  const lift = -E.inExpo(seg(t, T.introOut, .45)) * H * .7;
+  const cx = W / 2, cy = H / 2;
+  const fp = E.inOutExpo(seg(t, T.flood, .55));
+  if (fp > 0) { ctx.save(); circleClip(cx, cy, fp * Math.hypot(W, H) * .55); inkBg(); ctx.restore(); }
+  // chip slam
+  const cp = seg(t, T.chip, .45);
+  if (cp > 0 && t < T.flood + .45) {
+    const s = lerp(2.4, 1, E.outBack(cp, 1.4)), a = clamp(cp * 8) * (1 - seg(t, T.flood + .15, .2));
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(lerp(-.16, 0, E.outExpo(cp))); chip(0, 0, TALL ? 120 : 150, s, a); ctx.restore();
+  }
+  ctx.save(); ctx.translate(0, lift);
+  const size = fitSize(DATA.name, AB, 400, L.nameMax, W - L.pad * 2 - 30);
+  const tsize = Math.min(L.titleSize, fitSize(DATA.title, SG, 700, L.titleSize, W - L.pad * 2));
+  const blockH = size * .9 * 2 + 60 + tsize * 1.25 * DATA.title.length;
+  const y0 = (H - blockH) / 2 + size * .82, y1 = y0 + size * .92;
+  maskLine(DATA.name[0], L.pad, y0, size, E.outExpo(seg(t, T.ben, .65)), { fam: AB, wt: 400, color: C.limeH });
+  // CAMPBELL whips in from the right with a short smear
+  const wp = seg(t, T.camp, .6);
+  if (wp > 0) {
+    const off = (1 - E.outExpo(wp)) * W * .8, vel = off > 4;
+    if (vel) for (let k = 3; k >= 1; k--) text(DATA.name[1], L.pad + off + k * off * .18, y1, { fam: AB, wt: 400, size, color: C.paper, alpha: .12 });
+    text(DATA.name[1], L.pad + off + size * .05, y1 + size * .05, { fam: AB, wt: 400, size, color: C.pinkH });
+    text(DATA.name[1], L.pad + off, y1, { fam: AB, wt: 400, size, color: C.paper });
+  }
+  // the title types itself
+  const full = DATA.title.join('\n'), n = Math.floor(seg(t, T.type[0], T.type[1] - T.type[0]) * full.length);
+  let shown = n, ty = y1 + 60 + tsize * 1.05, endX = L.pad, endY = ty;
+  if (t >= T.type[0]) {
+    DATA.title.forEach((line, k) => {
+      const part = line.slice(0, Math.max(0, shown)); shown -= line.length + 1;
+      const y = ty + k * tsize * 1.25;
+      if (part) { text(part, L.pad, y, { size: tsize, color: C.paper }); endX = L.pad + tw(part, SG, 700, tsize) + 8; endY = y; }
+      else if (shown + line.length + 1 > 0 && k > 0) { endX = L.pad; endY = y; }
+    });
+    const done = n >= full.length;
+    if (!done || Math.floor(t * 3.2) % 2 === 0) { if (t < T.underline + .5) { ctx.fillStyle = C.limeH; ctx.fillRect(endX, endY - tsize * .78, tsize * .48, tsize * .92); } }
+    const up = E.outExpo(seg(t, T.underline, .55));
+    if (up > 0) { const lw = Math.max(...DATA.title.map(l => tw(l, SG, 700, tsize))); ctx.fillStyle = C.limeH; ctx.fillRect(L.pad, endY + tsize * .3, lw * up, tsize * .16); }
+  }
+  ctx.restore();
+}
+
+// ---- 02 CAREER ---------------------------------------------------------------
+function cardLayout(j) {
+  const lines = TALL && j.title.length === 2 && j.title[1].length > 12 ? ['FOLLOWUP.CC +', 'BROKERAGE', 'ENGINE'] : j.title;
+  const size = fitSize(lines, AB, 400, L.cardTitleMax, W - L.pad * 2);
+  const ts = L.tag, th = ts * 1.7, gap = ts * .45;
+  let x = L.pad, rows = 1;
+  for (const tag of j.tags) { const w = tw(tag.toUpperCase(), SG, 700, ts, .04) + ts * 1.1; if (x + w > W - L.pad && x > L.pad) { x = L.pad; rows++; } x += w + gap; }
+  const h = L.eyebrow + 34 + lines.length * size * .95 + (TALL ? 44 : 52) + rows * th + (rows - 1) * gap;
+  return { lines, size, h };
+}
+function cardFor(i) { return i < DATA.jobs.length ? DATA.jobs[i] : null; }
+function drawCard(t, i) {
+  const a = i < DATA.jobs.length ? T.stops[i] : T.next;
+  const leaveAt = i < DATA.jobs.length - 1 ? T.stops[i + 1] : i === DATA.jobs.length - 1 ? T.next : T.numbers;
+  if (t < a + .3 || t > leaveAt + .5) return;
+  const q = E.inCubic(seg(t, leaveAt, .4));
+  ctx.save(); ctx.globalAlpha = 1 - q; ctx.translate(0, -q * 140);
+  const j = cardFor(i), color = j ? C[j.c] : C.pink;
+  const lay = j ? cardLayout(j) : null;
+  const areaTop = TALL ? 90 : 70, areaBot = TR.y - TR.h / 2 - 34 - L.chip * 1.7 - (TALL ? 50 : 40);
+  const ey = j ? (areaTop + areaBot - lay.h) / 2 + L.eyebrow : L.cardTop + L.eyebrow;
+  // eyebrow: colour swatch + years · kind, wiping in
+  const ep = E.outExpo(seg(t, a + .3, .55));
+  const label = j ? `${j.years}  ·  ${j.kind.toUpperCase()}` : `${DATA.next.years}  ·  ${DATA.next.kind.toUpperCase()}`;
+  ctx.save(); ctx.beginPath(); ctx.rect(L.pad - 20, ey - L.eyebrow * 1.2, (W - L.pad) * ep, L.eyebrow * 1.8); ctx.clip();
+  block(L.pad, ey - L.eyebrow * .82, L.eyebrow * .82, L.eyebrow * .82, color, { border: 4 });
+  text(label, L.pad + L.eyebrow * 1.3, ey, { size: L.eyebrow, ls: .1 });
+  ctx.restore();
+  if (!j) { // the empty slot: a big question mark
+    const p = seg(t, a + .45, .9), s = E.spring(p), size = TALL ? 330 : 380;
+    if (p > 0) {
+      ctx.save(); ctx.translate(L.pad + size * .32, ey + 50 + size * .45); ctx.rotate((1 - s) * -.5 + Math.sin(t * 2.4) * .04); ctx.scale(s, s);
+      text('?', -size * .32 + size * .05, size * .4 + size * .05, { fam: AB, wt: 400, size, color: C.ink });
+      text('?', -size * .32, size * .4, { fam: AB, wt: 400, size, color: C.pinkH });
+      ctx.restore();
+    }
+    ctx.restore(); return;
+  }
+  const { lines, size } = lay;
+  let y = ey + 34;
+  lines.forEach((line, k) => { y += size * .95; maskLine(line, L.pad, y, size, E.outExpo(seg(t, a + .42 + k * .09, .65)), { fam: AB, wt: 400 }); });
+  // tag chips pop in, wrapping as needed
+  let x = L.pad, rowY = y + (TALL ? 44 : 52);
+  const ts = L.tag, h = ts * 1.7, gap = ts * .45;
+  j.tags.forEach((tag, k) => {
+    const str = tag.toUpperCase(), w = tw(str, SG, 700, ts, .04) + ts * 1.1;
+    if (x + w > W - L.pad && x > L.pad) { x = L.pad; rowY += h + gap; }
+    const p = seg(t, a + .95 + k * .16, .5);
+    if (p > 0) {
+      const s = E.outBack(p, 2.2);
+      ctx.save(); ctx.translate(x + w / 2, rowY + h / 2); ctx.scale(s, s); ctx.rotate((k % 2 ? 1 : -1) * .025);
+      block(-w / 2, -h / 2, w, h, color, { shadow: C.ink, sh: 8, border: 5 });
+      text(str, 0, ts * .36, { size: ts, align: 'center', ls: .04 });
+      ctx.restore();
+    }
+    x += w + gap;
+  });
+  ctx.restore();
+}
+function career(t) {
+  if (t < T.introOut || t > T.numbers + 1.2) return;
+  // paper wipes up over the dark intro
+  const wp = E.inOutExpo(seg(t, T.introOut, .55));
+  ctx.save(); ctx.beginPath(); ctx.rect(0, H * (1 - wp), W, H * wp); ctx.clip(); paper();
+  drawTrack(t);
+  drawClips(t);
+  drawSlot(t);
+  for (let i = 0; i <= DATA.jobs.length; i++) drawCard(t, i);
+  drawPlayhead(t, playheadX(t));
+  ctx.restore();
+}
+
+// ---- 03 THE NUMBERS ------------------------------------------------------------
+function tileRect(i) {
+  const g = L.grid;
+  if (TALL) { const h = (g.y1 - g.y0 - g.gap * 3) / 4; return { x: g.x0, y: g.y0 + i * (h + g.gap), w: g.x1 - g.x0 - 14, h }; }
+  const w = (g.x1 - g.x0 - g.gap) / 2, h = (g.y1 - g.y0 - g.gap) / 2;
+  return { x: g.x0 + (i % 2) * (w + g.gap), y: g.y0 + Math.floor(i / 2) * (h + g.gap), w, h };
+}
+function numbers(t) {
+  if (t < T.numbers || t > T.numbersOut + 1.2) return;
+  const s = slotRect(), ocx = s.x + s.w / 2, ocy = s.y + s.h / 2;
+  const wp = E.inOutExpo(seg(t, T.numbers, .6));
+  ctx.save(); circleClip(ocx, ocy, wp * Math.hypot(W, H) * 1.05); inkBg(); ctx.restore();
+  // a slow push-in while the numbers hold
+  const push = 1 + .025 * E.inOutCubic(seg(t, T.count + 1.3, T.numbersOut - T.count - 1.3));
+  ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(push, push); ctx.translate(-W / 2, -H / 2);
+  const hp = E.outExpo(seg(t, T.numbers + .7, .6));
+  ctx.save(); ctx.beginPath(); ctx.rect(L.grid.x0 - 10, 0, (W) * hp, L.grid.y0 - 10); ctx.clip();
+  text(DATA.statsHead.toUpperCase(), L.grid.x0, L.grid.y0 - (TALL ? 48 : 46), { size: TALL ? 38 : 42, ls: .16, color: C.paper, alpha: .85 });
+  ctx.restore();
+  const finals = DATA.stats.map(st => `${st.pre}${st.v}${st.suf}`);
+  const tr0 = tileRect(0), padIn = TALL ? 34 : 52;
+  const nsize = fitSize(finals, AB, 400, L.statMax, tr0.w - padIn * 2);
+  DATA.stats.forEach((st, i) => {
+    const j = DATA.jobs[i], from = clipRect(i), to = tileRect(i);
+    const mp = seg(t, T.numbers + .12 + i * .08, .8);
+    if (mp <= 0) return;
+    const e = E.outBack(mp, 1.15), fall = E.inCubic(seg(t, T.numbersOut + i * .07, .55));
+    const r = { x: lerp(from.x, to.x, e), y: lerp(from.y, to.y, e) + fall * H * 1.2, w: lerp(from.w, to.w, e), h: lerp(from.h, to.h, e) };
+    ctx.save(); ctx.translate(r.x + r.w / 2, r.y + r.h / 2); ctx.rotate(fall * (i % 2 ? .22 : -.22)); ctx.translate(-r.w / 2, -r.h / 2);
+    block(0, 0, r.w, r.h, C[j.c], { shadow: C[j.c + 'H'], sh: lerp(7, 16, e) });
+    if (mp > .55) {
+      const cp = E.outExpo(seg(t, T.count + i * .22, 1.3));
+      const str = cp >= 1 ? finals[i] : `${st.pre}${Math.round(st.v * cp)}${st.suf}`;
+      const nb = TALL ? r.h * .63 : r.h * .6;
+      text(str, padIn, nb, { fam: AB, wt: 400, size: nsize });
+      const lsize = Math.min(L.statLabel, fitSize([st.label.toUpperCase()], SG, 700, L.statLabel, r.w - padIn * 2, .06));
+      maskLine(st.label.toUpperCase(), padIn, TALL ? r.h - 30 : nb + lsize * 1.9, lsize, E.outExpo(seg(t, T.count + .35 + i * .22, .6)), { ls: .06 });
+      if (i === 1) { // the stamp
+        const sp = seg(t, T.stamp, .25);
+        if (sp > 0) {
+          const ss = TALL ? 26 : 34, sw = tw(DATA.stamp.toUpperCase(), SG, 700, ss, .1) + ss * 1.4, sh = ss * 1.9;
+          ctx.save(); ctx.translate(r.w - sw / 2 - (TALL ? 10 : 30), (TALL ? 4 : 6)); ctx.rotate(-.07); const k = lerp(2.4, 1, E.outExpo(sp)); ctx.scale(k, k); ctx.globalAlpha = clamp(sp * 6);
+          ctx.lineWidth = 5; ctx.strokeStyle = C.pinkH; ctx.fillStyle = C.paper; rr(-sw / 2, -sh / 2, sw, sh); ctx.fill(); ctx.stroke();
+          ctx.lineWidth = 2; rr(-sw / 2 + 7, -sh / 2 + 7, sw - 14, sh - 14); ctx.stroke();
+          text(DATA.stamp.toUpperCase(), 0, ss * .36, { size: ss, color: C.pinkH, align: 'center', ls: .1 });
+          ctx.restore();
+        }
+      }
+    }
+    ctx.restore();
+  });
+  ctx.restore();
+}
+
+// ---- 04 STOP THE SCROLL ------------------------------------------------------
+const FEED_TARGET = 11; // which post lands in view when the scroll stops (index % 4 === 3 → giraffe calf)
+function feedPos(t) {
+  const p = seg(t, T.scroll - .2, T.stop - T.scroll + .2);
+  const ph = L.phone, cardH = (ph.w - 32) * 1.25 + 110;
+  let pos = FEED_TARGET * cardH * p ** 1.7;
+  const k = t - T.stop; if (k > 0) pos += -26 * Math.exp(-k * 9) * Math.sin(k * 34);
+  return { pos, cardH, vel: p < 1 && p > 0 ? FEED_TARGET * cardH * 1.7 * p ** .7 / (T.stop - T.scroll + .2) : 0 };
+}
+function drawPhone(t) {
+  const ph = L.phone, x = ph.cx - ph.w / 2, y = ph.y;
+  block(x, y, ph.w, ph.h, C.ink, { shadow: C.pinkH, sh: 18, r: 54 });
+  const sx = x + 16, sy = y + 16, sw = ph.w - 32, sh = ph.h - 32;
+  ctx.save(); rr(sx, sy, sw, sh, 40); ctx.clip(); ctx.fillStyle = C.paper; ctx.fillRect(sx, sy, sw, sh);
+  const { pos, cardH, vel } = feedPos(t);
+  const drawFeed = (off, alpha) => {
+    ctx.save(); ctx.globalAlpha = alpha;
+    const first = Math.floor((pos + off) / cardH) - 1;
+    for (let n = first; n < first + Math.ceil(sh / cardH) + 3; n++) {
+      if (n < 0) continue;
+      const post = DATA.feed[n % DATA.feed.length], cy = sy + 18 + n * cardH - (pos + off);
+      ctx.fillStyle = C.pinkH; ctx.beginPath(); ctx.arc(sx + 34, cy + 26, 15, 0, 7); ctx.fill();
+      ctx.lineWidth = 3; ctx.strokeStyle = C.ink; ctx.stroke();
+      text(post.handle, sx + 60, cy + 35, { size: 24 });
+      cover(IMGS[post.img], sx, cy + 60, sw, sw * 1.25 - 20, .35);
+      const iy = cy + 60 + sw * 1.25 - 20 + 38;
+      ['♥', '↩', '↗'].forEach((g, k) => text(g, sx + 22 + k * 50, iy, { size: 30, fam: SG }));
+    }
+    ctx.restore();
+  };
+  if (vel > 400) drawFeed(-vel * .012, .35);
+  drawFeed(0, 1);
+  ctx.restore();
+}
+function scrollScene(t) {
+  if (t < T.numbersOut || t > T.pursue + .7) return;
+  const wp = E.inOutExpo(seg(t, T.numbersOut + .25, .6));
+  ctx.save(); circleClip(W / 2, H / 2, wp * Math.hypot(W, H) * .55); paper();
+  const out = E.inExpo(seg(t, T.pursue, .5)) * -W * 1.15;
+  ctx.translate(out, 0);
+  if (t >= T.scroll - .4) drawPhone(t);
+  const maxW = TALL ? W - L.pad * 2 : L.phone.cx - L.phone.w / 2 - L.pad - 60;
+  const size = fitSize(DATA.scroll, AB, 400, L.scrollMax, maxW);
+  const top = TALL ? 150 + size * .85 : (H - size * .95 * 3) / 2 + size * .8;
+  maskLine(DATA.scroll[0], L.pad, top, size, E.outExpo(seg(t, T.scroll + .05, .6)), { fam: AB, wt: 400 });
+  maskLine(DATA.scroll[1], L.pad, top + size * .95, size, E.outExpo(seg(t, T.scroll + .3, .6)), { fam: AB, wt: 400 });
+  const sp = seg(t, T.stop - .06, .22);
+  if (sp > 0) {
+    const k = lerp(1.9, 1, E.outExpo(sp)), y = top + size * 1.9;
+    ctx.save(); ctx.translate(L.pad, y); ctx.scale(k, k); ctx.globalAlpha = clamp(sp * 5);
+    text(DATA.scroll[2], size * .06, size * .06, { fam: AB, wt: 400, size, color: C.pinkH });
+    text(DATA.scroll[2], 0, 0, { fam: AB, wt: 400, size });
+    ctx.restore();
+  }
+  ctx.restore();
+}
+
+// ---- 05 NOW PURSUING -------------------------------------------------------
+function pursue(t) {
+  if (t < T.pursue || t > T.end + .8) return;
+  const inX = (1 - E.outExpo(seg(t, T.pursue + .12, .6))) * W;
+  ctx.save(); ctx.beginPath(); ctx.rect(inX, 0, W, H); ctx.clip(); paper(); ctx.translate(inX * .4, 0);
+  const lift = E.inExpo(seg(t, T.end, .45));
+  // timeline returns along the bottom, the playhead walks into the empty slot, and it fills
+  ctx.save(); ctx.translate(0, lift * 260);
+  drawTrack(t, { appear: T.pursue });
+  drawClips(t, { allDone: true });
+  drawSlot(Math.max(t, T.next + 2), E.outExpo(seg(t, T.slotFill, .5)));
+  const s = slotRect();
+  drawPlayhead(t, lerp(xOf(DATA.jobs[3].to), s.x + s.w / 2, E.inOutExpo(seg(t, T.pursue + .5, .5))), T.pursue + .2);
+  ctx.restore();
+  ctx.save(); ctx.translate(0, -lift * H * .6);
+  const size = fitSize(DATA.pursuing.lines, AB, 400, L.pursueMax, W - L.pad * 2);
+  const es = TALL ? 44 : 50, blockH = es * 1.5 + 40 + DATA.pursuing.lines.length * size, areaBot = TR.y - TR.h / 2 - L.chip * 1.7 - 60;
+  const ey = Math.max(TALL ? 120 : 90, (areaBot - blockH) / 2) + es;
+  const ep = E.outExpo(seg(t, T.pursue + .35, .55));
+  if (ep > 0) {
+    const ew = tw(DATA.pursuing.eyebrow.toUpperCase(), SG, 700, es, .12) + es * .9;
+    block(L.pad, ey - es * 1.05, ew * ep, es * 1.5, C.limeH, { shadow: C.ink, sh: 6 });
+    ctx.save(); ctx.beginPath(); ctx.rect(L.pad, ey - es * 1.2, ew * ep, es * 2); ctx.clip();
+    text(DATA.pursuing.eyebrow.toUpperCase(), L.pad + es * .45, ey, { size: es, ls: .12 }); ctx.restore();
+  }
+  let y = ey + 40;
+  DATA.pursuing.lines.forEach((line, k) => {
+    y += size * 1.0;
+    const hk = TALL ? 2 : 1, hp = E.outExpo(seg(t, T.slotFill + .25 + (k - hk) * .16, .5));
+    if (k >= hk && hp > 0) { ctx.fillStyle = C.pinkH; ctx.fillRect(L.pad - 6, y - size * .28, (tw(line, AB, 400, size) + 12) * hp, size * .3); }
+    maskLine(line, L.pad, y, size, E.outExpo(seg(t, T.pursue + .5 + k * .14, .65)), { fam: AB, wt: 400 });
+  });
+  ctx.restore();
+  ctx.restore();
+}
+
+// ---- 06 END CARD -------------------------------------------------------------
+function endCard(t) {
+  if (t < T.end) return;
+  const a = T.end + .15;
+  // photo drops in on a spring
+  const ph = { ...L.photo }, pw = ph.w, phH = pw * 1.25 + pw * .06;
+  const maxW0 = TALL ? W - L.pad * 2 : ph.x - L.pad - 90;
+  const size0 = fitSize(DATA.name, AB, 400, L.endName, maxW0), ts0 = Math.min(TALL ? 44 : 50, fitSize(DATA.title, SG, 700, 50, maxW0));
+  const textH = size0 * .9 * 2 + ts0 * 1.9 + (DATA.title.length - 1) * ts0 * 1.25 + (TALL ? 46 : 52) * 3.3 + (TALL ? 36 * 2.4 : 0);
+  if (TALL) ph.y = (H - (phH + 60 + textH)) / 2; else ph.y = (H - phH) / 2 - 10;
+  const textTop = TALL ? ph.y + phH + 60 : (H - textH) / 2;
+  const pp = seg(t, a + .1, 1.1);
+  if (pp > 0) {
+    const s = E.spring(pp);
+    ctx.save(); ctx.translate(ph.x + pw / 2, lerp(H + phH, ph.y + phH / 2, s)); ctx.rotate(lerp(.3, .05, s));
+    block(-pw / 2 - 12, -phH / 2 - 12, pw + 24, phH + 24, '#fff', { shadow: C.limeH, sh: 20, border: 5 });
+    cover(IMGS['headshot'], -pw / 2, -phH / 2, pw, pw * 1.25, .3);
+    ctx.restore();
+  }
+  const maxW = TALL ? W - L.pad * 2 : ph.x - L.pad - 90;
+  const size = fitSize(DATA.name, AB, 400, L.endName, maxW);
+  const y0 = textTop + size * .82;
+  const y1 = y0 + size * .9;
+  // the highlighter sweeps under CAMPBELL
+  const hp = E.outExpo(seg(t, a + .45, .55));
+  if (hp > 0) { ctx.fillStyle = C.pinkH; ctx.fillRect(L.pad - 6, y1 - size * .3, (tw(DATA.name[1], AB, 400, size) + 12) * hp, size * .33); }
+  maskLine(DATA.name[0], L.pad, y0, size, E.outExpo(seg(t, a, .6)), { fam: AB, wt: 400 });
+  maskLine(DATA.name[1], L.pad, y1, size, E.outExpo(seg(t, a + .1, .6)), { fam: AB, wt: 400 });
+  const ts = Math.min(TALL ? 44 : 50, fitSize(DATA.title, SG, 700, 50, maxW));
+  let ty = y1 + ts * 1.9;
+  DATA.title.forEach((line, k) => { maskLine(line, L.pad, ty + k * ts * 1.25, ts, E.outExpo(seg(t, a + .35 + k * .08, .6)), { size: ts }); });
+  ty += (DATA.title.length - 1) * ts * 1.25;
+  // button + url
+  const bs = TALL ? 46 : 52, bp = seg(t, a + .75, .7);
+  if (bp > 0) {
+    const label = DATA.cta.toUpperCase(), bw = tw(label, SG, 700, bs, .06) + bs * 2.6, bh = bs * 1.95, bx = L.pad, by = ty + bs * 1.3;
+    const s = E.spring(bp);
+    ctx.save(); ctx.translate(bx + bw / 2, by + bh / 2); ctx.scale(s, s);
+    block(-bw / 2, -bh / 2, bw, bh, C.ink, { shadow: C.pinkH, sh: 10 });
+    text(label, -bw / 2 + bs * .8, bs * .36, { size: bs, color: C.paper, ls: .06 });
+    let nudge = 0; for (const n of [a + 2.0, a + 2.9]) { const k = seg(t, n, .45); nudge += Math.sin(k * Math.PI) * 12; }
+    text('→', bw / 2 - bs * 1.45 + nudge, bs * .36, { size: bs, color: C.paper });
+    ctx.restore();
+    const up = E.outExpo(seg(t, a + 1.0, .6));
+    if (up > 0) {
+      const us = TALL ? 36 : 42, ux = TALL ? L.pad : bx + bw + 60, uy = TALL ? by + bh + us * 2.1 : by + bh / 2 + us * .36;
+      ctx.save(); ctx.beginPath(); ctx.rect(ux - 4, uy - us * 1.2, (tw(DATA.url, SG, 700, us) + 8) * up, us * 1.8); ctx.clip();
+      text(DATA.url, ux, uy, { size: us }); ctx.fillStyle = C.ink; ctx.fillRect(ux, uy + us * .22, tw(DATA.url, SG, 700, us), 4);
+      ctx.restore();
+    }
+  }
+}
+
+// ---- GRAIN -------------------------------------------------------------------
+const GRAIN = [];
+function makeGrain() {
+  for (let g = 0; g < 6; g++) {
+    const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d'), d = x.createImageData(256, 256);
+    for (let i = 0; i < 256 * 256; i++) { const v = hash(i * 1.37 + g * 9131.7) * 255; d.data[i * 4] = d.data[i * 4 + 1] = d.data[i * 4 + 2] = v; d.data[i * 4 + 3] = 255; }
+    x.putImageData(d, 0, 0); GRAIN.push(ctx.createPattern(c, 'repeat'));
+  }
+}
+function grain(t) {
+  const f = Math.floor(t * 24) % GRAIN.length;
+  ctx.save(); ctx.globalAlpha = .045; ctx.globalCompositeOperation = 'overlay'; ctx.fillStyle = GRAIN[f];
+  ctx.translate(-(f * 37) % 256, -(f * 91) % 256); ctx.fillRect(0, 0, W + 512, H + 512); ctx.restore();
+}
+
+// ---- FRAME ---------------------------------------------------------------------
+window.renderFrame = function (t) {
+  t = clamp(t, 0, T.dur);
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+  paper();
+  const [sx, sy] = shake(t);
+  ctx.save(); ctx.translate(sx, sy);
+  intro(t); career(t); numbers(t); scrollScene(t); pursue(t);
+  endCard(t);
+  ctx.restore();
+  for (const [a, k] of FLASHES) { const p = seg(t, a, .2); if (p > 0 && p < 1) { ctx.fillStyle = C.paper; ctx.globalAlpha = k * (1 - p); ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; } }
+  grain(t);
+};
+window.DURATION = T.dur;
+
+// ---- BOOT ------------------------------------------------------------------------
+const IMGS = {};
+window.ready = (async () => {
+  await Promise.all(Object.entries(IMG_SRC).map(([k, src]) => new Promise(res => { const im = new Image(); im.onload = () => { IMGS[k] = im; res(); }; im.onerror = res; im.src = src; })));
+  await Promise.all([`400 100px ${AB}`, `700 100px ${SG}`, `500 100px ${SG}`].map(f => document.fonts.load(f)));
+  makeGrain();
+  renderFrame(0);
+})();
+if (!Q.has('render')) window.ready.then(() => {
+  const start = performance.now();
+  const loop = now => { renderFrame(((now - start) / 1000) % (T.dur + 1)); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+});
+</script>
+</body></html>
