@@ -53,7 +53,7 @@ const meta = {
 function header(lens = 'home') {
   const home = lens === 'home';
   const directory = lens === 'work';
-  const nav = home ? [['#work', 'Work'], ['#case-studies', 'Case studies'], ['#about', 'About']] : directory ? [['/#work', 'Home'], ['/case-studies.html', 'Case studies']] : [['#work', `${labels[lens]} work`], [lens === 'builder' ? '#approach' : '#case-study', lens === 'builder' ? 'Approach' : 'Case study']];
+  const nav = home ? [['#tv', 'New releases']] : directory ? [['/#work', 'Home'], ['/case-studies.html', 'Case studies']] : [['#work', `${labels[lens]} work`], [lens === 'builder' ? '#approach' : '#case-study', lens === 'builder' ? 'Approach' : 'Case study']];
   return `<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="wrap header-inner">
   <a class="wordmark" href="/" aria-label="Ben Campbell — home"><span aria-hidden="true">BC.</span> BEN CAMPBELL.</a>
@@ -97,7 +97,7 @@ function page(key, content) {
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="${origin}${m.path}"><meta name="twitter:title" content="${e(m.title)}"><meta name="twitter:description" content="${e(m.description)}">
 <meta name="twitter:image" content="${origin}/assets/images/portfolio-share-card.png?v=2"><meta name="twitter:image:alt" content="Ben Campbell Creative portfolio">
 <meta name="theme-color" content="#fffdf8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css"><link rel="stylesheet" href="/assets/css/charm.css"><script src="/assets/js/site.js" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css"><link rel="stylesheet" href="/assets/css/charm.css">${key === 'home' ? HOME_HEAD : ''}<script>addEventListener('pagereveal',e=>{const t=e.viewTransition;if(t){t.ready.catch(()=>{});t.finished.catch(()=>{})}})</script><script src="/assets/js/site.js" defer></script>
 <script type="application/ld+json">${JSON.stringify(structured).replace(/</g, '\\u003c')}</script>
 </head><body data-lens="${key}">${header(key)}<main id="main-content">${content}</main>${footer(key)}</body></html>\n`;
 }
@@ -141,7 +141,7 @@ function contact({ home = false, title = 'Like what you see?', description = 'Op
   </div></div></section>`;
 }
 
-const TICKER_WORDS = '/// SOCIAL STRATEGY /// CONTENT SYSTEMS /// CAMPAIGNS /// COMMUNITY /// COPYWRITING /// VIDEO /// BUILT TOOLS ///&nbsp;';
+const TICKER_WORDS = '/// NOW SHOWING /// SOCIAL STRATEGY /// CONTENT SYSTEMS /// CAMPAIGNS /// COMMUNITY /// COPYWRITING /// VIDEO /// BUILT TOOLS ///&nbsp;';
 
 // Repeated four times so the -50% translate loops seamlessly at any width.
 function ticker() {
@@ -189,36 +189,100 @@ function statement() {
 </div></section>`;
 }
 
+// ---------------------------------------------------------------------------
+// Home: a video-store wall. Every cover is a real link to a portfolio page or
+// case study. assets/js/vcr.js adds the show (the case opens, a VCR slides up,
+// the tape goes in, the screen plays) and the Eject on the way back.
+const HOME_HEAD = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/css/vcr.css"><script src="/assets/js/vcr.js" defer></script>';
+
+const RELEASES = [
+  { id: 'social', url: '/social/', title: 'Social', tagline: 'Give people a reason to stop. And stay.', proof: '6M+ audience · 470M+ organic impressions', credits: 'San Antonio Zoo · Codeup · Overland Partners', runtime: '11 posts', color: '#f5a9dc', hot: '#d946ef' },
+  { id: 'writing', url: '/writing/', title: 'Writing', tagline: 'The right words. For the right people.', proof: 'Press, brand stories, web and product copy', credits: 'San Antonio Zoo · Overland Partners · SaaS', runtime: '10 pieces', color: '#d5ef89', hot: '#65a30d' },
+  { id: 'video', url: '/video/', title: 'Video', tagline: 'A reason to watch. A story worth the time.', proof: 'Destination stories, explainers, fundraising', credits: 'San Antonio Zoo · Codeup', runtime: '7 videos', color: '#a5dfe8', hot: '#0891b2' },
+  { id: 'builder', url: '/builder/', title: 'Builder / AI', tagline: 'Marketing instincts. Working ideas.', proof: 'Featured by Buffer · May 2026', credits: 'Nobody Creative', runtime: '3 projects', color: '#f8db77', hot: '#ca8a04' },
+];
+const PICKS = [
+  { id: 'zoo', url: '/case-studies/san-antonio-zoo.html', title: 'San Antonio Zoo', genre: 'Social strategy + content operations', tagline: 'A repeatable planning system with room for the moments nobody could schedule.', proof: '6M+ audience supported · +15% comments and shares', color: '#f5a9dc', hot: '#d946ef' },
+  { id: 'codeup', url: '/case-studies/codeup.html', title: 'Codeup', genre: 'Growth + community marketing', tagline: 'Connecting content, community, events, and the path from curiosity to application.', proof: '+25% student applications · shared marketing outcome', color: '#a5dfe8', hot: '#0891b2' },
+  { id: 'overland', url: '/case-studies/overland-partners.html', title: 'Overland Partners', genre: 'Brand storytelling + content', tagline: 'Making complex architecture and firm news clear, human, and useful.', proof: 'One brand voice across web, press, and recruiting', color: '#d5ef89', hot: '#65a30d' },
+  { id: 'nobody', url: '/case-studies/nobody-creative.html', title: 'Nobody Creative', genre: 'Brand + product + creative direction', tagline: 'A growing collection of apps, games, and experiments turned into one studio brand.', proof: 'Built from zero: name, identity, products, audience', color: '#f8db77', hot: '#ca8a04' },
+];
+const QUOTE = 'If you’re not prepared to be wrong, you’ll never come up with anything original.';
+
+// The four lens covers get original art built from the site's line icons.
+const coverArt = key => `<svg class="vhs-art" viewBox="0 0 120 120" aria-hidden="true"><g class="burst">${Array.from({ length: 12 }, (_, i) => `<path d="M60 60 L${60 + 64 * Math.cos(i * Math.PI / 6 - 0.13)} ${60 + 64 * Math.sin(i * Math.PI / 6 - 0.13)} L${60 + 64 * Math.cos(i * Math.PI / 6 + 0.13)} ${60 + 64 * Math.sin(i * Math.PI / 6 + 0.13)}Z"/>`).join('')}</g><circle cx="60" cy="60" r="34" class="disc"/><g transform="translate(37 37) scale(1.36)" fill="none" stroke="#151515" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${ICONS[key]}</g></svg>`;
+
+const tape = label => `<span class="vhs-inside" aria-hidden="true"><span class="vhs-tape"><span class="vhs-reel"></span><span class="vhs-reel"></span><span class="vhs-tape-label">${e(label)}</span></span></span>`;
+
+function releaseCover(r) {
+  return `<li><a class="vhs release" href="${href(r.url)}" data-tape="${e(r.id)}" data-title="${e(r.title)}" data-tagline="${e(r.tagline)}" style="--c:${e(r.color)};--hot:${e(r.hot)}">
+  <span class="vhs-box">${tape(r.title)}<span class="vhs-front">
+    <span class="vhs-top"><span>Ben Campbell</span><span class="vhs-new">New release</span></span>
+    ${coverArt(r.id)}
+    <span class="vhs-title">${e(r.title)}</span>
+    <span class="vhs-tagline">${e(r.tagline)}</span>
+    <span class="vhs-proof">${e(r.proof)}</span>
+    <span class="vhs-foot"><span class="vhs-rating"><b>PG</b>Professional<br>grade</span><span class="vhs-credits">${e(r.credits)}<br>${e(r.runtime)}</span></span>
+  </span><span class="vhs-edge" aria-hidden="true"></span></span></a></li>`;
+}
+function pickCover(p) {
+  return `<li><a class="vhs pick" href="${href(p.url)}" data-tape="${e(p.id)}" data-title="${e(p.title)}" data-tagline="${e(p.tagline)}" style="--c:${e(p.color)};--hot:${e(p.hot)}">
+  <span class="vhs-box">${tape(p.title)}<span class="vhs-front">
+    <span class="vhs-sticker" aria-hidden="true">Staff<br>pick</span>
+    <span class="vhs-genre"><span>${e(p.genre)}</span></span>
+    <span class="vhs-title">${e(p.title)}</span>
+    <span class="vhs-tagline">${e(p.tagline)}</span>
+    <span class="vhs-proof">${e(p.proof)}</span>
+    <span class="vhs-rewind" aria-hidden="true">Be kind, rewind</span>
+  </span><span class="vhs-edge" aria-hidden="true"></span></span></a></li>`;
+}
+
+function wallSection() {
+  return `<section class="wall" id="tv" aria-labelledby="tv-heading"><div class="wrap">
+  <div class="wall-head"><h2 id="tv-heading" class="neon">New releases</h2><p>Pick a tape. Each one plays a portfolio.</p></div>
+  <ul class="rack releases" role="list">${RELEASES.map(releaseCover).join('')}</ul>
+  <div class="wall-head picks-head"><h2 class="neon small">Staff picks</h2><p>The case studies: the thinking behind the work.</p></div>
+  <ul class="rack picks" role="list">${PICKS.map(pickCover).join('')}
+    <li><button class="vhs blank" type="button" data-quote="${e(QUOTE)}" style="--c:#fffdf3;--hot:#151515" aria-label="A blank tape labeled Be Wrong. ${e(QUOTE)} Sir Ken Robinson.">
+      <span class="vhs-box">${tape('Be wrong')}<span class="vhs-front">
+        <span class="vhs-handwritten">Be wrong</span>
+        <span class="vhs-note">${e(QUOTE)}<br>— Sir Ken Robinson</span>
+        <span class="vhs-rewind" aria-hidden="true">Do not tape over</span>
+      </span><span class="vhs-edge" aria-hidden="true"></span></span></button></li>
+  </ul>
+</div></section>`;
+}
+
+function frontDesk() {
+  return `<section class="section contact front-desk" id="contact" aria-labelledby="contact-heading"><div class="wrap contact-grid">
+  <div><p class="eyebrow">The front desk</p><h2 id="contact-heading">Good work starts<br>with a conversation.</h2>
+    <div class="member-card" aria-hidden="true"><span class="mc-top">Membership</span><b>Ben Campbell</b><span>San Antonio, TX · No late fees</span><span class="mc-bars"></span></div></div>
+  <div><p>Open to full-time roles, freelance projects, and fractional or part-time support in social media, content marketing, and branding.</p><div class="actions"><a class="button" href="${email}">Email Ben <span aria-hidden="true">↗</span></a>${ext(linkedin, 'LinkedIn')}${ext(resume, 'Résumé')}</div>
+  ${currently()}
+  <p class="personal">Girl dad. Husband to a zookeeper. Movie and theme-park person. Firm believer that “professional” doesn’t have to mean “written by a committee of beige cardigans.”</p>
+  <details class="contact-details"><summary>Prefer a form? Send a note.</summary>
+    <form class="contact-form" name="portfolio-contact" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="portfolio-contact"><p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <div class="form-row"><div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div></div>
+    <div class="field"><label for="inquiry-type">What kind of help?</label><select id="inquiry-type" name="inquiry-type" required><option value="">Choose an option</option><option>Full-time role</option><option>Freelance project</option><option>Fractional support</option><option>Part-time support</option></select></div>
+    <div class="field"><label for="message">What do you have in mind?</label><textarea id="message" name="message" rows="4" placeholder="The role, project, or creative problem you need help with." required></textarea></div><button class="button" type="submit">Send a note <span aria-hidden="true">→</span></button></form></details>
+  </div></div></section>`;
+}
+
 function homePage() {
   return page('home', `
-<section class="hero" aria-labelledby="hero-heading"><div class="wrap">
+<section class="hero home-hero" aria-labelledby="hero-heading"><div class="wrap">
   <div class="hero-grid"><div class="hero-content"><p class="eyebrow">Social media + content marketing</p>
   <h1 id="hero-heading">Social strategy.<br>Stories that <span>stick.</span></h1>
   <p class="hero-copy">I’m Ben. I turn brand goals into campaigns, copy, and content people care about — with the strategy to shape the plan and the hands-on skills to make it happen.</p>
-  <ul class="disciplines" aria-label="What I work on">${['Social strategy', 'Content marketing', 'Campaigns', 'Copywriting', 'Community', 'Video', 'Brand storytelling'].map(d => `<li>${e(d)}</li>`).join('')}</ul>
-  <p class="location">San Antonio, TX · Open to remote opportunities</p>
-  <div class="actions"><a class="button" href="#work">See my work <span aria-hidden="true">↓</span></a>${ext(resume, 'View resume')}</div></div>
+  <div class="actions"><a class="button" href="#tv">Pick a tape <span aria-hidden="true">↓</span></a>${ext(resume, 'View resume')}</div></div>
   <figure class="portrait"><img src="/assets/images/ben-campbell-headshot.jpg" width="400" height="500" alt="Ben Campbell" fetchpriority="high"><figcaption><span>Strategy + sleeves rolled up</span><span aria-hidden="true">↗</span></figcaption></figure></div>
+  ${statStrip()}
   <div class="experience-line"><span class="muted">Experience with</span><strong>San Antonio Zoo</strong><strong>Overland Partners</strong><strong>Codeup</strong><strong>SeaWorld</strong><span class="exp-split" aria-hidden="true"></span>${ext(bufferStory, 'Featured by Buffer · May 2026', 'exp-credit')}</div>
 </div></section>
 ${ticker()}
-<section class="section" id="work" aria-labelledby="work-heading"><div class="wrap"><div class="section-head"><div><p class="eyebrow">01 / Work examples</p><h2 id="work-heading">Start with the work.</h2></div><p>A few things I’ve made. Explore the portfolio that fits what you’re looking for.</p></div>${workCards()}</div></section>
-${stats()}
-<section class="section cases" id="case-studies" aria-labelledby="cases-heading"><div class="wrap"><div class="section-head"><div><p class="eyebrow">02 / Case studies</p><h2 id="cases-heading">The thinking behind it.</h2></div><a class="text-link" href="/case-studies.html">All four case studies <span aria-hidden="true">→</span></a></div>
-  <div class="case-list"><a class="case-row" href="/case-studies/san-antonio-zoo.html"><div><p class="eyebrow">Social strategy + content operations</p><h3>San Antonio Zoo</h3></div><p>A repeatable planning system with room for the moments nobody could schedule.<strong>6M+ audience supported · +15% comments and shares</strong></p><span class="case-arrow" aria-hidden="true">↗</span></a>
-  <a class="case-row" href="/case-studies/codeup.html"><div><p class="eyebrow">Growth + community marketing</p><h3>Codeup</h3></div><p>Connecting content, community, events, and the path from curiosity to application.<strong>+25% student applications · shared marketing outcome</strong></p><span class="case-arrow" aria-hidden="true">↗</span></a>
-  <a class="case-row" href="/case-studies/overland-partners.html"><div><p class="eyebrow">Brand storytelling + content</p><h3>Overland Partners</h3></div><p>Making complex architecture and firm news clear, human, and useful.<strong>One brand voice across web, press, and recruiting</strong></p><span class="case-arrow" aria-hidden="true">↗</span></a></div>
-  <p class="case-note">Results reflect work with broader teams. Each case study explains my contribution and the context.</p>
-</div></section>
-${statement()}
-<section class="section" id="about" aria-labelledby="about-heading"><div class="wrap about-grid"><div class="about-copy"><p class="eyebrow">03 / About Ben</p><h2 id="about-heading">Strategic brain.<br>Sleeves rolled up.</h2>
-  <p>I’ve worked across destination brands, architecture, tech education, and SaaS. I can shape the campaign, write the copy, work the comments, and keep the content calendar moving.</p>
-  <p>That same curiosity led me to start ${ext(studio, 'Nobody Creative')} — the one place I’ve built a company from zero: the name, the identity, the product line, and the audience for it.</p>
-  ${currently()}
-  <p class="personal">Girl dad. Husband to a zookeeper. Movie and theme-park person. Firm believer that “professional” doesn’t have to mean “written by a committee of beige cardigans.”</p></div>
-  <aside class="recognition" aria-labelledby="buffer-heading"><p class="eyebrow">Featured by Buffer</p><h3 id="buffer-heading">From my workflow<br>to their case study.</h3><p>I started building tools to untangle my own content workflow. When Buffer opened its API, those experiments grew into PostIQ and Receipts — and Buffer told the story.</p><div class="recognition-links">${ext(bufferStory, 'Read the PostIQ + Receipts feature')}${ext(openTabs, 'Open Tabs with Ben Campbell')}</div></aside>
-</div></section>
-${contact({ home: true, title: 'Good work starts<br>with a conversation.' })}`);
+${wallSection()}
+${frontDesk()}`);
 }
 
 // A lens page is often someone's FIRST page, not their second — Ben sends the
@@ -246,7 +310,7 @@ function otherLenses(current) {
 
 function lensHero(lens, { eyebrow, title, intro, byline, cta }) {
   const credit = lens === 'video' ? '' : `<p class="lens-credit">${ext(bufferStory, 'Featured by Buffer · May 2026', 'exp-credit')}</p>`;
-  return `<section class="lens-hero" aria-labelledby="hero-heading"><div class="wrap"><a class="back-link" href="/">← Full creative portfolio</a>
+  return `<section class="lens-hero" aria-labelledby="hero-heading"><div class="wrap"><a class="back-link eject-link" href="/#tv" data-eject="${lens}"><span aria-hidden="true">⏏</span> Eject · full portfolio</a>
   <div class="lens-hero-grid">
     <div class="hero-panel"><p class="eyebrow">Ben Campbell / ${e(eyebrow)}</p><h1 id="hero-heading">${title}</h1><p class="intro">${e(intro)}</p><p class="byline">${e(byline)}</p>${credit}<div class="actions"><a class="button" href="#work">${e(cta)} <span aria-hidden="true">↓</span></a>${ext(resume, 'View resume')}</div></div>
     <figure class="lens-portrait"><img src="/assets/images/ben-campbell-headshot.jpg" width="400" height="500" alt="Ben Campbell" loading="lazy"><figcaption>Ben Campbell · San Antonio, TX</figcaption></figure>

@@ -7,6 +7,11 @@
     return;
   }
 
+  // Eject on a portfolio page: the home page VCR pops that tape back onto the shelf.
+  document.querySelectorAll('[data-eject]').forEach(link => link.addEventListener('click', () => {
+    try { sessionStorage.setItem('vcr-return', link.dataset.eject); } catch { /* private mode */ }
+  }));
+
   document.querySelectorAll('[data-video]').forEach(button => {
     const id = button.dataset.video;
     if (!/^[\w-]{11}$/.test(id)) return;

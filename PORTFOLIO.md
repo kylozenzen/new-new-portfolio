@@ -3,7 +3,8 @@
 This branch combines the focused pages proposed in PR #4 with the shorter home
 direction from PR #5. It is based on `main` and does not require either PR to merge.
 
-- `/`: introduction, work examples, case studies, About/Buffer recognition, contact.
+- `/`: introduction with the headline numbers up front, then the VCR (see below),
+  the Ken Robinson quote, About/Buffer recognition, and contact.
 - `/social/`: posts grouped by personality, campaigns, and community.
 - `/writing/`: the ten curated pieces from PR #4, grouped by writing purpose;
   additional brand and Medium writing remains available in an expandable list.
@@ -50,3 +51,25 @@ JavaScript is disabled. Old homepage/archive fragments (`#writing`, `#social`,
 The existing `portfolio-contact` Netlify form and `/success` route are preserved.
 The form now includes full-time, freelance, fractional, and part-time inquiry types.
 Check delivery in Netlify after deployment; local testing must not submit a real inquiry.
+
+## The home page video wall
+
+The home page is a short intro (with the headline numbers), then a video-store
+wall: **New releases** are the four portfolio pages, **Staff picks** are the case
+studies, plus a blank "Be Wrong" tape that plays the Ken Robinson quote. Contact
+lives at **the front desk** below it.
+
+- **Covers are the links.** Each cover is a plain link to `/social/`, `/writing/`,
+  `/video/`, `/builder/` or a case study, so those URLs still stand alone and are
+  what you send people. No JavaScript needed to use the site.
+- **The show.** `assets/js/vcr.js` turns a tap into: the case opens, a VCR slides
+  up from the bottom of the screen, the tape goes in, the whole screen plays static
+  and a title card, then the page loads. Repeat plays speed up; reduced-motion
+  visitors and modifier-clicks just follow the link.
+- **Eject.** The back link on each portfolio page is "⏏ Eject". It returns to
+  `/#tv` and the tape pops out of the VCR back into its case. The browser back
+  button does the same.
+- **Editing.** Covers come from `RELEASES` and `PICKS` in
+  `scripts/render-portfolio.mjs` (title, tagline, proof line, credits, colors,
+  link). Styles are in `assets/css/vcr.css`. Everything is HTML/CSS; only
+  transforms and opacity animate, so it stays light on phones.
