@@ -53,7 +53,7 @@ const meta = {
 function header(lens = 'home') {
   const home = lens === 'home';
   const directory = lens === 'work';
-  const nav = home ? [['#work', 'Work'], ['#case-studies', 'Case studies'], ['#about', 'About']] : directory ? [['/#work', 'Home'], ['/case-studies.html', 'Case studies']] : [['#work', `${labels[lens]} work`], [lens === 'builder' ? '#approach' : '#case-study', lens === 'builder' ? 'Approach' : 'Case study']];
+  const nav = home ? [['#tv', 'The tapes'], ['#about', 'About']] : directory ? [['/#work', 'Home'], ['/case-studies.html', 'Case studies']] : [['#work', `${labels[lens]} work`], [lens === 'builder' ? '#approach' : '#case-study', lens === 'builder' ? 'Approach' : 'Case study']];
   return `<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="wrap header-inner">
   <a class="wordmark" href="/" aria-label="Ben Campbell — home"><span aria-hidden="true">BC.</span> BEN CAMPBELL.</a>
@@ -97,7 +97,7 @@ function page(key, content) {
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="${origin}${m.path}"><meta name="twitter:title" content="${e(m.title)}"><meta name="twitter:description" content="${e(m.description)}">
 <meta name="twitter:image" content="${origin}/assets/images/portfolio-share-card.png?v=2"><meta name="twitter:image:alt" content="Ben Campbell Creative portfolio">
 <meta name="theme-color" content="#fffdf8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css"><link rel="stylesheet" href="/assets/css/charm.css"><script src="/assets/js/site.js" defer></script>
+<link rel="stylesheet" href="/assets/css/site.css"><link rel="stylesheet" href="/assets/css/charm.css">${key === 'home' ? HOME_HEAD : ''}<script>addEventListener('pagereveal',e=>{const t=e.viewTransition;if(t){t.ready.catch(()=>{});t.finished.catch(()=>{})}})</script><script src="/assets/js/site.js" defer></script>
 <script type="application/ld+json">${JSON.stringify(structured).replace(/</g, '\\u003c')}</script>
 </head><body data-lens="${key}">${header(key)}<main id="main-content">${content}</main>${footer(key)}</body></html>\n`;
 }
@@ -179,7 +179,7 @@ function statement() {
   const media = ethosPhoto
     ? `<img src="${href(ethosPhoto)}" alt="Ben Campbell at work" width="720" height="720" loading="lazy">`
     : `<div class="ethos-placeholder" role="img" aria-label="Photo of Ben Campbell, coming soon"><span>Photo goes here</span><small>assets/images/ben-campbell-ethos.jpg</small></div>`;
-  return `<section class="ethos" aria-labelledby="ethos-heading"><div class="wrap ethos-grid">
+  return `<section class="ethos" id="ethos" aria-labelledby="ethos-heading"><div class="wrap ethos-grid">
   <figure class="ethos-photo">${media}</figure>
   <div class="ethos-copy">
     <p class="eyebrow" id="ethos-heading">How I work</p>
@@ -189,29 +189,66 @@ function statement() {
 </div></section>`;
 }
 
+// ---------------------------------------------------------------------------
+// Home: a TV cabinet. Each tape plays one portfolio page; the rental cases are
+// the case studies. assets/js/vcr.js draws it in three.js from the JSON below.
+// The HTML inside [data-vcr] carries every link, so the page works without
+// WebGL and stays the keyboard / screen-reader layer once the 3D loads.
+const HOME_HEAD = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/css/vcr.css"><script type="module" src="/assets/js/vcr.js"></script>';
+
+const TAPES = [
+  { id: 'social', kind: 'tape', shelf: 1, label: 'SOCIAL', note: 'Do not tape over', color: '#f5a9dc', hot: '#d946ef', url: '/social/', title: 'Social', headline: 'Give people a reason to stop. And stay.', desc: 'Brand personality, timely campaigns, and conversations worth joining.' },
+  { id: 'writing', kind: 'tape', shelf: 1, label: 'WRITING', note: 'Copy + stories', color: '#d5ef89', hot: '#65a30d', url: '/writing/', title: 'Writing', headline: 'The right words. For the right people.', desc: 'Press, brand stories, web copy, and product guidance with a clear purpose.' },
+  { id: 'video', kind: 'tape', shelf: 1, label: 'VIDEO', note: 'Concept to cut', color: '#a5dfe8', hot: '#0891b2', url: '/video/', title: 'Video', headline: 'A reason to watch. A story worth the time.', desc: 'Destination stories, explainers, and content made to be watched.' },
+  { id: 'builder', kind: 'tape', shelf: 1, label: 'BUILDER / AI', note: 'Tools + experiments', color: '#f8db77', hot: '#ca8a04', url: '/builder/', title: 'Builder / AI', headline: 'Marketing instincts. Working ideas.', desc: 'Marketing problems turned into working tools and creative products.' },
+  { id: 'be-wrong', kind: 'quote', shelf: 1, label: 'BE WRONG', note: 'Keep', color: '#ffffff', hot: '#151515', url: '#ethos', title: 'Be Wrong', headline: 'If you’re not prepared to be wrong, you’ll never come up with anything original.', desc: 'Sir Ken Robinson' },
+  { id: 'member', kind: 'card', shelf: 1, label: 'MEMBER', note: 'Résumé + contact', color: '#facc15', hot: '#151515', url: '#contact', title: 'Membership card', headline: 'Résumé + contact', desc: 'Résumé, email, LinkedIn, and a contact form.' },
+  { id: 'zoo', kind: 'pick', shelf: 2, label: 'SAN ANTONIO ZOO', note: 'Social strategy', color: '#f5a9dc', hot: '#d946ef', url: '/case-studies/san-antonio-zoo.html', title: 'San Antonio Zoo', headline: 'A repeatable planning system with room for the moments nobody could schedule.', desc: '6M+ audience supported · +15% comments and shares' },
+  { id: 'codeup', kind: 'pick', shelf: 2, label: 'CODEUP', note: 'Growth + community', color: '#a5dfe8', hot: '#0891b2', url: '/case-studies/codeup.html', title: 'Codeup', headline: 'Connecting content, community, events, and the path from curiosity to application.', desc: '+25% student applications · shared marketing outcome' },
+  { id: 'overland', kind: 'pick', shelf: 2, label: 'OVERLAND', note: 'Brand storytelling', color: '#d5ef89', hot: '#65a30d', url: '/case-studies/overland-partners.html', title: 'Overland Partners', headline: 'Making complex architecture and firm news clear, human, and useful.', desc: 'One brand voice across web, press, and recruiting' },
+  { id: 'nobody', kind: 'pick', shelf: 2, label: 'NOBODY CREATIVE', note: 'Brand + product', color: '#f8db77', hot: '#ca8a04', url: '/case-studies/nobody-creative.html', title: 'Nobody Creative', headline: 'A collection of apps, games, and experiments turned into a coherent studio brand.', desc: 'Brand strategy, product marketing, creative direction' },
+];
+for (const tape of TAPES) href(tape.url);
+
+const tapeLink = tape => `<a class="tape-link ${tape.kind}" data-id="${e(tape.id)}" href="${href(tape.url)}" style="--tape:${e(tape.color)};--tape-hot:${e(tape.hot)}"><span class="tape-label">${e(tape.label)}</span><span class="visually-hidden"> — ${e(tape.kind === 'pick' ? 'case study' : tape.kind === 'card' ? 'résumé and contact' : tape.kind === 'quote' ? 'a short one' : 'portfolio')}</span></a>`;
+
+function vcrSection() {
+  const shelf = n => TAPES.filter(tape => tape.shelf === n).map(tapeLink).join('');
+  const catalog = TAPES.filter(tape => tape.kind !== 'quote');
+  return `<section class="den" id="tv" aria-labelledby="tv-heading"><div class="wrap den-grid">
+  <div class="den-copy">
+    <p class="eyebrow">Now playing</p><h2 id="tv-heading">Pick a tape.</h2>
+    <p class="den-intro">Each tape plays one portfolio. The rental cases are the case studies.</p>
+    <ol class="catalog" aria-label="Everything on the shelf">${catalog.map(tape => `<li><a class="catalog-row ${tape.kind}" href="${href(tape.url)}" style="--tape:${e(tape.color)}"><span class="catalog-tag">${tape.kind === 'pick' ? 'Staff pick' : tape.kind === 'card' ? 'Front desk' : 'New release'}</span><b>${e(tape.title)}</b><span class="catalog-desc">${e(tape.kind === 'pick' ? tape.headline : tape.desc)}</span><span class="catalog-go" aria-hidden="true">→</span></a></li>`).join('')}</ol>
+  </div>
+  <div class="vcr-stage" data-vcr>
+    <div class="vcr-fallback">
+      <div class="fb-tv"><div class="fb-screen"><span>VIDEO 1</span><b>Pick a tape</b></div></div>
+      <div class="fb-vcr"><span class="fb-slot"></span><span class="fb-clock">12:00</span></div>
+      <div class="fb-shelf" aria-label="New releases">${shelf(1)}</div>
+      <div class="fb-shelf picks" aria-label="Staff picks">${shelf(2)}</div>
+    </div>
+    <button class="vcr-eject" type="button" hidden>⏏ Eject</button>
+    <script type="application/json" id="vcr-data">${JSON.stringify(TAPES).replace(/</g, '\\u003c')}</script>
+  </div>
+</div></section>`;
+}
+
 function homePage() {
   return page('home', `
-<section class="hero" aria-labelledby="hero-heading"><div class="wrap">
+<section class="hero home-hero" aria-labelledby="hero-heading"><div class="wrap">
   <div class="hero-grid"><div class="hero-content"><p class="eyebrow">Social media + content marketing</p>
   <h1 id="hero-heading">Social strategy.<br>Stories that <span>stick.</span></h1>
   <p class="hero-copy">I’m Ben. I turn brand goals into campaigns, copy, and content people care about — with the strategy to shape the plan and the hands-on skills to make it happen.</p>
-  <ul class="disciplines" aria-label="What I work on">${['Social strategy', 'Content marketing', 'Campaigns', 'Copywriting', 'Community', 'Video', 'Brand storytelling'].map(d => `<li>${e(d)}</li>`).join('')}</ul>
-  <p class="location">San Antonio, TX · Open to remote opportunities</p>
-  <div class="actions"><a class="button" href="#work">See my work <span aria-hidden="true">↓</span></a>${ext(resume, 'View resume')}</div></div>
+  <div class="actions"><a class="button" href="#tv">Pick a tape <span aria-hidden="true">↓</span></a>${ext(resume, 'View resume')}</div></div>
   <figure class="portrait"><img src="/assets/images/ben-campbell-headshot.jpg" width="400" height="500" alt="Ben Campbell" fetchpriority="high"><figcaption><span>Strategy + sleeves rolled up</span><span aria-hidden="true">↗</span></figcaption></figure></div>
+  ${statStrip()}
   <div class="experience-line"><span class="muted">Experience with</span><strong>San Antonio Zoo</strong><strong>Overland Partners</strong><strong>Codeup</strong><strong>SeaWorld</strong><span class="exp-split" aria-hidden="true"></span>${ext(bufferStory, 'Featured by Buffer · May 2026', 'exp-credit')}</div>
 </div></section>
+${vcrSection()}
 ${ticker()}
-<section class="section" id="work" aria-labelledby="work-heading"><div class="wrap"><div class="section-head"><div><p class="eyebrow">01 / Work examples</p><h2 id="work-heading">Start with the work.</h2></div><p>A few things I’ve made. Explore the portfolio that fits what you’re looking for.</p></div>${workCards()}</div></section>
-${stats()}
-<section class="section cases" id="case-studies" aria-labelledby="cases-heading"><div class="wrap"><div class="section-head"><div><p class="eyebrow">02 / Case studies</p><h2 id="cases-heading">The thinking behind it.</h2></div><a class="text-link" href="/case-studies.html">All four case studies <span aria-hidden="true">→</span></a></div>
-  <div class="case-list"><a class="case-row" href="/case-studies/san-antonio-zoo.html"><div><p class="eyebrow">Social strategy + content operations</p><h3>San Antonio Zoo</h3></div><p>A repeatable planning system with room for the moments nobody could schedule.<strong>6M+ audience supported · +15% comments and shares</strong></p><span class="case-arrow" aria-hidden="true">↗</span></a>
-  <a class="case-row" href="/case-studies/codeup.html"><div><p class="eyebrow">Growth + community marketing</p><h3>Codeup</h3></div><p>Connecting content, community, events, and the path from curiosity to application.<strong>+25% student applications · shared marketing outcome</strong></p><span class="case-arrow" aria-hidden="true">↗</span></a>
-  <a class="case-row" href="/case-studies/overland-partners.html"><div><p class="eyebrow">Brand storytelling + content</p><h3>Overland Partners</h3></div><p>Making complex architecture and firm news clear, human, and useful.<strong>One brand voice across web, press, and recruiting</strong></p><span class="case-arrow" aria-hidden="true">↗</span></a></div>
-  <p class="case-note">Results reflect work with broader teams. Each case study explains my contribution and the context.</p>
-</div></section>
 ${statement()}
-<section class="section" id="about" aria-labelledby="about-heading"><div class="wrap about-grid"><div class="about-copy"><p class="eyebrow">03 / About Ben</p><h2 id="about-heading">Strategic brain.<br>Sleeves rolled up.</h2>
+<section class="section" id="about" aria-labelledby="about-heading"><div class="wrap about-grid"><div class="about-copy"><p class="eyebrow">About Ben</p><h2 id="about-heading">Strategic brain.<br>Sleeves rolled up.</h2>
   <p>I’ve worked across destination brands, architecture, tech education, and SaaS. I can shape the campaign, write the copy, work the comments, and keep the content calendar moving.</p>
   <p>That same curiosity led me to start ${ext(studio, 'Nobody Creative')} — the one place I’ve built a company from zero: the name, the identity, the product line, and the audience for it.</p>
   ${currently()}
@@ -246,7 +283,7 @@ function otherLenses(current) {
 
 function lensHero(lens, { eyebrow, title, intro, byline, cta }) {
   const credit = lens === 'video' ? '' : `<p class="lens-credit">${ext(bufferStory, 'Featured by Buffer · May 2026', 'exp-credit')}</p>`;
-  return `<section class="lens-hero" aria-labelledby="hero-heading"><div class="wrap"><a class="back-link" href="/">← Full creative portfolio</a>
+  return `<section class="lens-hero" aria-labelledby="hero-heading"><div class="wrap"><a class="back-link eject-link" href="/#tv" data-eject="${lens}"><span aria-hidden="true">⏏</span> Eject · full portfolio</a>
   <div class="lens-hero-grid">
     <div class="hero-panel"><p class="eyebrow">Ben Campbell / ${e(eyebrow)}</p><h1 id="hero-heading">${title}</h1><p class="intro">${e(intro)}</p><p class="byline">${e(byline)}</p>${credit}<div class="actions"><a class="button" href="#work">${e(cta)} <span aria-hidden="true">↓</span></a>${ext(resume, 'View resume')}</div></div>
     <figure class="lens-portrait"><img src="/assets/images/ben-campbell-headshot.jpg" width="400" height="500" alt="Ben Campbell" loading="lazy"><figcaption>Ben Campbell · San Antonio, TX</figcaption></figure>

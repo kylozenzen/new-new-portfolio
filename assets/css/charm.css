@@ -429,3 +429,7 @@ a[target="_blank"]:focus-visible span[aria-hidden="true"] {
   .stat-strip { margin-top: 24px; }
   .stat-strip b { font-size: 1.1rem; }
 }
+
+/* --- Page-to-page crossfade (the home VCR hands off to each portfolio) ---- */
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
