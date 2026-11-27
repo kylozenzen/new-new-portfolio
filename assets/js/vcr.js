@@ -69,28 +69,26 @@
     return { fly, real, r };
   }
   // Transforms for the copy, relative to where it started (the tape well).
+  // Edge-on, the tape shrinks to exactly the slot's size, so it can slide in
+  // and disappear instead of sticking out past the deck.
   function poses(r) {
-    const s = slot.getBoundingClientRect();
-    const k = (s.width * 0.94) / r.height;          // lying flat, its long side fills the slot
-    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-    const restY = s.top - (r.width * k) / 2 - 4;     // resting just above the slot
-    const dx = s.left + s.width / 2 - cx;
-    return {
-      above: `translate(${dx}px, ${restY - cy}px) rotate(-90deg) scale(${k})`,
-      inside: `translate(${dx}px, ${restY - cy + r.width * k + 24}px) rotate(-90deg) scale(${k})`,
-    };
+    const s = slot.getBoundingClientRect(), deckTop = deck.getBoundingClientRect().top;
+    const barW = s.width * 0.96, barH = Math.max(10, s.height * 0.9);
+    const sa = barH / r.width, sb = barW / r.height;
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2, dx = s.left + s.width / 2 - cx;
+    const pose = (y, fa = 1, fb = 1) => `translate(${dx}px, ${y}px) rotate(-90deg) scale(${sa * fa}, ${sb * fb})`;
+    const slotY = s.top + s.height / 2 - cy;
+    return { above: pose(deckTop - barH / 2 - 18 - cy), at: pose(slotY), inside: pose(slotY, 0.9, 0.94) };
   }
   async function insert(t) {
     const p = poses(t.r);
-    await run(t.fly, [{ transform: 'none' }, { transform: `translateY(-14px) scale(1.04)`, offset: 0.2 }, { transform: p.above }], 560);
-    await run(t.fly, [{ transform: p.above }, { transform: p.inside }], 260, 'ease-in');
-    t.fly.style.visibility = 'hidden';
+    await run(t.fly, [{ transform: 'none' }, { transform: 'translateY(-14px) scale(1.04)', offset: 0.2 }, { transform: p.above }], 560);
+    await run(t.fly, [{ transform: p.above, opacity: 1 }, { transform: p.at, opacity: 1, offset: 0.65 }, { transform: p.inside, opacity: 0 }], 300, 'ease-in');
   }
   async function eject(t) {
     const p = poses(t.r);
-    t.fly.style.visibility = 'visible';
-    await run(t.fly, [{ transform: p.inside }, { transform: p.above }], 300, 'cubic-bezier(.2,.8,.2,1)');
-    await run(t.fly, [{ transform: p.above }, { transform: `translateY(-14px) scale(1.04)`, offset: 0.8 }, { transform: 'none' }], 540);
+    await run(t.fly, [{ transform: p.inside, opacity: 0 }, { transform: p.at, opacity: 1, offset: 0.35 }, { transform: p.above, opacity: 1 }], 320, 'cubic-bezier(.2,.8,.2,1)');
+    await run(t.fly, [{ transform: p.above }, { transform: 'translateY(-14px) scale(1.04)', offset: 0.8 }, { transform: 'none' }], 540);
     t.real.style.visibility = '';
     t.fly.remove();
   }
@@ -250,8 +248,7 @@
       setOpen(cover);
       deck.animate([{ transform: UP }], { duration: 0, fill: 'forwards' });
       const t = lift(cover);
-      t.fly.animate([{ transform: poses(t.r).inside }], { duration: 0, fill: 'forwards' });
-      t.fly.style.visibility = 'hidden';
+      t.fly.animate([{ transform: poses(t.r).inside, opacity: 0 }], { duration: 0, fill: 'forwards' });
       setClock('EJCT');
       await wait(380);
       await eject(t);
