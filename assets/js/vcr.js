@@ -59,38 +59,44 @@
   function lift(cover) {
     const real = cover.querySelector('.vhs-tape');
     const r = real.getBoundingClientRect();
+    // The copy lives in a full-screen mask. While it goes in, the mask's bottom
+    // edge sits on the slot's lip, so the tape is cut off as it slides inside.
+    const mask = document.createElement('div');
+    mask.className = 'tape-mask';
+    mask.style.height = `${innerHeight}px`;
     const fly = real.cloneNode(true);
     fly.classList.add('flying-tape');
     fly.style.cssText = `left:${r.left}px;top:${r.top}px;width:${r.width}px;height:${r.height}px;`;
-    // Keep container-query sizing identical to the cover it came from.
     fly.style.setProperty('--c', getComputedStyle(cover).getPropertyValue('--c'));
-    document.body.append(fly);
+    mask.append(fly);
+    document.body.append(mask);
     real.style.visibility = 'hidden';
-    return { fly, real, r };
+    return { fly, mask, real, r };
   }
-  // Transforms for the copy, relative to where it started (the tape well).
-  // Edge-on, the tape shrinks to exactly the slot's size, so it can slide in
-  // and disappear instead of sticking out past the deck.
+  // Lying flat and tipped back in perspective: true proportions, long side = slot width.
+  const START = 'translate(0px, 0px) perspective(800px) rotateX(0deg) rotate(0deg) scale(1)';
+  const LIFT = 'translate(0px, -14px) perspective(800px) rotateX(0deg) rotate(0deg) scale(1.04)';
   function poses(r) {
-    const s = slot.getBoundingClientRect(), deckTop = deck.getBoundingClientRect().top;
-    const barW = s.width * 0.96, barH = Math.max(10, s.height * 0.9);
-    const sa = barH / r.width, sb = barW / r.height;
+    const s = slot.getBoundingClientRect(), lip = s.top + s.height * 0.35;
+    const k = (s.width * 0.96) / r.height, tilt = 55, visH = r.width * k * Math.cos(tilt * Math.PI / 180);
     const cx = r.left + r.width / 2, cy = r.top + r.height / 2, dx = s.left + s.width / 2 - cx;
-    const pose = (y, fa = 1, fb = 1) => `translate(${dx}px, ${y}px) rotate(-90deg) scale(${sa * fa}, ${sb * fb})`;
-    const slotY = s.top + s.height / 2 - cy;
-    return { above: pose(deckTop - barH / 2 - 18 - cy), at: pose(slotY), inside: pose(slotY, 0.9, 0.94) };
+    const pose = y => `translate(${dx}px, ${y}px) perspective(800px) rotateX(${tilt}deg) rotate(-90deg) scale(${k})`;
+    return { lip, above: pose(lip - visH / 2 - 8 - cy), inside: pose(lip + visH / 2 + 12 - cy) };
   }
   async function insert(t) {
     const p = poses(t.r);
-    await run(t.fly, [{ transform: 'none' }, { transform: 'translateY(-14px) scale(1.04)', offset: 0.2 }, { transform: p.above }], 560);
-    await run(t.fly, [{ transform: p.above, opacity: 1 }, { transform: p.at, opacity: 1, offset: 0.65 }, { transform: p.inside, opacity: 0 }], 300, 'ease-in');
+    await run(t.fly, [{ transform: START }, { transform: LIFT, offset: 0.2 }, { transform: p.above }], 600);
+    t.mask.style.height = `${p.lip}px`;
+    await run(t.fly, [{ transform: p.above }, { transform: p.inside }], 340, 'ease-in');
   }
   async function eject(t) {
     const p = poses(t.r);
-    await run(t.fly, [{ transform: p.inside, opacity: 0 }, { transform: p.at, opacity: 1, offset: 0.35 }, { transform: p.above, opacity: 1 }], 320, 'cubic-bezier(.2,.8,.2,1)');
-    await run(t.fly, [{ transform: p.above }, { transform: 'translateY(-14px) scale(1.04)', offset: 0.8 }, { transform: 'none' }], 540);
+    t.mask.style.height = `${p.lip}px`;
+    await run(t.fly, [{ transform: p.inside }, { transform: p.above }], 340, 'cubic-bezier(.2,.8,.2,1)');
+    t.mask.style.height = `${innerHeight}px`;
+    await run(t.fly, [{ transform: p.above }, { transform: LIFT, offset: 0.8 }, { transform: START }], 560);
     t.real.style.visibility = '';
-    t.fly.remove();
+    t.mask.remove();
   }
 
   /* ---- your screen is the TV ---- */
@@ -248,7 +254,7 @@
       setOpen(cover);
       deck.animate([{ transform: UP }], { duration: 0, fill: 'forwards' });
       const t = lift(cover);
-      t.fly.animate([{ transform: poses(t.r).inside, opacity: 0 }], { duration: 0, fill: 'forwards' });
+      t.fly.animate([{ transform: poses(t.r).inside }], { duration: 0, fill: 'forwards' });
       setClock('EJCT');
       await wait(380);
       await eject(t);
@@ -266,7 +272,7 @@
     if (!playing) return;
     const { cover, t } = playing;
     playing = null;
-    t.fly.remove();
+    t.mask.remove();
     t.real.style.visibility = '';
     cover.querySelector('.vhs-front').classList.remove('flipped');
     cover.querySelector('.vhs-front').getAnimations().forEach(a => a.cancel());

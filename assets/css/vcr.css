@@ -141,7 +141,8 @@
 .vcr-clock.blink { animation: vcr-blink 1s steps(1) infinite; }
 @keyframes vcr-blink { 50% { color: transparent; } }
 .vcr-btns { font: 700 10px/1 Arial, sans-serif; color: #bdbcc5; letter-spacing: 2px; white-space: nowrap; }
-.flying-tape { position: fixed !important; z-index: 215; margin: 0; transform-origin: 50% 50%; pointer-events: none; }
+.tape-mask { position: fixed; left: 0; top: 0; width: 100%; overflow: hidden; z-index: 215; pointer-events: none; }
+.flying-tape { position: absolute !important; margin: 0; transform-origin: 50% 50%; pointer-events: none; }
 
 .vcr-screen { position: fixed; inset: 0; z-index: 220; background: #000; overflow: hidden; }
 .vcr-screen canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
