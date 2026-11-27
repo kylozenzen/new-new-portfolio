@@ -53,7 +53,7 @@ const meta = {
 function header(lens = 'home') {
   const home = lens === 'home';
   const directory = lens === 'work';
-  const nav = home ? [['#tv', 'The tapes'], ['#about', 'About']] : directory ? [['/#work', 'Home'], ['/case-studies.html', 'Case studies']] : [['#work', `${labels[lens]} work`], [lens === 'builder' ? '#approach' : '#case-study', lens === 'builder' ? 'Approach' : 'Case study']];
+  const nav = home ? [['#tv', 'New releases']] : directory ? [['/#work', 'Home'], ['/case-studies.html', 'Case studies']] : [['#work', `${labels[lens]} work`], [lens === 'builder' ? '#approach' : '#case-study', lens === 'builder' ? 'Approach' : 'Case study']];
   return `<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-header"><div class="wrap header-inner">
   <a class="wordmark" href="/" aria-label="Ben Campbell — home"><span aria-hidden="true">BC.</span> BEN CAMPBELL.</a>
@@ -141,7 +141,7 @@ function contact({ home = false, title = 'Like what you see?', description = 'Op
   </div></div></section>`;
 }
 
-const TICKER_WORDS = '/// SOCIAL STRATEGY /// CONTENT SYSTEMS /// CAMPAIGNS /// COMMUNITY /// COPYWRITING /// VIDEO /// BUILT TOOLS ///&nbsp;';
+const TICKER_WORDS = '/// NOW SHOWING /// SOCIAL STRATEGY /// CONTENT SYSTEMS /// CAMPAIGNS /// COMMUNITY /// COPYWRITING /// VIDEO /// BUILT TOOLS ///&nbsp;';
 
 // Repeated four times so the -50% translate loops seamlessly at any width.
 function ticker() {
@@ -179,7 +179,7 @@ function statement() {
   const media = ethosPhoto
     ? `<img src="${href(ethosPhoto)}" alt="Ben Campbell at work" width="720" height="720" loading="lazy">`
     : `<div class="ethos-placeholder" role="img" aria-label="Photo of Ben Campbell, coming soon"><span>Photo goes here</span><small>assets/images/ben-campbell-ethos.jpg</small></div>`;
-  return `<section class="ethos" id="ethos" aria-labelledby="ethos-heading"><div class="wrap ethos-grid">
+  return `<section class="ethos" aria-labelledby="ethos-heading"><div class="wrap ethos-grid">
   <figure class="ethos-photo">${media}</figure>
   <div class="ethos-copy">
     <p class="eyebrow" id="ethos-heading">How I work</p>
@@ -190,48 +190,83 @@ function statement() {
 }
 
 // ---------------------------------------------------------------------------
-// Home: a TV cabinet. Each tape plays one portfolio page; the rental cases are
-// the case studies. assets/js/vcr.js draws it in three.js from the JSON below.
-// The HTML inside [data-vcr] carries every link, so the page works without
-// WebGL and stays the keyboard / screen-reader layer once the 3D loads.
-const HOME_HEAD = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/css/vcr.css"><script type="module" src="/assets/js/vcr.js"></script>';
+// Home: a video-store wall. Every cover is a real link to a portfolio page or
+// case study. assets/js/vcr.js adds the show (the case opens, a VCR slides up,
+// the tape goes in, the screen plays) and the Eject on the way back.
+const HOME_HEAD = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"><link rel="stylesheet" href="/assets/css/vcr.css"><script src="/assets/js/vcr.js" defer></script>';
 
-const TAPES = [
-  { id: 'social', kind: 'tape', shelf: 1, label: 'SOCIAL', note: 'Do not tape over', color: '#f5a9dc', hot: '#d946ef', url: '/social/', title: 'Social', headline: 'Give people a reason to stop. And stay.', desc: 'Brand personality, timely campaigns, and conversations worth joining.' },
-  { id: 'writing', kind: 'tape', shelf: 1, label: 'WRITING', note: 'Copy + stories', color: '#d5ef89', hot: '#65a30d', url: '/writing/', title: 'Writing', headline: 'The right words. For the right people.', desc: 'Press, brand stories, web copy, and product guidance with a clear purpose.' },
-  { id: 'video', kind: 'tape', shelf: 1, label: 'VIDEO', note: 'Concept to cut', color: '#a5dfe8', hot: '#0891b2', url: '/video/', title: 'Video', headline: 'A reason to watch. A story worth the time.', desc: 'Destination stories, explainers, and content made to be watched.' },
-  { id: 'builder', kind: 'tape', shelf: 1, label: 'BUILDER / AI', note: 'Tools + experiments', color: '#f8db77', hot: '#ca8a04', url: '/builder/', title: 'Builder / AI', headline: 'Marketing instincts. Working ideas.', desc: 'Marketing problems turned into working tools and creative products.' },
-  { id: 'be-wrong', kind: 'quote', shelf: 1, label: 'BE WRONG', note: 'Keep', color: '#ffffff', hot: '#151515', url: '#ethos', title: 'Be Wrong', headline: 'If you’re not prepared to be wrong, you’ll never come up with anything original.', desc: 'Sir Ken Robinson' },
-  { id: 'member', kind: 'card', shelf: 1, label: 'MEMBER', note: 'Résumé + contact', color: '#facc15', hot: '#151515', url: '#contact', title: 'Membership card', headline: 'Résumé + contact', desc: 'Résumé, email, LinkedIn, and a contact form.' },
-  { id: 'zoo', kind: 'pick', shelf: 2, label: 'SAN ANTONIO ZOO', note: 'Social strategy', color: '#f5a9dc', hot: '#d946ef', url: '/case-studies/san-antonio-zoo.html', title: 'San Antonio Zoo', headline: 'A repeatable planning system with room for the moments nobody could schedule.', desc: '6M+ audience supported · +15% comments and shares' },
-  { id: 'codeup', kind: 'pick', shelf: 2, label: 'CODEUP', note: 'Growth + community', color: '#a5dfe8', hot: '#0891b2', url: '/case-studies/codeup.html', title: 'Codeup', headline: 'Connecting content, community, events, and the path from curiosity to application.', desc: '+25% student applications · shared marketing outcome' },
-  { id: 'overland', kind: 'pick', shelf: 2, label: 'OVERLAND', note: 'Brand storytelling', color: '#d5ef89', hot: '#65a30d', url: '/case-studies/overland-partners.html', title: 'Overland Partners', headline: 'Making complex architecture and firm news clear, human, and useful.', desc: 'One brand voice across web, press, and recruiting' },
-  { id: 'nobody', kind: 'pick', shelf: 2, label: 'NOBODY CREATIVE', note: 'Brand + product', color: '#f8db77', hot: '#ca8a04', url: '/case-studies/nobody-creative.html', title: 'Nobody Creative', headline: 'A collection of apps, games, and experiments turned into a coherent studio brand.', desc: 'Brand strategy, product marketing, creative direction' },
+const RELEASES = [
+  { id: 'social', url: '/social/', title: 'Social', tagline: 'Give people a reason to stop. And stay.', proof: '6M+ audience · 470M+ organic impressions', credits: 'San Antonio Zoo · Codeup · Overland Partners', runtime: '11 posts', color: '#f5a9dc', hot: '#d946ef' },
+  { id: 'writing', url: '/writing/', title: 'Writing', tagline: 'The right words. For the right people.', proof: 'Press, brand stories, web and product copy', credits: 'San Antonio Zoo · Overland Partners · SaaS', runtime: '10 pieces', color: '#d5ef89', hot: '#65a30d' },
+  { id: 'video', url: '/video/', title: 'Video', tagline: 'A reason to watch. A story worth the time.', proof: 'Destination stories, explainers, fundraising', credits: 'San Antonio Zoo · Codeup', runtime: '7 videos', color: '#a5dfe8', hot: '#0891b2' },
+  { id: 'builder', url: '/builder/', title: 'Builder / AI', tagline: 'Marketing instincts. Working ideas.', proof: 'Featured by Buffer · May 2026', credits: 'Nobody Creative', runtime: '3 projects', color: '#f8db77', hot: '#ca8a04' },
 ];
-for (const tape of TAPES) href(tape.url);
+const PICKS = [
+  { id: 'zoo', url: '/case-studies/san-antonio-zoo.html', title: 'San Antonio Zoo', genre: 'Social strategy + content operations', tagline: 'A repeatable planning system with room for the moments nobody could schedule.', proof: '6M+ audience supported · +15% comments and shares', color: '#f5a9dc', hot: '#d946ef' },
+  { id: 'codeup', url: '/case-studies/codeup.html', title: 'Codeup', genre: 'Growth + community marketing', tagline: 'Connecting content, community, events, and the path from curiosity to application.', proof: '+25% student applications · shared marketing outcome', color: '#a5dfe8', hot: '#0891b2' },
+  { id: 'overland', url: '/case-studies/overland-partners.html', title: 'Overland Partners', genre: 'Brand storytelling + content', tagline: 'Making complex architecture and firm news clear, human, and useful.', proof: 'One brand voice across web, press, and recruiting', color: '#d5ef89', hot: '#65a30d' },
+  { id: 'nobody', url: '/case-studies/nobody-creative.html', title: 'Nobody Creative', genre: 'Brand + product + creative direction', tagline: 'A growing collection of apps, games, and experiments turned into one studio brand.', proof: 'Built from zero: name, identity, products, audience', color: '#f8db77', hot: '#ca8a04' },
+];
+const QUOTE = 'If you’re not prepared to be wrong, you’ll never come up with anything original.';
 
-const tapeLink = tape => `<a class="tape-link ${tape.kind}" data-id="${e(tape.id)}" href="${href(tape.url)}" style="--tape:${e(tape.color)};--tape-hot:${e(tape.hot)}"><span class="tape-label">${e(tape.label)}</span><span class="visually-hidden"> — ${e(tape.kind === 'pick' ? 'case study' : tape.kind === 'card' ? 'résumé and contact' : tape.kind === 'quote' ? 'a short one' : 'portfolio')}</span></a>`;
+// The four lens covers get original art built from the site's line icons.
+const coverArt = key => `<svg class="vhs-art" viewBox="0 0 120 120" aria-hidden="true"><g class="burst">${Array.from({ length: 12 }, (_, i) => `<path d="M60 60 L${60 + 64 * Math.cos(i * Math.PI / 6 - 0.13)} ${60 + 64 * Math.sin(i * Math.PI / 6 - 0.13)} L${60 + 64 * Math.cos(i * Math.PI / 6 + 0.13)} ${60 + 64 * Math.sin(i * Math.PI / 6 + 0.13)}Z"/>`).join('')}</g><circle cx="60" cy="60" r="34" class="disc"/><g transform="translate(37 37) scale(1.36)" fill="none" stroke="#151515" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${ICONS[key]}</g></svg>`;
 
-function vcrSection() {
-  const shelf = n => TAPES.filter(tape => tape.shelf === n).map(tapeLink).join('');
-  const catalog = TAPES.filter(tape => tape.kind !== 'quote');
-  return `<section class="den" id="tv" aria-labelledby="tv-heading"><div class="wrap den-grid">
-  <div class="den-copy">
-    <p class="eyebrow">Now playing</p><h2 id="tv-heading">Pick a tape.</h2>
-    <p class="den-intro">Each tape plays one portfolio. The rental cases are the case studies.</p>
-    <ol class="catalog" aria-label="Everything on the shelf">${catalog.map(tape => `<li><a class="catalog-row ${tape.kind}" href="${href(tape.url)}" style="--tape:${e(tape.color)}"><span class="catalog-tag">${tape.kind === 'pick' ? 'Staff pick' : tape.kind === 'card' ? 'Front desk' : 'New release'}</span><b>${e(tape.title)}</b><span class="catalog-desc">${e(tape.kind === 'pick' ? tape.headline : tape.desc)}</span><span class="catalog-go" aria-hidden="true">→</span></a></li>`).join('')}</ol>
-  </div>
-  <div class="vcr-stage" data-vcr>
-    <div class="vcr-fallback">
-      <div class="fb-tv"><div class="fb-screen"><span>VIDEO 1</span><b>Pick a tape</b></div></div>
-      <div class="fb-vcr"><span class="fb-slot"></span><span class="fb-clock">12:00</span></div>
-      <div class="fb-shelf" aria-label="New releases">${shelf(1)}</div>
-      <div class="fb-shelf picks" aria-label="Staff picks">${shelf(2)}</div>
-    </div>
-    <button class="vcr-eject" type="button" hidden>⏏ Eject</button>
-    <script type="application/json" id="vcr-data">${JSON.stringify(TAPES).replace(/</g, '\\u003c')}</script>
-  </div>
+const tape = label => `<span class="vhs-inside" aria-hidden="true"><span class="vhs-tape"><span class="vhs-reel"></span><span class="vhs-reel"></span><span class="vhs-tape-label">${e(label)}</span></span></span>`;
+
+function releaseCover(r) {
+  return `<li><a class="vhs release" href="${href(r.url)}" data-tape="${e(r.id)}" data-title="${e(r.title)}" data-tagline="${e(r.tagline)}" style="--c:${e(r.color)};--hot:${e(r.hot)}">
+  <span class="vhs-box">${tape(r.title)}<span class="vhs-front">
+    <span class="vhs-top"><span>Ben Campbell</span><span class="vhs-new">New release</span></span>
+    ${coverArt(r.id)}
+    <span class="vhs-title">${e(r.title)}</span>
+    <span class="vhs-tagline">${e(r.tagline)}</span>
+    <span class="vhs-proof">${e(r.proof)}</span>
+    <span class="vhs-foot"><span class="vhs-rating"><b>PG</b>Professional<br>grade</span><span class="vhs-credits">${e(r.credits)}<br>${e(r.runtime)}</span></span>
+  </span><span class="vhs-edge" aria-hidden="true"></span></span></a></li>`;
+}
+function pickCover(p) {
+  return `<li><a class="vhs pick" href="${href(p.url)}" data-tape="${e(p.id)}" data-title="${e(p.title)}" data-tagline="${e(p.tagline)}" style="--c:${e(p.color)};--hot:${e(p.hot)}">
+  <span class="vhs-box">${tape(p.title)}<span class="vhs-front">
+    <span class="vhs-sticker" aria-hidden="true">Staff<br>pick</span>
+    <span class="vhs-genre"><span>${e(p.genre)}</span></span>
+    <span class="vhs-title">${e(p.title)}</span>
+    <span class="vhs-tagline">${e(p.tagline)}</span>
+    <span class="vhs-proof">${e(p.proof)}</span>
+    <span class="vhs-rewind" aria-hidden="true">Be kind, rewind</span>
+  </span><span class="vhs-edge" aria-hidden="true"></span></span></a></li>`;
+}
+
+function wallSection() {
+  return `<section class="wall" id="tv" aria-labelledby="tv-heading"><div class="wrap">
+  <div class="wall-head"><h2 id="tv-heading" class="neon">New releases</h2><p>Pick a tape. Each one plays a portfolio.</p></div>
+  <ul class="rack releases" role="list">${RELEASES.map(releaseCover).join('')}</ul>
+  <div class="wall-head picks-head"><h2 class="neon small">Staff picks</h2><p>The case studies: the thinking behind the work.</p></div>
+  <ul class="rack picks" role="list">${PICKS.map(pickCover).join('')}
+    <li><button class="vhs blank" type="button" data-quote="${e(QUOTE)}" style="--c:#fffdf3;--hot:#151515" aria-label="A blank tape labeled Be Wrong. ${e(QUOTE)} Sir Ken Robinson.">
+      <span class="vhs-box">${tape('Be wrong')}<span class="vhs-front">
+        <span class="vhs-handwritten">Be wrong</span>
+        <span class="vhs-note">${e(QUOTE)}<br>— Sir Ken Robinson</span>
+        <span class="vhs-rewind" aria-hidden="true">Do not tape over</span>
+      </span><span class="vhs-edge" aria-hidden="true"></span></span></button></li>
+  </ul>
 </div></section>`;
+}
+
+function frontDesk() {
+  return `<section class="section contact front-desk" id="contact" aria-labelledby="contact-heading"><div class="wrap contact-grid">
+  <div><p class="eyebrow">The front desk</p><h2 id="contact-heading">Good work starts<br>with a conversation.</h2>
+    <div class="member-card" aria-hidden="true"><span class="mc-top">Membership</span><b>Ben Campbell</b><span>San Antonio, TX · No late fees</span><span class="mc-bars"></span></div></div>
+  <div><p>Open to full-time roles, freelance projects, and fractional or part-time support in social media, content marketing, and branding.</p><div class="actions"><a class="button" href="${email}">Email Ben <span aria-hidden="true">↗</span></a>${ext(linkedin, 'LinkedIn')}${ext(resume, 'Résumé')}</div>
+  ${currently()}
+  <p class="personal">Girl dad. Husband to a zookeeper. Movie and theme-park person. Firm believer that “professional” doesn’t have to mean “written by a committee of beige cardigans.”</p>
+  <details class="contact-details"><summary>Prefer a form? Send a note.</summary>
+    <form class="contact-form" name="portfolio-contact" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="portfolio-contact"><p hidden><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <div class="form-row"><div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div></div>
+    <div class="field"><label for="inquiry-type">What kind of help?</label><select id="inquiry-type" name="inquiry-type" required><option value="">Choose an option</option><option>Full-time role</option><option>Freelance project</option><option>Fractional support</option><option>Part-time support</option></select></div>
+    <div class="field"><label for="message">What do you have in mind?</label><textarea id="message" name="message" rows="4" placeholder="The role, project, or creative problem you need help with." required></textarea></div><button class="button" type="submit">Send a note <span aria-hidden="true">→</span></button></form></details>
+  </div></div></section>`;
 }
 
 function homePage() {
@@ -245,17 +280,9 @@ function homePage() {
   ${statStrip()}
   <div class="experience-line"><span class="muted">Experience with</span><strong>San Antonio Zoo</strong><strong>Overland Partners</strong><strong>Codeup</strong><strong>SeaWorld</strong><span class="exp-split" aria-hidden="true"></span>${ext(bufferStory, 'Featured by Buffer · May 2026', 'exp-credit')}</div>
 </div></section>
-${vcrSection()}
 ${ticker()}
-${statement()}
-<section class="section" id="about" aria-labelledby="about-heading"><div class="wrap about-grid"><div class="about-copy"><p class="eyebrow">About Ben</p><h2 id="about-heading">Strategic brain.<br>Sleeves rolled up.</h2>
-  <p>I’ve worked across destination brands, architecture, tech education, and SaaS. I can shape the campaign, write the copy, work the comments, and keep the content calendar moving.</p>
-  <p>That same curiosity led me to start ${ext(studio, 'Nobody Creative')} — the one place I’ve built a company from zero: the name, the identity, the product line, and the audience for it.</p>
-  ${currently()}
-  <p class="personal">Girl dad. Husband to a zookeeper. Movie and theme-park person. Firm believer that “professional” doesn’t have to mean “written by a committee of beige cardigans.”</p></div>
-  <aside class="recognition" aria-labelledby="buffer-heading"><p class="eyebrow">Featured by Buffer</p><h3 id="buffer-heading">From my workflow<br>to their case study.</h3><p>I started building tools to untangle my own content workflow. When Buffer opened its API, those experiments grew into PostIQ and Receipts — and Buffer told the story.</p><div class="recognition-links">${ext(bufferStory, 'Read the PostIQ + Receipts feature')}${ext(openTabs, 'Open Tabs with Ben Campbell')}</div></aside>
-</div></section>
-${contact({ home: true, title: 'Good work starts<br>with a conversation.' })}`);
+${wallSection()}
+${frontDesk()}`);
 }
 
 // A lens page is often someone's FIRST page, not their second — Ben sends the

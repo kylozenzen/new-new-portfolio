@@ -52,28 +52,24 @@ The existing `portfolio-contact` Netlify form and `/success` route are preserved
 The form now includes full-time, freelance, fractional, and part-time inquiry types.
 Check delivery in Netlify after deployment; local testing must not submit a real inquiry.
 
-## The home page VCR
+## The home page video wall
 
-The home page's work section is a TV cabinet drawn in three.js
-(`assets/js/vcr.js`, styles in `assets/css/vcr.css`). Each tape plays one
-portfolio page: tap it, it goes into the VCR, the TV plays a title card, the
-screen fills the window, and the real page loads. The rental cases on the
-bottom shelf are the case studies, the membership card jumps to contact, and the
-"Be Wrong" tape plays the Ken Robinson quote in place.
+The home page is a short intro (with the headline numbers), then a video-store
+wall: **New releases** are the four portfolio pages, **Staff picks** are the case
+studies, plus a blank "Be Wrong" tape that plays the Ken Robinson quote. Contact
+lives at **the front desk** below it.
 
-- **Real pages underneath.** Every tape is an ordinary link to `/social/`,
-  `/writing/`, `/video/`, `/builder/` or a case study, so those URLs still work
-  on their own and are what you send people.
-- **Eject.** The back link at the top of each portfolio page is "⏏ Eject". It
-  returns to `/#tv` and the tape pops back out of the VCR onto the shelf. The
-  browser back button does the same.
-- **Editing the shelf.** Tapes live in `TAPES` in `scripts/render-portfolio.mjs`
-  (label, colors, link, the headline shown on the TV). The generator writes them
-  into the page as JSON; `vcr.js` draws from that.
-- **Fallbacks.** The HTML inside `[data-vcr]` is a complete, plain shelf of links.
-  It shows until the 3D loads, and stays in place if WebGL isn't available. It is
-  also the keyboard and screen-reader layer once the 3D is on.
-- **Performance.** three.js (`assets/vendor/three.module.min.js`, r170, about
-  170 KB gzipped, MIT) loads only when the cabinet is near the screen. The scene
-  renders only when something changes. Repeat plays in a session run faster, and
-  reduced-motion visitors skip the animation.
+- **Covers are the links.** Each cover is a plain link to `/social/`, `/writing/`,
+  `/video/`, `/builder/` or a case study, so those URLs still stand alone and are
+  what you send people. No JavaScript needed to use the site.
+- **The show.** `assets/js/vcr.js` turns a tap into: the case opens, a VCR slides
+  up from the bottom of the screen, the tape goes in, the whole screen plays static
+  and a title card, then the page loads. Repeat plays speed up; reduced-motion
+  visitors and modifier-clicks just follow the link.
+- **Eject.** The back link on each portfolio page is "⏏ Eject". It returns to
+  `/#tv` and the tape pops out of the VCR back into its case. The browser back
+  button does the same.
+- **Editing.** Covers come from `RELEASES` and `PICKS` in
+  `scripts/render-portfolio.mjs` (title, tagline, proof line, credits, colors,
+  link). Styles are in `assets/css/vcr.css`. Everything is HTML/CSS; only
+  transforms and opacity animate, so it stays light on phones.
